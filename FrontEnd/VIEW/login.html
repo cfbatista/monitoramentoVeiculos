@@ -1,0 +1,124 @@
+
+<!--<div ng-controller="loginController">
+    <div id="main-container" class="container-fluid">
+        <div class="row">
+            <div id="auth-form" class="panel panel-primary">
+                <div class="panel-heading">
+                   <div class="login-html">
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
+                        <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Cadastro</label>
+                   </div>
+                </div>
+                <form class="panel-body">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="text" id="login" ng-model="usuario.email"name="login" class="form-control" placeholder="Email">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="password" id="password" ng-model="usuario.senha" name="password" class="form-control" placeholder="Senha">
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="login(usuario)">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div id="main-container" class="container-fluid">
+        <div class="row">
+            <div id="auth-form" class="panel panel-primary">
+                <div class="panel-heading">
+                </div>
+                <form class="panel-body">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </span>
+                        <input type="text" id="nome" ng-model="usuario.nome" name="nome" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="password" id="password" ng-model="usuario.senha" name="password" class="form-control" placeholder="Senha">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-lock"></span>
+                        </span>
+                        <input type="password" id="login" name="password" class="form-control" placeholder="Repita a senha">
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-envelope"></span>
+                        </span>
+                        <input type="email" id="email" ng-model="usuario.email" name="email" class="form-control" placeholder="Email">
+                    </div>
+                    <button type="button" class="btn btn-primary" ng-click="novoUsuario(usuario)">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+
+
+      <div class="login-wrap" ng-controller="loginController">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Login</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Cadastro</label>
+            <div class="login-form">
+                <div class="sign-in-htm">
+                    <div class="group">
+                        <label for="user" class="label">Email</label>
+                        <input id="user" type="text" class="input" ng-model="usuario.username" required>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Senha</label>
+                        <input id="pass" type="password" class="input" data-type="password" required ng-model="usuario.password">
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" checked>
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                    </div>
+                    <div class="group">
+                        <button type="button" class="button" ng-click= "login(usuario)">Login</button>
+                    </div>
+                    <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="">Esqueceu a senha?</a>
+                        </div>
+                    </div>
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="user" class="label">Nome</label>
+                            <input id="user" type="text" class="input" ng-model="usuario.username" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Senha</label>
+                            <input id="pass" type="password" class="input" data-type="password" required ng-model="usuario.password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Senha</label>
+                            <input id="pass" type="password" class="input" data-type="password" required>
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Email</label>
+                            <input id="pass" type="text" class="input" ng-model="usuario.email" required>
+                        </div>
+                        <div class="group">
+                            <button type="button" class="button" ng-click= "novoUsuario(usuario)">Cadastrar</button>
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <label for="tab-1">Já possui cadastro?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
