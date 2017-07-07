@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body ng-controller="MainController">
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+
+    <form ng-submit="pegarDadosRadares(radarPartida,radarChegada)">
+        <fieldset>
+
+            <label for="opcionais">Selecione seu radar:</label>
+            <select ng-model="radarPartida" class="form-control">
+                <option ng-repeat="radar in radares" value="{{radar}}">{{radar.nome}}</option>
+            </select>
+            <select ng-model="radarChegada" class="form-control">
+                <option ng-repeat="radar in radares" value="{{radar}}">{{radar.nome}}</option>
+            </select>
+            <div>
+                <input type="submit" id="btnEnviar" name="btnEnviar" value="Enviar" />
+            </div>
+
+        </fieldset>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.6.4/angular-locale_pt-br.min.js"></script>
+    
+    <script src="js/main.js"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZYtqYbqniX8mMyFjOpb3JlRVZ0NsKm1s&callback=initMap"></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+cHAVE DE API - GOOGLE JAVA SCRIPT
+
+AIzaSyAGSPUiLKUfS8nQu-1i7XVcWuxDnP60zL8
+
+google maps direction ------------------------------
+
+2.500 solicitações gratuitas por dia, calculadas pela soma das consultas do cliente e do servidor; ativar cobrança para ter acesso a maiores cotas diárias, com custo de US$ 0,50 para 1.000 solicitações adicionais, até 100.000 solicitações por dia.
+Até 23 pontos de referência por solicitação, além de origem e destino.
+50 solicitações por segundo, calculadas como a soma das consultas do lado do cliente e do lado do servidor.
+
+crie um objeto do tipo DirectionsService e chame DirectionsService.route()
+
+https://console.developers.google.com/apis/dashboard?project=cwimonitorveiculos&hl=pt-br&duration=PT1H
+
+https://developers.google.com/maps/documentation/javascript/directions?hl=pt-br
+
+https://developers.google.com/maps/documentation/javascript/examples/map-coordinates?hl=pt-br
+
+https://developers.google.com/maps/documentation/javaer um objeto LatLng ou um objeto WeightedLocation. Depois de instanciar o objeto HeatmapLayer, adicione-o ao mapa chamando o método setMap().
