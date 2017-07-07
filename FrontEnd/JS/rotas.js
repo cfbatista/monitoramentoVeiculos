@@ -8,5 +8,9 @@ app.config(function($routeProvider){
             controller: 'homeController',
             templateUrl: 'VIEW/home.html'
         })
+        .when('/analiserota', {
+            controller: 'analiseRotaController',
+            templateUrl: 'VIEW/analiseRota.html'
+        })
         .otherwise('/login');
 });

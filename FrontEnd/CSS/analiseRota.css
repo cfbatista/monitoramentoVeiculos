@@ -1,0 +1,14 @@
+.mapRender{
+  height:500px;
+  width:800px;
+  background-color:gray;
+  margin:0 auto;
+}
+.mapRender #map{
+  height:400px;
+  width:700px;
+  background-color:blue;
+  top:50px;
+  position:relative;
+  margin:0 auto;
+}
