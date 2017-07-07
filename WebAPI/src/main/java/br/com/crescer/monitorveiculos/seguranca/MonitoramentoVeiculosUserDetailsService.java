@@ -2,7 +2,6 @@ package br.com.crescer.monitorveiculos.seguranca;
 
 import br.com.crescer.monitorveiculos.entidade.Usuario;
 import br.com.crescer.monitorveiculos.service.UsuarioService;
-import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,7 +27,7 @@ public class MonitoramentoVeiculosUserDetailsService implements UserDetailsServi
             throw new UsernameNotFoundException("Usuário não encontrado");
         }
 
-        return new User(usuario.getEmail(), usuario.getSenha(), Arrays.asList(usuario.getPermissao()));
+        return new User(usuario.getEmail(), usuario.getSenha(), usuario.getPermissoes());
 
     }
 }
