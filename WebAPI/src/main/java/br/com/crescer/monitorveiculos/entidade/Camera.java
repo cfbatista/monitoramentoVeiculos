@@ -1,15 +1,12 @@
 package br.com.crescer.monitorveiculos.entidade;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -60,9 +57,6 @@ public class Camera implements Serializable {
 
     @Column(name = "LATITUDE")
     private Long latitude;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Registro> registros;
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
