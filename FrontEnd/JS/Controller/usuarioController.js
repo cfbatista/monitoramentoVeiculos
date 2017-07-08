@@ -9,20 +9,20 @@ app.controller('usuarioController',function($scope, $routeParams, $location, aut
     }
 
     //Ver como a permissao ta vindo
-    if(permissao === 'adimin' || permissao === 'autoridade' || permissao === 'usuario'){
+    if(permissao === 'admin' || permissao === 'autoridade' || permissao === 'usuario'){
         obterRegistro();
         obterRegistroUsuario(usuario);
 
         function obterRegistro(){
             usuarioService.obterRegistro().then(response =>{
                 $scope.registros = response.data;
-            }).catch(error => console.log(error));;
+            }).catch(error => console.log(error));
         }
 
         function obterRegistroUsuario(usuario){
             usuarioService.obterRegistroUsuario(usuario).then(response => {
                 $scope.registros = response.data;
-            });
+            }).catch(error => console.log(error));
         }
 
         //Não tenho certeza se ta salvando a informação correta
