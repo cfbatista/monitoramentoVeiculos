@@ -1,5 +1,7 @@
 app.controller('loginController', function($scope, $routeParams, $location, authService, authConfig, toastr){
 
+    $scope.login = login;
+    
     function login(usuario){
         authService.login(usuario)
             .then(
@@ -12,17 +14,4 @@ app.controller('loginController', function($scope, $routeParams, $location, auth
                 }
             )
     }
-
-    function novoUsuario(usuario){
-        loginService.insert(usuario).then(r => {
-            authService.login($scope.usuario).then(response => {
-                toastr.sucess('Login realizado com sucesso');
-            })
-        }, error => {
-            toastr.error(error.data.message);
-        })
-    }
-
-    $scope.login = login;
-    $scope.novoUsuario = novoUsuario;
 });
