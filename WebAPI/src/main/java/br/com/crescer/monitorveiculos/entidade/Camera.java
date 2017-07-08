@@ -61,7 +61,7 @@ public class Camera implements Serializable {
     @Column(name = "LATITUDE")
     private Long latitude;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDCAMERA")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Registro> registros;
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
