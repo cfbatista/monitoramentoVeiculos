@@ -3,14 +3,11 @@ package br.com.crescer.monitorveiculos.entidade;
 import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosRoles;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -88,7 +85,6 @@ public class Usuario implements Serializable {
     @ManyToOne(optional = false)
     private Cidade idcidade;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDPERMISSAO")
-    private List<MonitoramentoVeiculosRoles> permissoes;
+    private MonitoramentoVeiculosRoles permissao;
 
 }

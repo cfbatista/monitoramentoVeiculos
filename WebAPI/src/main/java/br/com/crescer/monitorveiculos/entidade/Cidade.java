@@ -48,10 +48,10 @@ public class Cidade implements Serializable {
     @Size(min = 1, max = 2)
     private String uf;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDCIDADE")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Veiculo> veiculos;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDCIDADE")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Camera> cameras;
 
 }
