@@ -16,6 +16,7 @@ app.service('usuarioService', function($http){
         adicionarVeiculo: adicionarVeiculo,
         obterRegistro: obterRegistro,
         adicionarRegistro: adicionarRegistro,
+        obterRegistroUsuario: obterRegistroUsuario,
         obterCidades: obterCidades,
         adicionarCidades: adicionarCidades        
     }
@@ -70,6 +71,10 @@ app.service('usuarioService', function($http){
 
     function adicionarRegistro(registro){
         return $http.post(url, registro);
+    }
+
+    function obterRegistroUsuario(id){
+        return $http.get(url + '/registros/' + id);
     }
 
     function obterCidades(){
