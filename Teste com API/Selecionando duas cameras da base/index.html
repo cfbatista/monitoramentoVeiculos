@@ -148,8 +148,8 @@
         }
 
         function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-            var start = document.getElementById('start').value;
-            var end = document.getElementById('end').value;
+            var start = $scope.partida[0] + ',' + $scope.partida[1];
+            var end = $scope.chegada[0] + ',' + $scope.chegada[1];
             directionsService.route({
                 origin: start,
                 destination: end,

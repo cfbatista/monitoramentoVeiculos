@@ -6,3 +6,5 @@
 WebAPI/target/test-classes/\.netbeans_automatic_build
 
 *.lst
+
+*.original
