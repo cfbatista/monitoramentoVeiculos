@@ -2,7 +2,7 @@ app.controller('loginController', function($scope, $routeParams, $location, auth
 
     $scope.login = login;
     
-    function login(usuario){
+    $scope.login = function (usuario){
         authService.login(usuario)
             .then(
                 function(response){

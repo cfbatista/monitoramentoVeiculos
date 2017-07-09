@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author diandra.rocha
  */
 @RestController
-@RequestMapping
+@RequestMapping(value = "/usuario")
 public class LoginControle {
 
     @Autowired
@@ -25,7 +25,7 @@ public class LoginControle {
     @Autowired
     private ComponenteServico componenteServico;
 
-    @GetMapping("/login")
+    @GetMapping
     public Usuario getUsuario() {
         return componenteServico.getUserSession();
     }

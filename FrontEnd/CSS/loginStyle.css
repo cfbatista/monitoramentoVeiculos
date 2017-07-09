@@ -191,6 +191,31 @@ a{
     text-align:center;
 }
 
+.container{
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgba(52, 73, 94, 0.7);
+    margin-top: 150px;
+    border-radius: 25px;
+}
+.container img{
+    height: 120px;
+    width: 150px;
+    margin-top: -60px;
+    margin-bottom: 30px;
+    border-radius: 50%;
+}
+.container input{
+    height: 45px;
+    width: 300px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding-left: 10px;
+}
+
 
 /*modal login*/
 input[type=text], input[type=password] {
