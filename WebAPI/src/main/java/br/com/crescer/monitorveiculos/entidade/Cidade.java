@@ -25,7 +25,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "CIDADE")
-
 public class Cidade implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -44,5 +43,5 @@ public class Cidade implements Serializable {
     @NotNull
     @Size(min = 1, max = 2)
     private String uf;
-    
+
 }

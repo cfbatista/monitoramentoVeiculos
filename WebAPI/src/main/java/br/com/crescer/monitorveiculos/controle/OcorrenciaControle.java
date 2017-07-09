@@ -14,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/ocorrencia")
 public class OcorrenciaControle {
 
-    @Autowired
-    private OcorrenciaServico ocorrenciaServico;
+  @Autowired
+  private OcorrenciaServico ocorrenciaServico;
 
-    @GetMapping
-    public Iterable<Ocorrencia> pegarTodasOcorrencias() {
-        return ocorrenciaServico.todasOcorrencias();
-    }
+  @GetMapping
+  public Iterable<Ocorrencia> pegarTodasOcorrencias() {
+      return ocorrenciaServico.todasOcorrencias();
+  }
 
-    @PostMapping
-    public Ocorrencia salvarOcorrencia(@Valid @RequestBody Ocorrencia ocorrencia) {
-        return ocorrenciaServico.criarOcorrencia(ocorrencia);
-    }
+  @PostMapping
+  public Ocorrencia salvarOcorrencia(@Valid @RequestBody Ocorrencia ocorrencia) {
+      return ocorrenciaServico.criarOcorrencia(ocorrencia);
+  }
 }
