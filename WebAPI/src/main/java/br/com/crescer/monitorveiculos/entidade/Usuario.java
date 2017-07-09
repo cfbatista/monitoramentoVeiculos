@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.entidade;
 
 import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosRoles;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -31,7 +32,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "USUARIO")
-
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,6 +51,7 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 100)
     private String senha;
 
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -86,5 +87,4 @@ public class Usuario implements Serializable {
     private Cidade idcidade;
 
     private MonitoramentoVeiculosRoles permissao;
-
 }

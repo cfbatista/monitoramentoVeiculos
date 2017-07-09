@@ -1,13 +1,33 @@
 function initMap() {
-    var keyMap = 'AIzaSyD7NfLfxZTzQYWnsfpnAVkUu7OuBABCKb4'
-    var uluru = { lat: -29.658511, lng:-51.140428};
+
+    //array de posicoes para ser plotadas e seus pesos
+    var heatMapData = [
+        { location: new google.maps.LatLng(-29.658623, -51.140586), weight: 20 }, new google.maps.LatLng(-29.658511, -51.140428),
+        { location: new google.maps.LatLng(-29.680632, -51.142045), weight: 40 },
+        { location: new google.maps.LatLng(-29.680623, -51.142222), weight: 60 },
+        { location: new google.maps.LatLng(-29.714649, -51.147731), weight: 35 }, new google.maps.LatLng(-29.714803, -51.147935),
+        { location: new google.maps.LatLng(-29.736532, -51.149887), weight: 15 },
+        { location: new google.maps.LatLng(-29.736495, -51.150129), weight: 45 },
+        { location: new google.maps.LatLng(-29.75971, -51.148261), weight: 85 }, new google.maps.LatLng(-29.759716, -51.148331),
+        { location: new google.maps.LatLng(-29.758328, -51.145979), weight: 95 },
+        { location: new google.maps.LatLng(-29.758403, -51.146017), weight: 30 }
+    ];
+
+    //posicao inicial do mapa
+    var NovoHamburgo = new google.maps.LatLng(-29.6918991, -51.1255697);
+
+    //inicializando o mapa
     var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 12,
-        center: uluru
+        center: NovoHamburgo,
+        zoom: 10
     });
-    var marker = new google.maps.Marker({
-        position: uluru,
-        map: map,
-        icon: 'https://lh3.googleusercontent.com/csqhMWOAY1r4QDhQwkr038cfIDBRrDOWHt6JBoHX67A-mPt1zfQm_ESnVdHEhjDDFiCcxMZwltRNfes=w1304-h702'
+
+    //componente que pega os dados do array para jogar na tela
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+        data: heatMapData,
+        radius: 50
     });
+    
+    //Jogando na tela o mapa
+	
 }

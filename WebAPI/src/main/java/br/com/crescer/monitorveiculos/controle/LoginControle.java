@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Usuario;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosRoles;
 import br.com.crescer.monitorveiculos.servico.ComponenteServico;
 import br.com.crescer.monitorveiculos.servico.UsuarioServico;
 import javax.validation.Valid;
@@ -29,7 +30,7 @@ public class LoginControle {
         return componenteServico.getUserSession();
     }
 
-    @PostMapping("/cadastro")
+    @PostMapping("/cadastrar")
     public Usuario cadastrar(@Valid @RequestBody Usuario usuario) throws Exception {
         if (usuarioServico.findByEmail(usuario.getEmail()) != null) {
             throw new Exception("Já possui um usuário cadastrado com esse e-mail");
