@@ -6,9 +6,12 @@ import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -35,7 +38,10 @@ import lombok.Setter;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    private static final String SEQ_NAME = "SEQ_USUARIO";
 
+    @GeneratedValue(strategy = SEQUENCE, generator = SEQ_NAME)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     @Id
     @Basic(optional = false)
     @NotNull
@@ -51,7 +57,7 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 100)
     private String senha;
 
-    @JsonFormat(pattern="dd/MM/yyyy")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
