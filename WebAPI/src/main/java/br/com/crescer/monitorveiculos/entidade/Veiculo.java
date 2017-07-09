@@ -28,7 +28,6 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "VEICULO")
-
 public class Veiculo implements Serializable {
 
     private static final long serialVersionUID = 1L;

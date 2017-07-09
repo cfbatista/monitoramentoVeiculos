@@ -2,17 +2,13 @@ function initMap() {
 
     //array de posicoes para ser plotadas e seus pesos
     var heatMapData = [
-        { location: new google.maps.LatLng(-29.658623, -51.140586), weight: 20 },
-        new google.maps.LatLng(-29.658511, -51.140428),
+        { location: new google.maps.LatLng(-29.658623, -51.140586), weight: 20 }, new google.maps.LatLng(-29.658511, -51.140428),
         { location: new google.maps.LatLng(-29.680632, -51.142045), weight: 40 },
         { location: new google.maps.LatLng(-29.680623, -51.142222), weight: 60 },
-        { location: new google.maps.LatLng(-29.714649, -51.147731), weight: 35 },
-        new google.maps.LatLng(-29.714803, -51.147935),
+        { location: new google.maps.LatLng(-29.714649, -51.147731), weight: 35 }, new google.maps.LatLng(-29.714803, -51.147935),
         { location: new google.maps.LatLng(-29.736532, -51.149887), weight: 15 },
-
         { location: new google.maps.LatLng(-29.736495, -51.150129), weight: 45 },
-        { location: new google.maps.LatLng(-29.75971, -51.148261), weight: 85 },
-        new google.maps.LatLng(-29.759716, -51.148331),
+        { location: new google.maps.LatLng(-29.75971, -51.148261), weight: 85 }, new google.maps.LatLng(-29.759716, -51.148331),
         { location: new google.maps.LatLng(-29.758328, -51.145979), weight: 95 },
         { location: new google.maps.LatLng(-29.758403, -51.146017), weight: 30 }
     ];
@@ -33,5 +29,5 @@ function initMap() {
     });
     
     //Jogando na tela o mapa
-    heatmap.setMap(map);
+	
 }

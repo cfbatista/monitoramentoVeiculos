@@ -8,5 +8,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author Diandra Rocha
  */
 public interface CameraRepositorio extends CrudRepository<Camera, Long> {
-    
+
 }
