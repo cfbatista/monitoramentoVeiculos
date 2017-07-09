@@ -1,12 +1,8 @@
 app.config(function($routeProvider){
     $routeProvider
-        .when('/login',{
+        when('/home', {
             controller: 'loginController',
-            templateUrl: 'VIEW/login.html'
-        })
-        .when('/home', {
-            // controller: 'homeController',
-            templateUrl: 'VIEW/home.html'
+            templateUrl: 'index.html'
         })
         .when('/analiserota', {
             controller: 'analiseRotaController',
@@ -14,6 +10,9 @@ app.config(function($routeProvider){
         })
         .when('/veiculo', {
             templateUrl: 'VIEW/veiculo.html'
+        })
+        .when('/ocorrencia', {
+            templateUrl: 'VIEW/ocorrencia.html'
         })
         // .when('/privado', {
         //     controller: 'PrivadoController',
@@ -26,5 +25,5 @@ app.config(function($routeProvider){
         //         }
         //     }
         // })
-        .otherwise('/login');
+        .otherwise('/home');
 });
