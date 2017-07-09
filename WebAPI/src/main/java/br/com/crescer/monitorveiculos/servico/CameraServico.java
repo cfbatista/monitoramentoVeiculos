@@ -19,4 +19,8 @@ public class CameraServico {
         return cameraRepositorio.findOne(id);
     }
 
+    public long contagemTotal() {
+        return cameraRepositorio.count();
+    }
+
 }

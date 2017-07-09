@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.entidade;
 
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,9 +15,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RegistroCountModel {
+public class HeatMapModel {
 
-    private Date dataInicial;
-    private Date dataFinal;
-
+    private Camera camera;
+    private Long fator;
 }
