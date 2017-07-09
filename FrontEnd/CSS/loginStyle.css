@@ -297,3 +297,34 @@ span.psw {
     color: red;
     cursor: pointer;
 }
+
+.container-Login{
+    width: 600px;
+    height: 400px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: black;
+    margin-top: 150px;
+    border-radius: 25px;
+    color:white;
+}
+.container-Login h1{
+  padding-top:20px;
+}
+.container-Login .form-input-Login input{
+    height: 45px;
+    width: 300px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    padding-left: 10px;
+}
+.container-Login .btn-login-Login{
+  width:155px;
+  height:30px;
+  background-color:black;
+  color:white;
+}
+.container-Login .btn-login-Login:hover{
+  background-color:#fbaf41;
+}

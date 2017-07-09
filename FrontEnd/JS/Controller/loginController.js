@@ -1,26 +1,29 @@
-app.controller('loginController', function($scope, $routeParams, $location, authService, usuarioService, authConfig, toastr){
 
-    $scope.login = login;
-    
-    $scope.login = function (usuario){
-        authService.login(usuario)
-            .then(
-                function(response){
-                    $location.path(authConfig.urlPrivado);
-                    toastr.sucess('Login realizado com sucesso');
+app.controller('loginController', function ($scope, $routeParams, $location, authService, authConfig, toastr) {
+
+    console.log("teste");
+
+    $scope.login = function (usuario) {
+        if ($scope.formLogin.$valid) {
+            authService.login(usuario)
+                .then(function (response) {
+                    toastr.success('Login com sucesso!');
+                    $location.path('/home');
                 },
-                function(response){
-                    toastr.error('Erro ao tentar fazer login. Por favor verifica usuário e senha');
-                }
-            )
-    }
-
-
-    var modal = document.getElementById('id01');
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+                function (response) {
+                    toastr.error('Login ou Senha inválidos!');
+                });
+        } else {
+            toastr.warning('Preencha todos os dados corretamente.', 'Dados inválidos!');
         }
+    };
+
+    $scope.teste= function(){
+        console.log("teste");
     }
+    
+    $scope.cadastrar = function () {
+        $location.path('/cadastro');
+    };
+
 });
