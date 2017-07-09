@@ -44,4 +44,5 @@ public class Cidade implements Serializable {
     @NotNull
     @Size(min = 1, max = 2)
     private String uf;
+    
 }

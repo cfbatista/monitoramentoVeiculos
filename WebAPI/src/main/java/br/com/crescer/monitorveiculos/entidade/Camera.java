@@ -61,5 +61,5 @@ public class Camera implements Serializable {
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
     private Cidade idcidade;
-
+    
 }
