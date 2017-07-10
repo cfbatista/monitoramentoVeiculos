@@ -17,4 +17,12 @@ public class VeiculoServico {
     public long totalVeiculos() {
         return veiculoRepositorio.count();
     }
+    
+    public Veiculo pegarVeiculoPorId(Long id){
+        return veiculoRepositorio.findOne(id);
+    }
+    
+    public Veiculo pegarVeiculoPorPlaca(String placa){
+        return veiculoRepositorio.findOne(placa);
+    }
 }
