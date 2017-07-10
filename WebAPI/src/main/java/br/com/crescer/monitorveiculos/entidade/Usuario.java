@@ -38,6 +38,10 @@ import lombok.Setter;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
+<<<<<<< HEAD
+=======
+    private static final String SEQ_NAME = "SEQ_USUARIO";
+>>>>>>> parent of a6bf516... Feat(Front End): Alterações e ajustes no front
 
     @Id
     @Basic(optional = false)
@@ -54,6 +58,7 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 100)
     private String senha;
 
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
