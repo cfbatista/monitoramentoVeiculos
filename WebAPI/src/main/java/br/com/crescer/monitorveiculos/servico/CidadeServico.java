@@ -11,19 +11,19 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CidadeServico {
-    
+
     @Autowired
     private CidadeRepositorio cidadeRepositorio;
-    
-    public Iterable<Cidade> listarCidades(){
+
+    public Iterable<Cidade> listarCidades() {
         return cidadeRepositorio.findAll();
     }
-    
+
     public long totalCidades() {
         return cidadeRepositorio.count();
     }
-    
-    public Cidade pegarCidadePorId(Long id){
+
+    public Cidade pegarCidadePorId(Long id) {
         return cidadeRepositorio.findOne(id);
     }
 }
