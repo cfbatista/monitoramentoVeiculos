@@ -18,9 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class RegistroCountModel {
-
+  
     private Date dataInicial;
-
     private Date dataFinal;
-
 }
