@@ -71,10 +71,10 @@ public class Veiculo implements Serializable {
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
-    private Cidade idcidade;
+    private Cidade cidade;
 
     @JoinColumn(name = "IDMARCA", referencedColumnName = "IDMARCA")
     @ManyToOne
-    private Marca idmarca;
+    private Marca marca;
 
 }

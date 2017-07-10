@@ -8,6 +8,8 @@ import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,17 +37,14 @@ public class RegistroServico {
 
         long total = todosRegistros.size();
 
-        todasCameras.forEach(camera -> {
-
-            final long count = todosRegistros.stream()
-                    .map(Registro::getCamera)
-                    .map(Camera::getIdcamera)
-                    .filter(camera.getIdcamera()::equals)
-                    .count();
-
-            final HeatMapModel heatMapModel = new HeatMapModel(camera, count / total);
-            retorno.add(heatMapModel);
-        });
+        todosRegistros.parallelStream()
+                .collect(Collectors.groupingBy(Registro::getCamera))
+                .entrySet().stream()
+                .forEach((Map.Entry<Camera, List<Registro>> e) -> {
+                    final Double fator = Double.valueOf(total) / e.getValue().size();
+                    final HeatMapModel heatMapModel = new HeatMapModel(e.getKey(), fator);
+                    retorno.add(heatMapModel);
+                });
 
         return retorno;
     }

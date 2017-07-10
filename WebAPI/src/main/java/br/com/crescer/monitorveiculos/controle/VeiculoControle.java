@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
+import br.com.crescer.monitorveiculos.servico.CidadeServico;
 import br.com.crescer.monitorveiculos.servico.VeiculoServico;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class VeiculoControle {
 
     @Autowired
     private VeiculoServico veiculoServico;
+    @Autowired
+    private CidadeServico cidadeServico;
 
     @GetMapping(value = "/obterContagem")
     public Long contagemVeiculos() {

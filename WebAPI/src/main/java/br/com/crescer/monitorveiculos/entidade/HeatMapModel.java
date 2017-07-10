@@ -18,5 +18,5 @@ import lombok.Setter;
 public class HeatMapModel {
 
     private Camera camera;
-    private Long fator;
+    private Double fator;
 }

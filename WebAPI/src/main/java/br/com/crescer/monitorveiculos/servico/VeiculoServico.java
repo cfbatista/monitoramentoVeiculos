@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
+import br.com.crescer.monitorveiculos.repositorio.CidadeRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ public class VeiculoServico {
 
     @Autowired
     private VeiculoRepositorio veiculoRepositorio;
+    @Autowired
+    private CidadeRepositorio cidadeRepositorio;
 
     public List<Veiculo> obterTodosVeiculos() {
         return (List<Veiculo>) veiculoRepositorio.findAll();
@@ -31,4 +34,5 @@ public class VeiculoServico {
     public Veiculo obterVeiculoPorPlaca(String placa) {
         return veiculoRepositorio.findByPlaca(placa);
     }
+
 }
