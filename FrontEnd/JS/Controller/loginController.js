@@ -1,4 +1,3 @@
-
 app.controller('loginController', function ($scope, $routeParams, $location, authService, authConfig, toastr) {
 
     console.log("teste");
@@ -8,7 +7,7 @@ app.controller('loginController', function ($scope, $routeParams, $location, aut
             authService.login(usuario)
                 .then(function (response) {
                     toastr.success('Login com sucesso!');
-                    $location.path('/home');
+                    $location.path('/analiserota');
                 },
                 function (response) {
                     toastr.error('Login ou Senha inválidos!');

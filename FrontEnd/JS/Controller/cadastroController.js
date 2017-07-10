@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService){
+app.controller('cadastroController', function($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService){
 
 
     function novoUsuario(usuario){ 

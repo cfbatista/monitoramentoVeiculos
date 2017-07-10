@@ -14,7 +14,12 @@ app.config(function($routeProvider){
 
         .when('/analiserota', {
             controller: 'analiseRotaController',
-            templateUrl: 'VIEW/analiseRota.html'
+            templateUrl: 'VIEW/analiseRota.html',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
         })
 
         .when('/veiculo', {

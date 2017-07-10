@@ -1,16 +1,6 @@
 app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr) {
-    $scope.partida;
-    $scope.chegada;
-    $scope.radares = locations;
-    var directionsDisplay = new google.maps.DirectionsRenderer;
-    var directionsService = new google.maps.DirectionsService;
-    var NovoHamburgo = new google.maps.LatLng(-29.6918991, -51.1255697);
-    var map;
-    var heatmap;
-    var marker;
-    var LatLng;
-
-    //radares
+    
+     //radares
     var locations = [
         [-29.658623, -51.140586, "Radar 1"],
         [-29.658511, -51.140428, "Radar 2"],
@@ -38,6 +28,17 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
        { location: new google.maps.LatLng(-29.758328, -51.145979), weight: 95 },
        { location: new google.maps.LatLng(-29.758403, -51.146017), weight: 30 }
     ];
+    
+    $scope.partida;
+    $scope.chegada;
+    $scope.radares = locations;
+    var directionsDisplay = new google.maps.DirectionsRenderer;
+    var directionsService = new google.maps.DirectionsService;
+    var NovoHamburgo = new google.maps.LatLng(-29.6918991, -51.1255697);
+    var map;
+    var heatmap;
+    var marker;
+    var LatLng;
 
     //funcao para mostrar o mapa com seus pontos de calor
 

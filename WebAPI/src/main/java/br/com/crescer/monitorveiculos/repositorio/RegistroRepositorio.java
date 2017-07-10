@@ -13,6 +13,6 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
 
     Long countByIdcameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
 
-    Long sumByIdcameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
+    //Long sumIdregistroByIdcameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
 
 }

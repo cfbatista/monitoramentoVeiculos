@@ -1,6 +1,6 @@
 <div class="container-Login">
     <h1>Monitor Veiculos</h1>
-    <form name="formLogin">
+    <form name="formLogin" ng-submit="login(usuario)">
         <div class="form-input-Login">
             <input type="email" name="email" required ng-model="usuario.email" placeholder="Insira seu email">
         </div>
@@ -10,14 +10,6 @@
         <div class="form-input-Login">
             <input type="password" name="senha" required ng-model="usuario.senha" placeholder="Insira sua senha">
         </div>
+        <input type="submit" class="btn-login-Login" value="Login">
     </form>
-    <button type="button" ng-click="teste()" class="btn-login-Login">Login</button>
-</div>tira o input
-qual?
-esse?
-sim
-tirei
-viu?
-?
-type=button
-?
+</div>

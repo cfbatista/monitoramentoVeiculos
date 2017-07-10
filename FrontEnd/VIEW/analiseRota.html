@@ -1,8 +1,6 @@
-
-<div ng-controller="analiseRotaController">
 <h3>My Google Maps Demo</h3>
 
-<button class="btn btn-primary btn-block btn-md" ng-click="click()">Testar</button>
+<input type="submit" class="btn btn-primary btn-block btn-md" ng-click="click()" value="Iniciar Mapa">
 
 <form ng-submit="tracarRota()">
     <select ng-model="partida">
@@ -11,39 +9,7 @@
     <select ng-model="chegada">
         <option ng-repeat="radar in radares" ng-value="radar">{{radar[2]}}</option>
     </select>
-    <button class="btn btn-primary btn-block btn-md" type="submit">Testar</button>
+    <input type="submit" class="btn btn-primary btn-block btn-md" value="Tracar Rota">
 </form>
 
-<div id="map"></div>
-
-</div>
-
-
-
-<button class="btn btn-primary btn-block btn-md" ng-click="click()">Testar</button>
-
-<form ng-submit="tracarRota()">
-    <select ng-model="partida">
-        <option ng-repeat="radar in radares" ng-value="radar">{{radar[2]}}</option>
-    </select>
-    <select ng-model="chegada">
-        <option ng-repeat="radar in radares" ng-value="radar">{{radar[2]}}</option>
-    </select>
-    <button class="btn btn-primary btn-block btn-md" type="submit">Testar</button>
-</form>
-
-<div id="map"></div>
-
-<button class="btn btn-primary btn-block btn-md" ng-click="click()">Testar</button>
-
-<form ng-submit="tracarRota()">
-    <select ng-model="partida">
-        <option ng-repeat="radar in radares" ng-value="radar">{{radar[2]}}</option>
-    </select>
-    <select ng-model="chegada">
-        <option ng-repeat="radar in radares" ng-value="radar">{{radar[2]}}</option>
-    </select>
-    <button class="btn btn-primary btn-block btn-md" type="submit">Testar</button>
-</form>
-
 <div id="map"></div>
