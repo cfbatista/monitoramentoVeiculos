@@ -31,8 +31,9 @@ app.config(function($routeProvider){
             templateUrl: 'VIEW/veiculo.html'
         })
         
-        .when('/ocorrencia', {
-            templateUrl: 'VIEW/ocorrencia.html'
+        .when('/cadastroOcorrencia', {
+            templateUrl: 'VIEW/cadastroOcorrencia.html',
+            controller: 'usuarioController'
         })
 
         .otherwise({redirectTo: '/home'});

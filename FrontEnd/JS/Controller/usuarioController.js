@@ -25,13 +25,24 @@ app.controller('usuarioController',function($scope, $routeParams, $location, aut
             }).catch(error => console.log(error));
         }
 
-        //Não tenho certeza se ta salvando a informação correta
-        $scope.adicionarRegistro = (registro) => {
+        $scope.adicionarOcorrencia = (registro) => {
             registro.idUsuario = { id: usuario.id };
 
-            usuarioService.adicionarRegistro(registro)
+            usuarioService.adicionarOcorrencia(registro)
                 .then(response => obterRegistro(usuario))
                 .catch(error => console.log(error));
+        }
+
+        $scope.obterVeiculoPlaca = function obterVeiculoPlaca(placa){
+            usuarioService.obterVeiculoPlaca(placa).then(response => {
+                $scope.veiculo = response.data;
+            });
+        }
+
+        $scope.adicionarVeiculo = function adicionarVeiculo(veiculo){
+            usuarioService.adicionarVeiculo(veiculo).then(response => {
+                $scope.veiculo = angular.copy($scope.veiculos);
+            });
         }
     }
 });
