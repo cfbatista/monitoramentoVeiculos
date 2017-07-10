@@ -1,8 +1,13 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Camera;
+import br.com.crescer.monitorveiculos.entidade.HeatMapModel;
+import br.com.crescer.monitorveiculos.entidade.Registro;
+import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,21 +20,27 @@ public class RegistroServico {
 
     @Autowired
     RegistroRepositorio registroRepositorio;
+    @Autowired
+    CameraRepositorio cameraRepositorio;
 
-    public Long obterRegistrosPorCameraDataHora(Camera camera, Date dataInicial, Date dataFinal) {
-        return registroRepositorio.countByIdcameraAndDataHoraBetween(camera, dataInicial, dataFinal);
+    private List<Registro> obterRegistrosPorDataHora(Date dataInicial, Date dataFinal) {
+        return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
     }
+  
+    public List<HeatMapModel> retornoParaHeatMap(Date dataInicial, Date dataFinal) {
+        List<HeatMapModel> retorno = new ArrayList<>();
 
-    public Long obterSomaRegistrosPorCameraDataHora(Camera camera, Date dataInicial, Date dataFinal) {
-        //return registroRepositorio.sumByIdcameraAndDataHoraBetween(camera, dataInicial, dataFinal);
-        int i = 10;
-        Long n = (long) i; 
-        return n;
-    }
+        List<Camera> todasCameras = (List<Camera>) cameraRepositorio.findAll();
+        List<Registro> todosRegistros = obterRegistrosPorDataHora(dataInicial, dataFinal);
+        long contagemRegistros = todosRegistros.size();
 
-    public Long obterFatorDeIntensidade(Camera camera, Date dataInicial, Date dataFinal) {
-        Long soma = obterSomaRegistrosPorCameraDataHora(camera, dataInicial, dataFinal);
-        Long count = obterRegistrosPorCameraDataHora(camera, dataInicial, dataFinal);
-        return count / soma;
+        todasCameras.forEach(c -> {
+            retorno.add(new HeatMapModel(c,
+                    todosRegistros.stream().filter(r -> r.getIdcamera().getIdcamera() == c.getIdcamera()).
+                            count() / contagemRegistros));
+
+        });
+      
+        return retorno;
     }
 }
