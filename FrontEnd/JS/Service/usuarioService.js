@@ -14,9 +14,9 @@ app.service('usuarioService', function($http){
         obterVeiculoPlaca: obterVeiculoPlaca,
         obterVeiculoClonado: obterVeiculoClonado,
         adicionarVeiculo: adicionarVeiculo,
-        obterRegistro: obterRegistro,
-        adicionarRegistro: adicionarRegistro,
-        obterRegistroUsuario: obterRegistroUsuario,
+        obterOcorrencia: obterOcorrencia,
+        adicionarOcorrencia: adicionarOcorrencia,
+        obterOcorrenciaUsuario: obterOcorrenciaUsuario,
         obterCidades: obterCidades,
         adicionarCidades: adicionarCidades        
     }
@@ -72,15 +72,15 @@ app.service('usuarioService', function($http){
         return $http.post(url, veiculo);
     }
 
-    function obterRegistro(){
+    function obterOcorrencia(){
         return $http.get(url + '/registros');
     }
 
-    function adicionarRegistro(registro){
+    function adicionarOcorrencia(registro){
         return $http.post(url, registro);
     }
 
-    function obterRegistroUsuario(id){
+    function obterOcorrenciaUsuario(id){
         return $http.get(url + '/registros/' + id);
     }
 
