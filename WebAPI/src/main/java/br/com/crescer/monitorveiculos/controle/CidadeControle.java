@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/cidade")
 public class CidadeControle {
-    
+
     @Autowired
     private CidadeServico cidadeServico;
-    
-    @GetMapping
-    public Iterable<Cidade> pegarCidades(){
+
+    @GetMapping(value = "/obtertodas")
+    public Iterable<Cidade> pegarCidades() {
         return cidadeServico.listarCidades();
     }
 }

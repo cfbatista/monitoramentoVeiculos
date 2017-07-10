@@ -11,8 +11,8 @@ import org.springframework.data.repository.CrudRepository;
  * @author Diandra Rocha
  */
 public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
-  
+
     List<Registro> findByDataHoraBetween(Date dataInicial, Date dataFinal);
-  
-    Long countByIdcameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
+
+    Long countByCameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
 }
