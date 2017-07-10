@@ -36,7 +36,8 @@ app.config(function($routeProvider){
             controller: 'usuarioController'
         })
         .when('/grafico', {
-            templateUrl: 'VIEW/graficos.html'
+            templateUrl: 'VIEW/graficos.html',
+            controller: 'graficoController'
         })
 
         .otherwise({redirectTo: '/home'});
