@@ -35,6 +35,9 @@ app.config(function($routeProvider){
             templateUrl: 'VIEW/cadastroOcorrencia.html',
             controller: 'usuarioController'
         })
+        .when('/grafico', {
+            templateUrl: 'VIEW/graficos.html'
+        })
 
         .otherwise({redirectTo: '/home'});
 });
