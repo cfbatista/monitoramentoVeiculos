@@ -1,15 +1,14 @@
 app.service('graficoService', function ($http) {
 
     return{
+        obterCidades: obterCidades,
         totalCidades: totalCidades,
         totalVeiculos: totalVeiculos,
         totalVeiculosClonados: totalVeiculosClonados,
         ocorrenciasUltimos3meses: ocorrenciasUltimos3meses
     }
 
-    function totalCidades(){
-        return $http.get('http://localhost:9090/registro/cidade');
-    }
+    
 
     function totalVeiculos(){
         return $http.get('http://localhost:9090/registro/veiculo');

@@ -10,15 +10,7 @@ app.service('usuarioService', function($http){
         update: update,
         obterCameras: obterCameras,
         adicionarCameras: adicionarCameras,
-        obterVeiculos: obterVeiculos,
-        obterVeiculoPlaca: obterVeiculoPlaca,
-        obterVeiculoClonado: obterVeiculoClonado,
-        adicionarVeiculo: adicionarVeiculo,
-        obterOcorrencia: obterOcorrencia,
-        adicionarOcorrencia: adicionarOcorrencia,
-        obterOcorrenciaUsuario: obterOcorrenciaUsuario,
-        obterCidades: obterCidades,
-        adicionarCidades: adicionarCidades        
+       
     }
 
     function obter(){
@@ -54,41 +46,5 @@ app.service('usuarioService', function($http){
 
     function adicionarCameras(cameras){
         return $http.post(url, cameras);
-    }
-
-    function obterVeiculos(){
-        return $http.get(url + '/veiculos');
-    }
-
-    function obterVeiculoPlaca(placa){
-        return $http.get(url + '/veiculo/placa');
-    }
-
-    function obterVeiculoClonado(placa){
-        return $http.get(url + '/veiculo/clonado');
-    }
-
-    function adicionarVeiculo(veiculo){
-        return $http.post(url, veiculo);
-    }
-
-    function obterOcorrencia(){
-        return $http.get(url + '/registros');
-    }
-
-    function adicionarOcorrencia(registro){
-        return $http.post(url, registro);
-    }
-
-    function obterOcorrenciaUsuario(id){
-        return $http.get(url + '/registros/' + id);
-    }
-
-    function obterCidades(){
-        return $http.get('http://localhost:9090/cidade');
-    }
-
-    function adicionarCidades(cidade){
-        return $http.post(url, cidade);
     }
 });
