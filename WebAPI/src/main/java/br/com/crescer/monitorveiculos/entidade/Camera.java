@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.entidade;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -53,10 +54,10 @@ public class Camera implements Serializable {
     private short velocidadeMaxima;
 
     @Column(name = "LONGITUDE")
-    private Long longitude;
+    private BigDecimal longitude;
 
     @Column(name = "LATITUDE")
-    private Long latitude;
+    private BigDecimal latitude;
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
