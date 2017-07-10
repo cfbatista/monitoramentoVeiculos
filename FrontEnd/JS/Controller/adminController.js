@@ -8,8 +8,7 @@ app.controller('adminController', function($scope, $routeParams, $location, auth
         }).catch(error => console.log(error));;
     }
 
-    //Ver como a permissao ta vindo
-    if(permissao === 'admin'){
+    if(permissao === 'AUTORIDADE' && permissao === 'ADMINISTRADOR'){
         
         $scope.adicionarCamera = (camera) => {
             

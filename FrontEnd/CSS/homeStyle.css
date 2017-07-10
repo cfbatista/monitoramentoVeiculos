@@ -16,6 +16,15 @@ body{
   background:#000000;
   border-bottom: 1px solid #a4a9ac;
 }
+.menu-fixo .botaologin{
+  position: relative;
+  float: right;
+  Top: -30px;
+  height: 40px;
+  width: 100px;
+  Right: 15px;
+  font-size: 20px;
+}
 
 .menu-fixo ul li .fa{
   position: relative;
@@ -174,4 +183,3 @@ background: #a4a9ac;
 width: 100%;
 height: 100%;
 }
-

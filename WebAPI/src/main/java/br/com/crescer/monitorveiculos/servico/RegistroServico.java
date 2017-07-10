@@ -26,7 +26,7 @@ public class RegistroServico {
     private List<Registro> obterRegistrosPorDataHora(Date dataInicial, Date dataFinal) {
         return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
     }
-
+  
     public List<HeatMapModel> retornoParaHeatMap(Date dataInicial, Date dataFinal) {
         List<HeatMapModel> retorno = new ArrayList<>();
 
@@ -40,8 +40,7 @@ public class RegistroServico {
                             count() / contagemRegistros));
 
         });
-
+      
         return retorno;
-
     }
 }
