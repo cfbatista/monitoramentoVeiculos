@@ -1,9 +1,103 @@
-<div class="mapRender">
-  <div id="map">
-    <select> 
-      <option value="camera">NOVO HAMBURGO - SAO LEOPOLDO</option>
-      <option value="camera">NOVO HAMBURGO - SAO LEOPOLDO</option>
-      <option value="camera">NOVO HAMBURGO - SAO LEOPOLDO</option>
+<div class="menus">
+    <div class="menu-fixo">
+        <ul>
+            <li>
+                <a href="#">
+                  <i class="fa fa-bars fa-2x"></i>
+                  </a>
+            </li>
+        </ul>
+        <h1>Monitor Veículos</h1>
+        <button type="submit" ng-click="logar()" class="botaologin"> Login </button>
+    </div>
+</div>
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="#">
+               <i class="fa fa-home fa-2x"></i>
+               <span class="nav-text">Home</span>
+               </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+               <i class="fa fa-location-arrow fa-2x"></i>
+               <span class="nav-text">Cidades</span>
+               </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+               <i class="fa fa-files-o fa-2x"></i>
+               <span class="nav-text">Ocorrências</span>
+               </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+               <i class="fa fa-camera fa-2x"></i>
+               <span class="nav-text">Câmeras</span>
+               </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+               <i class="fa fa-car fa-2x"></i>
+               <span class="nav-text">Veículos</span>
+               </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+               <i class="fa fa-folder-open fa-2x"></i>
+               <span class="nav-text">Suspeitos de clonagem</span>
+               </a>
+        </li>
+        <li>
+            <a href="#">
+               <i class="fa fa-bar-chart-o fa-2x"></i>
+               <span class="nav-text">Gráficos</span>
+               </a>
+        </li>
+        <li>
+            <a href="#!/analiserota">
+               <i class="fa fa-map fa-2x"></i>
+               <span class="nav-text">Rotas</span>
+               </a>
+        </li>
+        <li>
+            <a href="#">
+               <i class="fa fa-map-marker fa-2x"></i>
+               <span class="nav-text">Mapas</span>
+               </a>
+        </li>
+    </ul>
+    <ul class="logout">
+        <li>
+            <a href="#" ng-click="logout()">
+               <i class="fa c-off fa-2x"></i>
+               <span class="nav-text">Logout</span>
+               </a>
+        </li>
+    </ul>
+</nav>
+</div>
+
+<div class="mapaGeral">
+    <input type="submit" class="mostarMapa" ng-click="click()" value="Iniciar Mapa">
+
+    <div class="formpa">
+        <form ng-submit="tracarRota()">
+            <select ng-model="partida">
+        <option ng-repeat="camera in cameras" ng-value="camera.camera">{{camera.camera.nome}}</option>
     </select>
-  </div>
+            <select ng-model="chegada">
+        <option ng-repeat="camera in cameras" ng-value="camera.camera">{{camera.camera.nome}}</option>
+    </select>
+            <input type="submit" class="btn btn-primary btn-block btn-md" value="Tracar Rota">
+        </form>
+        <form ng-submit="pegarCameras(RegistroCountModel)">
+            <input type="date" ng-model="RegistroCountModel.dataInicial">
+            <input type="date" ng-model="RegistroCountModel.dataFinal">
+            <input type="submit" class="btn btn-primary btn-block btn-md" value="Tracar Rota">
+        </form>
+    </div>
+    <div id="map"></div>
+
 </div>

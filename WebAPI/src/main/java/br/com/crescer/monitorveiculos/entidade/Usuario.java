@@ -1,16 +1,17 @@
 package br.com.crescer.monitorveiculos.entidade;
 
 import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosRoles;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.SEQUENCE;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,18 +35,15 @@ import lombok.Setter;
 
 @Entity
 @Table(name = "USUARIO")
-
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-<<<<<<< HEAD
-=======
-    private static final String SEQ_NAME = "SEQ_USUARIO";
->>>>>>> parent of a6bf516... Feat(Front End): Alterações e ajustes no front
-
+    private static final String SEQ_NAME = "SQ_USUARIO";
+  
+    @GeneratedValue(strategy = SEQUENCE, generator = SEQ_NAME)
+    @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     @Id
     @Basic(optional = false)
-    @NotNull
     private Long idusuario;
 
     @Basic(optional = false)
@@ -91,9 +89,7 @@ public class Usuario implements Serializable {
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
-    private Cidade idcidade;
+    private Cidade cidade;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "IDPERMISSAO")
-    private List<MonitoramentoVeiculosRoles> permissoes;
-
+    private MonitoramentoVeiculosRoles permissao;
 }

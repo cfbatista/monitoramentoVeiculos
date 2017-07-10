@@ -56,10 +56,12 @@ public class Registro implements Serializable {
     @Column(name = "COR_PREDOMINANTE")
     private String corPredominante;
 
+    @Basic(optional = false)
+    @NotNull
     private Long velocidade;
 
     @JoinColumn(name = "IDCAMERA", referencedColumnName = "IDCAMERA")
     @ManyToOne(optional = false)
-    private Camera idcamera;
+    private Camera camera;
 
 }

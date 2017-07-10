@@ -1,28 +1,24 @@
-app.controller('loginController', function($scope, $routeParams, $location, authService, authConfig, toastr){
+app.controller('loginController', function ($scope, $routeParams, $location, authService, authConfig, toastr) {
 
-    function login(usuario){
-        authService.login(usuario)
-            .then(
-                function(response){
-                    $location.path(authConfig.urlPrivado);
-                    toastr.sucess('Login realizado com sucesso');
+    console.log("teste");
+
+    $scope.login = function (usuario) {
+        if ($scope.formLogin.$valid) {
+            authService.login(usuario)
+                .then(function (response) {
+                    toastr.success('Login com sucesso!');
+                    $location.path('/analiserota');
                 },
-                function(response){
-                    toastr.error('Erro ao tentar fazer login. Por favor verifica usuário e senha');
-                }
-            )
-    }
+                function (response) {
+                    toastr.error('Login ou Senha inválidos!');
+                });
+        } else {
+            toastr.warning('Preencha todos os dados corretamente.', 'Dados inválidos!');
+        }
+    };
+    
+    $scope.cadastrar = function () {
+        $location.path('/cadastro');
+    };
 
-    function novoUsuario(usuario){
-        loginService.insert(usuario).then(r => {
-            authService.login($scope.usuario).then(response => {
-                toastr.sucess('Login realizado com sucesso');
-            })
-        }, error => {
-            toastr.error(error.data.message);
-        })
-    }
-
-    $scope.login = login;
-    $scope.novoUsuario = novoUsuario;
 });
