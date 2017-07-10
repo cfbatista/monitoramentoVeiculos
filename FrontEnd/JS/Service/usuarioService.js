@@ -1,19 +1,18 @@
 app.service('usuarioService', function($http){
 
-    var url = 'http://localhost:9090';
+    var url = 'http://localhost:9090/usuario';
 
     return{
-        obter: obter,
+        obterUsuario: obterUsuario,
         obterPorRole: obterPorRole,
         obterPorId: obterPorId,
-        adicionar: adicionar,
-        update: update,
-        obterCameras: obterCameras,
-        adicionarCameras: adicionarCameras,
+        adicionarUsuario: adicionarUsuario,
+        updateUsuario: updateUsuario,
+        obterCameras: obterCameras
        
     }
 
-    function obter(){
+    function obterUsuario(){
         return $http.get(url);
     }
 
@@ -25,11 +24,11 @@ app.service('usuarioService', function($http){
         return $http.get(url + '/id?id=' + id);
     }
 
-    function adicionar(usuario){
-        return $http.post(url+'/usuario/cadastrar', usuario);
+    function adicionarUsuario(usuario){
+        return $http.post(url+'/cadastrar', usuario);
     }
 
-    function update(usuario){
+    function updateUsuario(usuario){
         return $http.post(url, usuario);
     }
 
@@ -42,9 +41,5 @@ app.service('usuarioService', function($http){
         },
             data: cliente
         });
-    }
-
-    function adicionarCameras(cameras){
-        return $http.post(url, cameras);
     }
 });
