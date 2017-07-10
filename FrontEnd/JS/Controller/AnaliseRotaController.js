@@ -1,6 +1,13 @@
-app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr) {
-    
-     //radares
+app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService) {
+
+    $scope.pegarCameras = function (RegistroCountModel) {
+        AnaliseRotaService.listarPontosEspecificos(RegistroCountModel).then(response => {
+            $scope.cameras = response.data;
+            console.log($scope.cameras)
+        }).catch(error => console.log(error));
+    }
+
+    //radares
     var locations = [
         [-29.658623, -51.140586, "Radar 1"],
         [-29.658511, -51.140428, "Radar 2"],
@@ -19,16 +26,16 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     var heatMapData = [
         { location: new google.maps.LatLng(-29.658623, -51.140586), weight: 20 }, new google.maps.LatLng(-29.658511, -51.140428),
-       { location: new google.maps.LatLng(-29.680632, -51.142045), weight: 40 },
-       { location: new google.maps.LatLng(-29.680623, -51.142222), weight: 60 },
-       { location: new google.maps.LatLng(-29.714649, -51.147731), weight: 35 }, new google.maps.LatLng(-29.714803, -51.147935),
-       { location: new google.maps.LatLng(-29.736532, -51.149887), weight: 15 },
-       { location: new google.maps.LatLng(-29.736495, -51.150129), weight: 45 },
-       { location: new google.maps.LatLng(-29.75971, -51.148261), weight: 85 }, new google.maps.LatLng(-29.759716, -51.148331),
-       { location: new google.maps.LatLng(-29.758328, -51.145979), weight: 95 },
-       { location: new google.maps.LatLng(-29.758403, -51.146017), weight: 30 }
+        { location: new google.maps.LatLng(-29.680632, -51.142045), weight: 40 },
+        { location: new google.maps.LatLng(-29.680623, -51.142222), weight: 60 },
+        { location: new google.maps.LatLng(-29.714649, -51.147731), weight: 35 }, new google.maps.LatLng(-29.714803, -51.147935),
+        { location: new google.maps.LatLng(-29.736532, -51.149887), weight: 15 },
+        { location: new google.maps.LatLng(-29.736495, -51.150129), weight: 45 },
+        { location: new google.maps.LatLng(-29.75971, -51.148261), weight: 85 }, new google.maps.LatLng(-29.759716, -51.148331),
+        { location: new google.maps.LatLng(-29.758328, -51.145979), weight: 95 },
+        { location: new google.maps.LatLng(-29.758403, -51.146017), weight: 30 }
     ];
-    
+
     $scope.partida;
     $scope.chegada;
     $scope.radares = locations;
@@ -44,18 +51,18 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.click = function () {
         map = new google.maps.Map(document.getElementById('map'), {
-        center: NovoHamburgo,
-        zoom: 10
-    })
+            center: NovoHamburgo,
+            zoom: 10
+        })
         heatmap = new google.maps.visualization.HeatmapLayer({
-        data: heatMapData,
-        radius: 50
-    });
+            data: heatMapData,
+            radius: 50
+        });
         heatmap.setMap(map);
         directionsDisplay.setMap(map);
-        for (let i = 0; i < locations.length; i++) {
-            var lat = locations[i][0];
-            var long = locations[i][1];
+        for (let i = 0; i < $scope.cameras.length; i++) {
+            var lat = $scope.cameras[i].camera.latitude;
+            var long = $scope.cameras[i].camera.longitude;;
             LatLng = new google.maps.LatLng(lat, long);
             marker = new google.maps.Marker({
                 position: LatLng,

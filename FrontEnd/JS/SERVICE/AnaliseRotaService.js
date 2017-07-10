@@ -6,12 +6,8 @@ app.factory('AnaliseRotaService', function ($http) {
         return $http.get(urlBase);
     };
 
-    function listarPontosEspecificos(pontoInicial, pontoFinal) {
-        return $http({
-            url: urlBase + '/calculo',
-            params: { pontoInicial: pontoFinal },
-            method: 'GET'
-        })
+    function listarPontosEspecificos(RegistroCountModel){
+        return $http.post(urlBase + '/heatmap',RegistroCountModel);
     }
 
     return{
