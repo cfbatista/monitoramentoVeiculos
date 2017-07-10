@@ -34,4 +34,8 @@ app.controller('homeController', function ($scope, $routeParams, $location, auth
         $location.path("/login")
     }
 
+    $scope.logout = function () {
+        authService.logout();
+    }
+
 });

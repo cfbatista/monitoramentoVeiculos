@@ -16,10 +16,6 @@ app.controller('loginController', function ($scope, $routeParams, $location, aut
             toastr.warning('Preencha todos os dados corretamente.', 'Dados inválidos!');
         }
     };
-
-    $scope.teste= function(){
-        console.log("teste");
-    }
     
     $scope.cadastrar = function () {
         $location.path('/cadastro');

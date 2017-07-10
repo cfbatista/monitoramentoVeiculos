@@ -1,6 +1,6 @@
 app.service('usuarioService', function($http){
 
-    var url = 'http://localhost:9090/usuario';
+    var url = 'http://localhost:9090';
 
     return{
         obter: obter,
@@ -34,15 +34,22 @@ app.service('usuarioService', function($http){
     }
 
     function adicionar(usuario){
-        return $http.post(url, usuario);
+        return $http.post(url+'/usuario/cadastrar', usuario);
     }
 
     function update(usuario){
         return $http.post(url, usuario);
     }
 
-    function obterCameras(){
-        return $http.get(url + '/cameras');
+    function obterCameras(dataInicial, headerAuth) {
+    return $http({
+        url: urlBase, cliente,
+        method: 'POST',
+        headers: {
+            Authorization: headerAuth
+        },
+            data: cliente
+        });
     }
 
     function adicionarCameras(cameras){
@@ -78,7 +85,7 @@ app.service('usuarioService', function($http){
     }
 
     function obterCidades(){
-        return $http.get(url + '/cidades');
+        return $http.get('http://localhost:9090/cidade');
     }
 
     function adicionarCidades(cidade){
