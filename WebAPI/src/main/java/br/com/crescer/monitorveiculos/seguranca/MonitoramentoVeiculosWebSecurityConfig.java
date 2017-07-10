@@ -40,7 +40,8 @@ public class MonitoramentoVeiculosWebSecurityConfig extends WebSecurityConfigure
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
-                .antMatchers(HttpMethod.POST, "/cadastrar");
+                .antMatchers(HttpMethod.POST, "/cadastrar")
+                .antMatchers(HttpMethod.GET, "/cidade/obtertodas");
     }
 
     @Bean

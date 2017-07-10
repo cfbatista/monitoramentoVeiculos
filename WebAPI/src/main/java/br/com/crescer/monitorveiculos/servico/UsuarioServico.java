@@ -22,6 +22,7 @@ public class UsuarioServico {
     }
 
     public Usuario save(Usuario usuario) {
+
         usuario.setPermissao(MonitoramentoVeiculosRoles.USUARIO);
         usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
         return usuarioRepositorio.save(usuario);

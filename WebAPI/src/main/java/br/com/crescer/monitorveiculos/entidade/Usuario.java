@@ -55,7 +55,8 @@ public class Usuario implements Serializable {
     @NotNull
     @Size(min = 1, max = 100)
     private String senha;
-    
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
@@ -88,7 +89,7 @@ public class Usuario implements Serializable {
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
-    private Cidade idcidade;
+    private Cidade cidade;
 
     private MonitoramentoVeiculosRoles permissao;
 }

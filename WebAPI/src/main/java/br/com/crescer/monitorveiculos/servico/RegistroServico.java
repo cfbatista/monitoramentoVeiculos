@@ -26,21 +26,27 @@ public class RegistroServico {
     private List<Registro> obterRegistrosPorDataHora(Date dataInicial, Date dataFinal) {
         return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
     }
-  
+
     public List<HeatMapModel> retornoParaHeatMap(Date dataInicial, Date dataFinal) {
         List<HeatMapModel> retorno = new ArrayList<>();
 
         List<Camera> todasCameras = (List<Camera>) cameraRepositorio.findAll();
         List<Registro> todosRegistros = obterRegistrosPorDataHora(dataInicial, dataFinal);
-        long contagemRegistros = todosRegistros.size();
 
-        todasCameras.forEach(c -> {
-            retorno.add(new HeatMapModel(c,
-                    todosRegistros.stream().filter(r -> r.getIdcamera().getIdcamera() == c.getIdcamera()).
-                            count() / contagemRegistros));
+        long total = todosRegistros.size();
 
+        todasCameras.forEach(camera -> {
+
+            final long count = todosRegistros.stream()
+                    .map(Registro::getCamera)
+                    .map(Camera::getIdcamera)
+                    .filter(camera.getIdcamera()::equals)
+                    .count();
+
+            final HeatMapModel heatMapModel = new HeatMapModel(camera, count / total);
+            retorno.add(heatMapModel);
         });
-      
+
         return retorno;
     }
 }

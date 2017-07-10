@@ -9,4 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface VeiculoRepositorio extends CrudRepository<Veiculo, Long> {
 
+    public Veiculo findByPlaca(String placa);
+
 }
