@@ -11,6 +11,11 @@ app.config(function($routeProvider){
             controller: 'loginController',
             templateUrl: 'VIEW/login.html'
         })
+        
+         .when('/cadastro', {
+            controller: 'cadastroController',
+            templateUrl: 'VIEW/cadastro.html'
+        })
 
         .when('/analiserota', {
             controller: 'analiseRotaController',

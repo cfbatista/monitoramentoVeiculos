@@ -44,7 +44,6 @@ public class Usuario implements Serializable {
     @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     @Id
     @Basic(optional = false)
-    @NotNull
     private Long idusuario;
 
     @Basic(optional = false)
@@ -56,8 +55,7 @@ public class Usuario implements Serializable {
     @NotNull
     @Size(min = 1, max = 100)
     private String senha;
-
-    @JsonFormat(pattern = "dd/MM/yyyy")
+    
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
