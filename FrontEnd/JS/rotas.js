@@ -30,10 +30,9 @@ app.config(function($routeProvider){
         .when('/veiculo', {
             templateUrl: 'VIEW/veiculo.html'
         })
-        
         .when('/cadastroOcorrencia', {
             templateUrl: 'VIEW/cadastroOcorrencia.html',
-            controller: 'usuarioController'
+            controller: 'ocorrenciaController'
         })
         .when('/grafico', {
             templateUrl: 'VIEW/graficos.html',

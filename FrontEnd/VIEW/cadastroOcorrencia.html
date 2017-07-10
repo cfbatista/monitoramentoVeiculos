@@ -1,0 +1,83 @@
+<div>
+    <div class="sign-up-htm">
+        
+        <div>
+            <label for="buscarVeiculo">Buscar veículo</label>
+            <input id="buscarVeiculo" type="text" placeholder="Digite a placa do veículo" ng-model="placa">
+            <button ng-click="obterVeiculoPlaca(placa)">Buscar</button>
+        </div>
+
+        <!--ADICIONAR INPUTS PARA CADASTRO DE VEICULO-->
+
+        <form action="" ng-submit="adicionarOcorrencia(ocorrencia)">
+        <div class="group">
+            <label for="cpf" class="label">Selecione a data do ocorrido</label>
+            <input id="cpf" type="date" class="input" ng-model="ocorrencia.cpf" required>    
+        </div>
+        <div class="group">
+            <label for="ocorrido">Tipo de ocorrido</label>
+            <label><input type="radio" name="opcao" ng-model="ocorrencia.ocorrido"> Roubo</label>
+            <label><input type="radio" name="opcao" ng-model="ocorrencia.ocorrido"> Sequestro</label>
+            <label><input type="radio" name="opcao" ng-model="ocorrencia.ocorrido"> Furto</label>
+        </div>
+        <div class="group">
+            <label for="estacionado">Estava estacionado?</label>
+            <label><input type="radio" name="est" ng-model="ocorrencia.estacionado"> Sim</label>
+            <label><input type="radio" name="est" ng-model="ocorrencia.estacionado"> Não</label>
+        </div>
+        <div class="group">
+            <label for="ocorrido">Dentro do veículo?</label>
+            <label><input type="radio" name="dentro" ng-model="ocorrencia.dentro"> Sim</label>
+            <label><input type="radio" name="dentro" ng-model="ocorrencia.dentro"> Não</label>
+        </div>
+        <div class="group">
+            <label for="ocorrido">Estava armado?</label>
+            <label><input type="radio" name="arma" ng-model="ocorrencia.armado">Sim</label>
+            <label><input type="radio" name="arma" ng-model="ocorrencia.armado">Não</label>
+        </div>
+        <div class="group">
+            <label for="meliantes" class="label">Número de meliantes</label>
+            <input id="meliantes" type="number" class="input" ng-model="ocorrencia.meliantes" required>    
+        </div>
+        <div class="group">
+            <label for="vitimas" class="label">Número de vitimas</label>
+            <input id="vitimas" type="number" class="input" ng-model="ocorrencia.vitimas" required>    
+        </div>
+        <div class="group">
+            <label for="ocorrido">Sexo do proprietário</label>
+            <label><input type="radio" name="sexo" ng-model="ocorrencia.sexo">Feminino</label>
+            <label><input type="radio" name="sexo" ng-model="ocorrencia.sexo">Masculino</label>
+        </div>
+        <div class="group">
+            <label for="idade" class="label">Idade da vítima</label>
+            <input id="idade" type="number" class="input" ng-model="ocorrencia.idade" required>    
+        </div>
+        <div class="group">
+            <label for="outro">Meliante estava em outro veículo?</label>
+            <label><input type="radio" name="outro" value="{{a}}">Sim</label>
+            <label><input type="radio" name="outro" value="{{a}}">Não</label>
+        </div>
+        <div class="group">
+            <label for="outroPertence">Foi levado outros pertences?</label>
+            <label><input type="radio" name="outroPertence" value="{{a}}">Sim</label>
+            <label><input type="radio" name="outroPertence" value="{{a}}">Não</label>
+        </div>
+        <div class="group">
+            <label for="pertences" class="label">Quais</label>
+            <input id="vitimas" type="text" class="input" ng-model="ocorrencia.pertences">    
+        </div>
+        <div class="group">
+            <label for="seguro">Veículo segurado?</label>
+            <label><input type="radio" name="seguro" ng-model="ocorrencia.seguro">Sim</label>
+            <label><input type="radio" name="seguro" vng-model="ocorrencia.seguro">Não</label>
+        </div>
+        <div class="group">
+            <label for="rastreador">Veículo com rastreador?</label>
+            <label><input type="radio" name="rastreador" ng-model="ocorrencia.rastreador">Sim</label>
+            <label><input type="radio" name="rastreador" ng-model="ocorrencia.rastreador">Não</label>
+        </div>
+
+        <button class="oi" type="submit">Salvar ocorrência</button>
+        </form>
+    </div>
+</div>

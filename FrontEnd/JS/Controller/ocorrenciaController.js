@@ -1,4 +1,4 @@
-app.controller('ocorrenciaController',function($scope, $routeParams, $location, authService, authConfig, toastr, ocorrenciaService){
+app.controller('ocorrenciaController',function($scope, $routeParams, $location, authService, authConfig, toastr, ocorrenciaService, veiculoService){
 
     $scope.obterOcorrencias = function obterOcorrencias(){
         ocorrenciaService.obterOcorrencias().then(response =>{
