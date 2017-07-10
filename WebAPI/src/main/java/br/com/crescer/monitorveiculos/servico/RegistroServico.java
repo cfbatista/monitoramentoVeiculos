@@ -21,7 +21,10 @@ public class RegistroServico {
     }
 
     public Long obterSomaRegistrosPorCameraDataHora(Camera camera, Date dataInicial, Date dataFinal) {
-        return registroRepositorio.sumByIdcameraAndDataHoraBetween(camera, dataInicial, dataFinal);
+        //return registroRepositorio.sumByIdcameraAndDataHoraBetween(camera, dataInicial, dataFinal);
+        int i = 10;
+        Long n = (long) i; 
+        return n;
     }
 
     public Long obterFatorDeIntensidade(Camera camera, Date dataInicial, Date dataFinal) {
