@@ -1,8 +1,45 @@
 #map{
   height:700px;
   width:800px;
-  background-color:blue;
+  background-image: url("https://lh3.googleusercontent.com/1wbeaNj0iSDe4Yut-MnOpv-tGmE37TbZCGkKqQHVfQUH_G7v9SW_KC_qCcWrzWDtTVR7GrTZfWOHA4c=w1304-h702");
   top:50px;
   position:relative;
   margin:0 auto;
+  text-align: center;
+}
+.mapaGeral{
+  height:400px;
+  width:800px;
+  margin:0 auto;
+}
+.mapaGeral .mostarMapa{
+  margin-top: 120px;
+  text-align:center;
+  height:50px;
+  width:800px;
+  background-color:black;
+  color:white;
+}
+.mapaGeral .formpa{
+  height:300px;
+  width:800px;
+  text-align:center;
+  top:20px;
+  background-color:black;
+}
+.mapaGeral .formpa select{
+  height:30px;
+  width:800px;
+  background-color:black;
+  color:white;
+  text-align:center;
+  top:20px;
+  margin-top:10px;
+}
+.mapaGeral .formpa input{
+  width:800px;
+  height:30px;
+  background-color:black;
+  color:white;
+  margin-top:10px;
 }
