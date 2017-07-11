@@ -48,8 +48,7 @@ public class RegistroServico {
 
         return retorno;
     }
-    
-    
+
     public Long countByRegistroWithVeiculo(String placa){
         return registroRepositorio.countByRegistroWithVeiculo(placa);
     }
@@ -60,5 +59,10 @@ public class RegistroServico {
     
     public Long countByRegistroWithCameras(){
         return registroRepositorio.countByRegistroWithCameras();
+    }
+
+    public Long retornarContagemTotal(Date dataInicial, Date dataFinal, Long idcameraInicial, Long idcameraFinal, Character direcao) {
+
+        return registroRepositorio.retornarContagemTotal(dataInicial, dataFinal, idcameraInicial, idcameraFinal, direcao);
     }
 }

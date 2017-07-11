@@ -45,10 +45,14 @@ public class MonitoramentoVeiculosWebSecurityConfig extends WebSecurityConfigure
                 .antMatchers(HttpMethod.GET, "/veiculo/obterTodos")
                 .antMatchers(HttpMethod.POST, "/registro/heatmap")
                 .antMatchers(HttpMethod.GET, "/veiculo/obterContagemCidade")
-                .antMatchers(HttpMethod.GET, "/veiculo/obterContagemCidade") 
-                .antMatchers(HttpMethod.GET, "/cidade/cidadescomregistro") 
+                .antMatchers(HttpMethod.GET, "/veiculo/obterContagemCidade")
+                .antMatchers(HttpMethod.GET, "/cidade/cidadescomregistro")
                 .antMatchers(HttpMethod.GET, "/veiculo/obterContagem")
-                .antMatchers(HttpMethod.GET, "/ocorrencia/tresultimosmeses"); 
+                .antMatchers(HttpMethod.GET, "/ocorrencia/tresultimosmeses")
+                .antMatchers(HttpMethod.GET, "/ocorrencia/resultimosmeses")
+                .antMatchers(HttpMethod.POST, "/camera/heatmapModel")
+                .antMatchers(HttpMethod.POST, "/registro/heatmapContagem")
+                .antMatchers(HttpMethod.POST, "/camera/heatmap");
     }
 
     @Bean
