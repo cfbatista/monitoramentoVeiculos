@@ -17,4 +17,8 @@ public class OcorrenciaServico {
     public Ocorrencia criarOcorrencia(Ocorrencia ocorrencia){
         return ocorrenciaRepositorio.save(ocorrencia);
     }
+    
+    public Long listarOcorrenciasUltimosTresMeses(){
+        return ocorrenciaRepositorio.getOcorrenciasLasttresUltimosMeses();
+    }
 }
