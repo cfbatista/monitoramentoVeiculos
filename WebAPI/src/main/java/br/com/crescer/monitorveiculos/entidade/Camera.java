@@ -53,6 +53,10 @@ public class Camera implements Serializable {
     @Column(name = "VELOCIDADE_MAXIMA")
     private short velocidadeMaxima;
 
+    @Basic(optional = false)
+    @NotNull
+    private Character direcao;
+
     @Column(name = "LONGITUDE")
     private BigDecimal longitude;
 
@@ -62,5 +66,5 @@ public class Camera implements Serializable {
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
     private Cidade idcidade;
-    
+
 }
