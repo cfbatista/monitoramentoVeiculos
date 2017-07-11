@@ -39,6 +39,10 @@ app.config(function($routeProvider){
             templateUrl: 'VIEW/consultaOcorrencia.html',
             controller: 'ocorrenciaController'
         })
+        .when('/estatistica', {
+            templateUrl: 'VIEW/estatistica.html',
+            controller: 'estatisticaController'
+        })
 
         .otherwise({redirectTo: '/home'});
 });
