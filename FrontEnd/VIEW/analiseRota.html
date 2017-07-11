@@ -3,8 +3,8 @@
         <ul>
             <li>
                 <a href="#">
-                  <i class="fa fa-bars fa-2x"></i>
-                  </a>
+                    <i class="fa fa-bars fa-2x"></i>
+                </a>
             </li>
         </ul>
         <h1>Monitor Veículos</h1>
@@ -15,95 +15,99 @@
     <ul>
         <li>
             <a href="#">
-               <i class="fa fa-home fa-2x"></i>
-               <span class="nav-text">Home</span>
-               </a>
+                <i class="fa fa-home fa-2x"></i>
+                <span class="nav-text">Home</span>
+            </a>
         </li>
         <li class="has-subnav">
             <a href="#">
-               <i class="fa fa-location-arrow fa-2x"></i>
-               <span class="nav-text">Cidades</span>
-               </a>
+                <i class="fa fa-location-arrow fa-2x"></i>
+                <span class="nav-text">Cidades</span>
+            </a>
         </li>
         <li class="has-subnav">
             <a href="#">
-               <i class="fa fa-files-o fa-2x"></i>
-               <span class="nav-text">Ocorrências</span>
-               </a>
+                <i class="fa fa-files-o fa-2x"></i>
+                <span class="nav-text">Ocorrências</span>
+            </a>
         </li>
         <li class="has-subnav">
             <a href="#">
-               <i class="fa fa-camera fa-2x"></i>
-               <span class="nav-text">Câmeras</span>
-               </a>
+                <i class="fa fa-camera fa-2x"></i>
+                <span class="nav-text">Câmeras</span>
+            </a>
         </li>
         <li class="has-subnav">
             <a href="#">
-               <i class="fa fa-car fa-2x"></i>
-               <span class="nav-text">Veículos</span>
-               </a>
+                <i class="fa fa-car fa-2x"></i>
+                <span class="nav-text">Veículos</span>
+            </a>
         </li>
         <li class="has-subnav">
             <a href="#">
-               <i class="fa fa-folder-open fa-2x"></i>
-               <span class="nav-text">Suspeitos de clonagem</span>
-               </a>
+                <i class="fa fa-folder-open fa-2x"></i>
+                <span class="nav-text">Suspeitos de clonagem</span>
+            </a>
         </li>
         <li>
             <a href="#">
-               <i class="fa fa-bar-chart-o fa-2x"></i>
-               <span class="nav-text">Gráficos</span>
-               </a>
+                <i class="fa fa-bar-chart-o fa-2x"></i>
+                <span class="nav-text">Gráficos</span>
+            </a>
         </li>
         <li>
             <a href="#!/analiserota">
-               <i class="fa fa-map fa-2x"></i>
-               <span class="nav-text">Rotas</span>
-               </a>
+                <i class="fa fa-map fa-2x"></i>
+                <span class="nav-text">Rotas</span>
+            </a>
         </li>
         <li>
             <a href="#">
-               <i class="fa fa-map-marker fa-2x"></i>
-               <span class="nav-text">Mapas</span>
-               </a>
+                <i class="fa fa-map-marker fa-2x"></i>
+                <span class="nav-text">Mapas</span>
+            </a>
         </li>
     </ul>
     <ul class="logout">
         <li>
             <a href="#" ng-click="logout()">
-               <i class="fa c-off fa-2x"></i>
-               <span class="nav-text">Logout</span>
-               </a>
+                <i class="fa c-off fa-2x"></i>
+                <span class="nav-text">Logout</span>
+            </a>
         </li>
     </ul>
 </nav>
 </div>
 
-<div class="mapaGeral">
 
-    <form ng-submit="buscarCamerasPorSentido(direcao)">
-        <select ng-model="direcao">
+<div class="mapaGeral">
+    <div class="direcao">
+        <form ng-submit="buscarCamerasPorSentido(direcao)">
+            <select ng-model="direcao">
             <option value="C">Capital - Interior</option>
             <option value="I">Interior - Capital</option>
         </select>
-        <input type="submit" value="Buscar Camera">
-    </form>
-
+            <input type="submit" value="Buscar Camera">
+        </form>
+    </div>
     <form ng-submit="pegarCameras(RegistroCountModel)">
-        <select ng-model="RegistroCountModel.idCameraInicial">
+        <div class="rotas">
+            <select ng-model="RegistroCountModel.idCameraInicial">
             <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
         </select>
-        <br>
-        <select ng-model="RegistroCountModel.idCameraFinal">
+            <br>
+            <select ng-model="RegistroCountModel.idCameraFinal">
             <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
         </select>
-        <br>
-        <label>DATA INICIAL</label>
-        <input type="date" ng-model="RegistroCountModel.dataInicial">
-        <br>
-        <label>DATA FINAL</label>
-        <input type="date" ng-model="RegistroCountModel.dataFinal">
-        <input type="submit" value="Buscar Rota">
+        </div>
+        <div class="data">
+            <label>DATA INICIAL</label>
+            <input type="date" ng-model="RegistroCountModel.dataInicial">
+
+            <label>DATA FINAL</label>
+            <input type="date" ng-model="RegistroCountModel.dataFinal">
+            <input type="submit" value="Buscar Rota">
+        </div>
     </form>
 
     <input type="submit" ng-click="click()" value="Botar Mapa">
@@ -111,5 +115,4 @@
 
 </div>
 
-    <div id="map"></div>
-
+<div id="map"></div>
