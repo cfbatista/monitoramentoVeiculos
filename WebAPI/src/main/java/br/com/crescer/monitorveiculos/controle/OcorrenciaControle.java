@@ -26,4 +26,9 @@ public class OcorrenciaControle {
   public Ocorrencia salvarOcorrencia(@Valid @RequestBody Ocorrencia ocorrencia) {
       return ocorrenciaServico.criarOcorrencia(ocorrencia);
   }
+  
+  @GetMapping(value = "/tresultimosmeses")
+  public Long pegarTresUltimosMesesOcorrencias(){
+      return ocorrenciaServico.listarOcorrenciasUltimosTresMeses();
+  }
 }
