@@ -1,13 +1,11 @@
 <div>
-    <div class="sign-up-htm">
-        
-        <div>
+    <div class="cadastroOcorrencia">
+        <h2>Cadastro de Ocorrência</h2>
+        <div class="dadosVeiculo">
             <label for="buscarVeiculo">Buscar veículo</label>
             <input id="buscarVeiculo" type="text" placeholder="Digite a placa do veículo" ng-model="placa">
             <button ng-click="obterVeiculoPlaca(placa)">Buscar</button>
         </div>
-
-        <!--ADICIONAR INPUTS PARA CADASTRO DE VEICULO-->
 
         <form action="" ng-submit="adicionarOcorrencia(ocorrencia)">
         <div class="group">
