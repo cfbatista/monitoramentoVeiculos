@@ -1,8 +1,8 @@
 package br.com.crescer.monitorveiculos.controle;
 
-import br.com.crescer.monitorveiculos.entidade.HeatMapModel;
-import br.com.crescer.monitorveiculos.entidade.RegistroCountModel;
-import br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
+import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
 import br.com.crescer.monitorveiculos.servico.CameraServico;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.List;

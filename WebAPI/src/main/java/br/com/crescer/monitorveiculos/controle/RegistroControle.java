@@ -1,6 +1,6 @@
 package br.com.crescer.monitorveiculos.controle;
 
-import br.com.crescer.monitorveiculos.entidade.RegistroCountModel;
+import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
