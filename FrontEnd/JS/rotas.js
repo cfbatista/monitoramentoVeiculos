@@ -4,6 +4,7 @@ app.config(function($routeProvider){
 
         .when('/home', {
             controller: 'homeController',
+            controller: 'graficoController',
             templateUrl: 'VIEW/home.html'
         })
  
@@ -37,10 +38,6 @@ app.config(function($routeProvider){
         .when('/consultaOcorrencia', {
             templateUrl: 'VIEW/consultaOcorrencia.html',
             controller: 'ocorrenciaController'
-        })
-        .when('/grafico', {
-            templateUrl: 'VIEW/graficos.html',
-            controller: 'graficoController'
         })
 
         .otherwise({redirectTo: '/home'});
