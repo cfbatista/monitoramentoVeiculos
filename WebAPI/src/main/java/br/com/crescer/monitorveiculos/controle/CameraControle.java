@@ -25,12 +25,6 @@ public class CameraControle {
     @Autowired
     RegistroServico registroServico;
 
-    @PostMapping(value = "/heatmapModel")
-    public List<RetornoHeatMapModel> retornarModel(@RequestBody RegistroCountModel registroCountModel) {
-        return cameraServico.retornarModel(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
-                registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
-    }
-
     @PostMapping(value = "/heatmap")
     public List<HeatMapModel> retornarHeatMap(@RequestBody RegistroCountModel registroCountModel) {
         List<RetornoHeatMapModel> models = cameraServico.retornarModel(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
