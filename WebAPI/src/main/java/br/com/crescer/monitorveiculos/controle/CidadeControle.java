@@ -18,9 +18,4 @@ public class CidadeControle {
     public Iterable<Cidade> pegarCidades() {
         return cidadeServico.listarCidades();
     }
-   
-    @GetMapping(value = "/cidadescomregistro")
-    public Long pegarNumeroCidadesComRegistros(){
-        return cidadeServico.numeroCidadesComRegistros();
-    }
 }

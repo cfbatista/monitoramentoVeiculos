@@ -26,8 +26,4 @@ public class CidadeServico {
     public Cidade pegarCidadePorId(Long id) {
         return cidadeRepositorio.findOne(id);
     }
-
-    public Long numeroCidadesComRegistros() {
-        return cidadeRepositorio.getNumeroCidadesComRegistros();
-    }
 }

@@ -35,4 +35,8 @@ public class VeiculoServico {
     public Veiculo obterVeiculoPorPlaca(String placa) {
         return veiculoRepositorio.findByPlaca(placa);
     }
+   
+    public List<Long> contarVeiculosPorCidades(){
+        return veiculoRepositorio.countByCidadeGroupByCidade();
+    }
 }
