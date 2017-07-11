@@ -8,8 +8,80 @@
   text-align: center;
 }
 .mapaGeral{
-  height:500px;
-  width:400px;
+  height:200px;
+  width:600px;
   margin: 0 auto;
-  margin-top:250px;
+  margin-top:40px;
+  background-color:red;
+}
+.mapaGeral .direcao{
+  height:80px;
+  width:600px;
+  background-color:blue;
+}
+.mapaGeral .direcao select{
+  width:70%;
+  height:30px;
+  margin-left:10px;
+  margin-top: 25px;
+}
+.mapaGeral .direcao input{
+  width:25%;
+  height:25px;
+  background-color:black;
+  color:white;
+  margin-left:10px;
+  margin-top: 5px;
+}
+.mapaGeral .direcao input:hover{
+  background-color:#fbaf41;
+}
+.rotas{
+  height:200px;
+  width:600px;
+  margin: 0 auto;
+  background-color:red;
+}
+.rotas select{
+  width:90%;
+  height:30px;
+  margin-left:10px;
+  margin-top: 25px;
+  text-align:center;
+}
+.rotas input{
+  width:25%;
+  height:25px;
+  background-color:black;
+  color:white;
+  margin-left:10px;
+  margin-top: 5px;
+}
+.rotas input:hover{
+  background-color:#fbaf41;
+}
+
+.data{
+  height:200px;
+  width:600px;
+  margin: 0 auto;
+  background-color:red;
+}
+.data select{
+  width:20%;
+  height:30px;
+  margin-left:10px;
+  margin-top: 25px;
+  text-align:center;
+}
+.data input{
+  width:25%;
+  height:25px;
+  background-color:black;
+  color:white;
+  margin-left:10px;
+  margin-top: 5px;
+}
+.data input:hover{
+  background-color:#fbaf41;
 }
