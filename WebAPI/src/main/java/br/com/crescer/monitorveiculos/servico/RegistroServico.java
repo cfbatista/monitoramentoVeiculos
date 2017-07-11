@@ -48,4 +48,9 @@ public class RegistroServico {
 
         return retorno;
     }
+
+    public Long retornarContagemTotal(Date dataInicial, Date dataFinal, Long idcameraInicial, Long idcameraFinal, Character direcao) {
+
+        return registroRepositorio.retornarContagemTotal(dataInicial, dataFinal, idcameraInicial, idcameraFinal, direcao);
+    }
 }
