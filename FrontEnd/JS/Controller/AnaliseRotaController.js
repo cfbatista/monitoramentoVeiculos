@@ -1,29 +1,33 @@
 app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService) {
 
+    $scope.buscarCamerasPorSentido = function (direcao) {
+        $scope.pegardirecao = direcao;
+        AnaliseRotaService.buscarCameraSentido(direcao).then(response => {
+            $scope.camerasSentido = response.data;
+            toastr.success("Cameras carregadas com sucesso!!");
+        })
+    }
+
     $scope.pegarCameras = function (RegistroCountModel) {
+        RegistroCountModel.direcao = $scope.pegardirecao;
         AnaliseRotaService.listarPontosEspecificos(RegistroCountModel).then(response => {
             $scope.cameras = response.data;
+            $scope.tamanho = $scope.cameras.length;
+            $scope.camerasCalor = $scope.cameras;
             console.log($scope.cameras)
         }).catch(error => console.log(error));
     }
 
     //pontos de calor
 
-    var heatMapData = [
-        { location: new google.maps.LatLng(-29.658623, -51.140586), weight: 20 }, new google.maps.LatLng(-29.658511, -51.140428),
-        { location: new google.maps.LatLng(-29.680632, -51.142045), weight: 40 },
-        { location: new google.maps.LatLng(-29.680623, -51.142222), weight: 60 },
-        { location: new google.maps.LatLng(-29.714649, -51.147731), weight: 35 }, new google.maps.LatLng(-29.714803, -51.147935),
-        { location: new google.maps.LatLng(-29.736532, -51.149887), weight: 15 },
-        { location: new google.maps.LatLng(-29.736495, -51.150129), weight: 45 },
-        { location: new google.maps.LatLng(-29.75971, -51.148261), weight: 85 }, new google.maps.LatLng(-29.759716, -51.148331),
-        { location: new google.maps.LatLng(-29.758328, -51.145979), weight: 95 },
-        { location: new google.maps.LatLng(-29.758403, -51.146017), weight: 30 }
-    ];
+    $scope.heatMapData = [];
 
-    $scope.partida;
-    $scope.chegada;
-    //$scope.radares = locations;
+    function criarMapaCalor(camerasCalor) {
+        for (let i = 0; i < camerasCalor.length; i++) {
+            $scope.heatMapData.push({ location: new google.maps.LatLng(camerasCalor[i].camera.latitude, camerasCalor[i].camera.longitude), weight: camerasCalor[i].fator });
+        }
+    }
+
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
     var NovoHamburgo = new google.maps.LatLng(-29.6918991, -51.1255697);
@@ -33,14 +37,14 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     var LatLng;
 
     //funcao para mostrar o mapa com seus pontos de calor
-
     $scope.click = function () {
         map = new google.maps.Map(document.getElementById('map'), {
             center: NovoHamburgo,
             zoom: 10
         })
+        criarMapaCalor($scope.camerasCalor);
         heatmap = new google.maps.visualization.HeatmapLayer({
-            data: heatMapData,
+            data: $scope.heatMapData,
             radius: 50
         });
         heatmap.setMap(map);
@@ -58,16 +62,14 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         }
     }
 
-    //funcao para tracar a rota
-
     $scope.tracarRota = function () {
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        calculateAndDisplayRoute(directionsService, directionsDisplay, $scope.camerasCalor);
     }
 
     //funcao para calcular a rota
-    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
-        var start = $scope.partida.latitude + ',' + $scope.partida.longitude ;
-        var end = $scope.chegada.latitude + ',' + $scope.chegada.longitude;
+    function calculateAndDisplayRoute(directionsService, directionsDisplay, camerasCalor) {
+        var start = camerasCalor[0].camera.latitude + ',' + camerasCalor[0].camera.longitude;
+        var end = camerasCalor[$scope.tamanho - 1].camera.latitude + ',' + camerasCalor[$scope.tamanho - 1].camera.longitude;
         directionsService.route({
             origin: start,
             destination: end,

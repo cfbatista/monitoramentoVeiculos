@@ -9,8 +9,9 @@ import org.springframework.data.repository.CrudRepository;
  * @author Diandra Rocha
  */
 public interface CidadeRepositorio extends CrudRepository<Cidade, Long> {
-
-    @Query("SELECT COUNT(DISTINCT ci.idcidade) FROM Camera ca INNER JOIN ca.idcidade ci")
-    public Long getNumeroCidadesComRegistros();
+    
+   @Query("SELECT COUNT(DISTINCT ci.idcidade) "
+           + "FROM Camera ca INNER JOIN ca.idcidade ci") 
+   public Long getNumeroCidadesComRegistros(); 
 
 }
