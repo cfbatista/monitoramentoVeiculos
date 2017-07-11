@@ -5,7 +5,6 @@ import br.com.crescer.monitorveiculos.repositorio.CidadeRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,8 +34,5 @@ public class VeiculoServico {
     public Veiculo obterVeiculoPorPlaca(String placa) {
         return veiculoRepositorio.findByPlaca(placa);
     }
-   
-    public List<Long> contarVeiculosPorCidades(){
-        return veiculoRepositorio.countByCidadeGroupByCidade();
-    }
+
 }

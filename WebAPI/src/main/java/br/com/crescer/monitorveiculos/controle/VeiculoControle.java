@@ -42,9 +42,5 @@ public class VeiculoControle {
     public Veiculo obterPorPlaca(@PathVariable String placa) {
         return veiculoServico.obterVeiculoPorPlaca(placa);
     }
-    
-    @GetMapping(value = "/obterNumeroCidades")
-    public List<Long> obterVeiculosPorCidade(){
-        return veiculoServico.contarVeiculosPorCidades();
-    }
+
 }
