@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
  * @author William
  */
 public interface OcorrenciaRepositorio extends CrudRepository<Ocorrencia, Long> {
-    
-    @Query("select count(idocorrencia) from Ocorrencia where data_hora between :datainicial and :datafinal)") 
-    public Long getOcorrenciasLasttresUltimosMeses(@Param("datainicial") Date datainicial,@Param("datafinal") Date datafinal); 
+
+    @Query("SELECT COUNT(idocorrencia) FROM Ocorrencia WHERE data_hora BETWEEN :datainicial AND :datafinal)")
+    public Long getOcorrenciasTresUltimosMeses(@Param("datainicial") Date datainicial, @Param("datafinal") Date datafinal);
 }

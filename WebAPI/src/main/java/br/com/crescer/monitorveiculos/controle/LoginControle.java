@@ -2,7 +2,7 @@ package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Cidade;
 import br.com.crescer.monitorveiculos.entidade.Usuario;
-import br.com.crescer.monitorveiculos.entidade.UsuarioModel;
+import br.com.crescer.monitorveiculos.modelo.UsuarioModel;
 import br.com.crescer.monitorveiculos.servico.CidadeServico;
 import br.com.crescer.monitorveiculos.servico.ComponenteServico;
 import br.com.crescer.monitorveiculos.servico.UsuarioServico;

@@ -1,9 +1,11 @@
 package br.com.crescer.monitorveiculos.controle;
 
+
 import br.com.crescer.monitorveiculos.entidade.Camera;
-import br.com.crescer.monitorveiculos.entidade.HeatMapModel;
-import br.com.crescer.monitorveiculos.entidade.RegistroCountModel;
-import br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
+import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
+
 import br.com.crescer.monitorveiculos.servico.CameraServico;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.List;
@@ -27,12 +29,12 @@ public class CameraControle {
     CameraServico cameraServico;
     @Autowired
     RegistroServico registroServico;
-    
+  
     @GetMapping("buscarCameraPorSentido/{direcao}")
     public List<Camera> buscarCamerasPorSentido(@PathVariable Character direcao){
         return cameraServico.buscarCamerasPorDirecao(direcao);
     }
-
+  
     @PostMapping(value = "/heatmap")
     public List<HeatMapModel> retornarHeatMap(@RequestBody RegistroCountModel registroCountModel) {
         List<RetornoHeatMapModel> models = cameraServico.retornarModel(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),

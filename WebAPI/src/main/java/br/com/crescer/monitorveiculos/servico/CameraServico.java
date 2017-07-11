@@ -1,8 +1,8 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Camera;
-import br.com.crescer.monitorveiculos.entidade.HeatMapModel;
-import br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import java.util.ArrayList;

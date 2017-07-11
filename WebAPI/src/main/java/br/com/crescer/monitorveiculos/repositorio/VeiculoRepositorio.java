@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.repositorio;
 
-import br.com.crescer.monitorveiculos.entidade.RetornoTopMarcasOcorrencia;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import java.util.List;
 import org.springframework.data.jpa.repository.Query;

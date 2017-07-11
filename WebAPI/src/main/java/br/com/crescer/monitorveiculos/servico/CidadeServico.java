@@ -1,7 +1,9 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Cidade;
+import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.repositorio.CidadeRepositorio;
+import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,8 @@ public class CidadeServico {
 
     @Autowired
     private CidadeRepositorio cidadeRepositorio;
+    @Autowired
+    private VeiculoRepositorio veiculoRepositorio;
 
     public Iterable<Cidade> listarCidades() {
         return cidadeRepositorio.findAll();
@@ -26,8 +30,13 @@ public class CidadeServico {
     public Cidade pegarCidadePorId(Long id) {
         return cidadeRepositorio.findOne(id);
     }
-    
-    public Long numeroCidadesComRegistros() { 
-        return cidadeRepositorio.getNumeroCidadesComRegistros(); 
-    } 
+
+    public Long numeroCidadesComRegistros() {
+        return cidadeRepositorio.getNumeroCidadesComRegistros();
+    }
+
+    public String encontrarCidade(String placa) {
+        Veiculo veiculo = veiculoRepositorio.findByPlacaIgnoreCase(placa);
+        return veiculo.getCidade().getNome();
+    }
 }

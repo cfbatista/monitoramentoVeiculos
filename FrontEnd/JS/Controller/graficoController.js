@@ -71,7 +71,7 @@ app.controller('graficoController', function($scope, $http, graficoService, $rou
     function ocorrenciasUltimos3meses(){
         graficoService.ocorrenciasUltimos3meses().then(response => {
             console.log(response.data);
-            response.data;
+            $scope.graficoUltimasOcorrencias.data[0].value = response.data;
         }).catch(error => console.log(error));
     }
 
