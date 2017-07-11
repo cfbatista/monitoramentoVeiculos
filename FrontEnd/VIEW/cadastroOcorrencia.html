@@ -1,0 +1,85 @@
+<div class="container-Login-Cadastro">
+    <h1>Monitor Veiculos</h1>
+    <form name="formLogin" ng-submit="novaOcorrencia(usuario)">
+        <div class="form-input-Login">
+            <label for="opcionais">Selecione seu Veiculo:</label>
+            <select ng-model="ocorrencia.veiculo" class="form-control">
+                <option ng-repeat="veiculo in veiculos" value="{{veiculo}}">{{veiculo.nome}}</option>
+            </select>
+        </div>
+        <div class="form-input-Login">
+            <label for="opcionais">Data do ocorrido</label>
+            <input type="date" ng-model="ocorrencia.data_hora">
+        </div>
+        <div class="form-input-Login">
+            <label for="opcionais">Selecione o tipo:</label>
+            <select ng-model="ocorrencia.TIPO_OCORRENCIA" class="form-control">
+                <option  value="R">Roubo</option>
+                <option  value="S">Sequestro</option>
+                <option  value="F">Furto</option>
+            </select>
+        </div>
+        <div class="form-input-Login">
+            <label for="opcionais">Estava estacionado?</label>
+            <select ng-model="ocorrencia.estacionado" class="form-control">
+                <option  value="S">Sim</option>
+                <option  value="N">Não</option>
+            </select>
+        </div>
+        
+        <div class="form-input-Login">
+            <label for="opcionais">Estava dentro do Carro?</label>
+            <select ng-model="ocorrencia.ESTAVA_NO_CARRO" class="form-control">
+                <option  value="S">Sim</option>
+                <option  value="N">Não</option>
+            </select>
+        </div>
+
+         <div class="form-input-Login">
+            <label for="numero_meliantes">Numero de meliantes</label>
+            <input type="number" ng-model="ocorrencia.numero_meliantes">
+        </div>
+
+         <div class="form-input-Login">
+            <label for="numero_meliantes">Numero de vitimas</label>
+            <input type="number" ng-model="ocorrencia.numero_vitimas">
+        </div>
+        <div class="form-input-Login">
+            <label for="opcionais">Estava dentro do Carro?</label>
+            <select ng-model="ocorrencia.ESTAVA_NO_CARRO" class="form-control">
+                <option  value="S">Sim</option>
+                <option  value="N">Não</option>
+            </select>
+        </div>
+
+
+        <div class="form-input-Login">
+            <input type="password" name="password" required ng-model="usuario.senha" placeholder="Insira sua senha">
+        </div>
+        <div class="form-input-Login">
+            <input type="date" name="data" required ng-model="usuario.datanascimento">
+        </div>
+        <div class="form-input-Login">
+            <input type="text" name="rg" required ng-model="usuario.rg" placeholder="Insira seu RG">
+        </div>
+        <div class="form-input-Login">
+            <input type="text" name="cpf" required ng-model="usuario.cpf" placeholder="Insira seu CPF">
+        </div>
+        <div class="form-input-Login">
+            <input type="number" name="numero" required ng-model="usuario.telefone" placeholder="Insira seu telefone">
+        </div>
+        <div class="form-input-Login">
+            <input type="text" name="endereco" required ng-model="usuario.endereco" placeholder="Insira seu endereço">
+        </div>
+        <div class="form-input-Login">
+            <input type="text" name="bairro" required ng-model="usuario.bairro" placeholder="Insira seu bairro">
+        </div>
+        <div class="form-input-Login">
+            <label for="opcionais">Selecione seu(s) Opciona(is)l:</label>
+            <select ng-model="usuario.idcidade" class="form-control">
+                <option ng-repeat="cidade in cidades" value="{{cidade.idcidade}}">{{cidade.nome}}</option>
+            </select>
+        </div>
+        <input type="submit" class="btn-login-Login" value="Cadastre-se">
+    </form>
+</div>

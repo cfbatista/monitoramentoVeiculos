@@ -80,24 +80,36 @@
 </div>
 
 <div class="mapaGeral">
-    <input type="submit" class="mostarMapa" ng-click="click()" value="Iniciar Mapa">
 
-    <div class="formpa">
-        <form ng-submit="tracarRota()">
-            <select ng-model="partida">
-        <option ng-repeat="camera in cameras" ng-value="camera.camera">{{camera.camera.nome}}</option>
-    </select>
-            <select ng-model="chegada">
-        <option ng-repeat="camera in cameras" ng-value="camera.camera">{{camera.camera.nome}}</option>
-    </select>
-            <input type="submit" class="btn btn-primary btn-block btn-md" value="Tracar Rota">
-        </form>
-        <form ng-submit="pegarCameras(RegistroCountModel)">
-            <input type="date" ng-model="RegistroCountModel.dataInicial">
-            <input type="date" ng-model="RegistroCountModel.dataFinal">
-            <input type="submit" class="btn btn-primary btn-block btn-md" value="Tracar Rota">
-        </form>
-    </div>
-    <div id="map"></div>
+    <form ng-submit="buscarCamerasPorSentido(direcao)">
+        <select ng-model="direcao">
+            <option value="C">Capital - Interior</option>
+            <option value="I">Interior - Capital</option>
+        </select>
+        <input type="submit" value="Buscar Camera">
+    </form>
+
+    <form ng-submit="pegarCameras(RegistroCountModel)">
+        <select ng-model="RegistroCountModel.idCameraInicial">
+            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
+        </select>
+        <br>
+        <select ng-model="RegistroCountModel.idCameraFinal">
+            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
+        </select>
+        <br>
+        <label>DATA INICIAL</label>
+        <input type="date" ng-model="RegistroCountModel.dataInicial">
+        <br>
+        <label>DATA FINAL</label>
+        <input type="date" ng-model="RegistroCountModel.dataFinal">
+        <input type="submit" value="Buscar Rota">
+    </form>
+
+    <input type="submit" ng-click="click()" value="Botar Mapa">
+    <input type="submit" ng-click="tracarRota()" value="CALOR E ROTA">
 
 </div>
+
+    <div id="map"></div>
+

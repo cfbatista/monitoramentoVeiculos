@@ -1,5 +1,6 @@
 package br.com.crescer.monitorveiculos.controle;
 
+import br.com.crescer.monitorveiculos.entidade.Camera;
 import br.com.crescer.monitorveiculos.entidade.HeatMapModel;
 import br.com.crescer.monitorveiculos.entidade.RegistroCountModel;
 import br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel;
@@ -7,6 +8,8 @@ import br.com.crescer.monitorveiculos.servico.CameraServico;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,11 +27,10 @@ public class CameraControle {
     CameraServico cameraServico;
     @Autowired
     RegistroServico registroServico;
-
-    @PostMapping(value = "/heatmapModel")
-    public List<RetornoHeatMapModel> retornarModel(@RequestBody RegistroCountModel registroCountModel) {
-        return cameraServico.retornarModel(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
-                registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
+    
+    @GetMapping("buscarCameraPorSentido/{direcao}")
+    public List<Camera> buscarCamerasPorSentido(@PathVariable Character direcao){
+        return cameraServico.buscarCamerasPorDirecao(direcao);
     }
 
     @PostMapping(value = "/heatmap")

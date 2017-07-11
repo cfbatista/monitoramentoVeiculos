@@ -51,5 +51,8 @@ public class CameraServico {
 
         return retorno;
     }
-
+    
+    public List<Camera> buscarCamerasPorDirecao(Character direcao){
+        return cameraRepositorio.findByDirecao(direcao);
+    }
 }

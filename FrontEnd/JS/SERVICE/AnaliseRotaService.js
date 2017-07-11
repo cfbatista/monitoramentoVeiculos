@@ -1,17 +1,17 @@
 app.factory('AnaliseRotaService', function ($http) {
 
-    var urlBase = 'http://localhost:9090/registro';
-
-    function listarTodosPontos() {
-        return $http.get(urlBase);
-    };
+    var urlBase = 'http://localhost:9090/camera';
 
     function listarPontosEspecificos(RegistroCountModel){
         return $http.post(urlBase + '/heatmap',RegistroCountModel);
     }
 
+    function buscarCameraSentido(direcao){
+        return $http.get(urlBase + '/buscarCameraPorSentido/' + direcao);
+    }
+
     return{
-        listarTodosPontos:listarTodosPontos,
+        buscarCameraSentido: buscarCameraSentido,
         listarPontosEspecificos, listarPontosEspecificos
     };
 })

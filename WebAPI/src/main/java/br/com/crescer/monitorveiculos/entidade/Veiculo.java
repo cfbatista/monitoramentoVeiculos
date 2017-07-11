@@ -75,6 +75,7 @@ public class Veiculo implements Serializable {
 
     @JoinColumn(name = "IDMARCA", referencedColumnName = "IDMARCA")
     @ManyToOne
+    
     private Marca marca;
 
 }

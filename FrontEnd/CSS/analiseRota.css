@@ -8,38 +8,8 @@
   text-align: center;
 }
 .mapaGeral{
-  height:400px;
-  width:800px;
-  margin:0 auto;
-}
-.mapaGeral .mostarMapa{
-  margin-top: 120px;
-  text-align:center;
-  height:50px;
-  width:800px;
-  background-color:black;
-  color:white;
-}
-.mapaGeral .formpa{
-  height:300px;
-  width:800px;
-  text-align:center;
-  top:20px;
-  background-color:black;
-}
-.mapaGeral .formpa select{
-  height:30px;
-  width:800px;
-  background-color:black;
-  color:white;
-  text-align:center;
-  top:20px;
-  margin-top:10px;
-}
-.mapaGeral .formpa input{
-  width:800px;
-  height:30px;
-  background-color:black;
-  color:white;
-  margin-top:10px;
+  height:500px;
+  width:400px;
+  margin: 0 auto;
+  margin-top:250px;
 }
