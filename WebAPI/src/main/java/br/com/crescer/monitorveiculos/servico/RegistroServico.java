@@ -48,4 +48,17 @@ public class RegistroServico {
 
         return retorno;
     }
+    
+    
+    public Long countByRegistroWithVeiculo(String placa){
+        return registroRepositorio.countByRegistroWithVeiculo(placa);
+    }
+    
+    public Long getTotalCameras(){
+        return registroRepositorio.getTotalCameras();
+    }
+    
+    public Long countByRegistroWithCameras(){
+        return registroRepositorio.countByRegistroWithCameras();
+    }
 }

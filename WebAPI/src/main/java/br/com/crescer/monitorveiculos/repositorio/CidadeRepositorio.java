@@ -11,9 +11,9 @@ import org.springframework.data.repository.query.Param;
  */
 public interface CidadeRepositorio extends CrudRepository<Cidade, Long> {
     
-   @Query("select count(distinct ci.idcidade) from Camera ca inner join ca.idcidade ci") 
+   @Query("select COUNT(distinct ci.idcidade) FROM Camera ca INNER JOIN ca.idcidade ci") 
    public Long getNumeroCidadesComRegistros(); 
    
-   @Query("SELECT nome from cidade inner join veiculo on cidade.idcidade = :cidadeVeiculo")
-   Cidade getCidadeDoVeiculo(@Param("cidadeVeiculo") Long cidadeVeiculo);
+//   @Query("SELECT c.nome FROM Cidade c INNER JOIN Veiculo WHERE cidade.idcidade = :cidadeVeiculo")
+//   Cidade getCidadeDoVeiculo(@Param("cidadeVeiculo") Long cidadeVeiculo);
 }
