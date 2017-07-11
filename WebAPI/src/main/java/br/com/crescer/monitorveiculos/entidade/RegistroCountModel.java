@@ -1,5 +1,6 @@
 package br.com.crescer.monitorveiculos.entidade;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +18,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class RegistroCountModel {
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataInicial;
+
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataFinal;
+
+    private Long idCameraInicial;
+
+    private Long idCameraFinal;
+
+    private Character direcao;
 }

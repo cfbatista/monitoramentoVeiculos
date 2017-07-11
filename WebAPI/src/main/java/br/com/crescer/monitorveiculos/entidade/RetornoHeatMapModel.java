@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.entidade;
 
-import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,8 +19,6 @@ import lombok.Setter;
 public class RetornoHeatMapModel {
 
     private Camera camera;
-
-    private Date Data_Hora;
 
     private Long countRegistros;
 }
