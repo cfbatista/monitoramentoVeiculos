@@ -1,7 +1,12 @@
 package br.com.crescer.monitorveiculos.repositorio;
 
 import br.com.crescer.monitorveiculos.entidade.Camera;
+import br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel;
+import java.util.Date;
+import java.util.List;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 /**
  *
@@ -9,4 +14,18 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface CameraRepositorio extends CrudRepository<Camera, Long> {
 
+    @Query("SELECT new br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel "
+            + "(re.camera, COUNT(re.idregistro)) "
+            + "FROM Registro re "
+            + "WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "
+            + "AND re.camera.idcamera BETWEEN :idCameraInicial AND :idCameraFinal "
+            + "AND re.camera.direcao = :direcao "
+            + "GROUP BY re.camera")
+    public List<RetornoHeatMapModel> retornarModel(
+            @Param("dataInicial") Date dataInicial,
+            @Param("dataFinal") Date dataFinal,
+            @Param("idCameraInicial") Long idCameraInicial,
+            @Param("idCameraFinal") Long idCameraFinal,
+            @Param("direcao") Character direcao
+    );
 }

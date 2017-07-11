@@ -1,11 +1,10 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
-import br.com.crescer.monitorveiculos.repositorio.CidadeRepositorio;
+import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 /**
@@ -18,7 +17,7 @@ public class VeiculoServico {
     @Autowired
     private VeiculoRepositorio veiculoRepositorio;
     @Autowired
-    private CidadeRepositorio cidadeRepositorio;
+    private CameraRepositorio cameraRepositorio;
 
     public List<Veiculo> obterTodosVeiculos() {
         return (List<Veiculo>) veiculoRepositorio.findAll();
