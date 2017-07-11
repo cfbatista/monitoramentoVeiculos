@@ -2,23 +2,24 @@ app.service('graficoService', function ($http) {
 
     return{
         obterCidades: obterCidades,
-        totalCidades: totalCidades,
         totalVeiculos: totalVeiculos,
-        totalVeiculosClonados: totalVeiculosClonados,
+        // totalVeiculosClonados: totalVeiculosClonados,
         ocorrenciasUltimos3meses: ocorrenciasUltimos3meses
     }
 
-    
+    function obterCidades(){
+        return $http.get('http://localhost:9090/cidade/obtertodas');
+    }
 
     function totalVeiculos(){
-        return $http.get('http://localhost:9090/registro/veiculo');
+        return $http.get('http://localhost:9090/veiculo/obterContagem');
     }
 
-    function totalVeiculosClonados(){
-        return $http.get('http://localhost:9090/registro/veiculo');
-    }
+    // function totalVeiculosClonados(){
+    //     return $http.get('http://localhost:9090/veiculo/clonados');
+    // }
 
     function ocorrenciasUltimos3meses(){
-        return $http.get('http://localhost:9090/registro/veiculo');
+        return $http.get('http://localhost:9090/ocorrencia/tresultimosmeses');
     }
 });
