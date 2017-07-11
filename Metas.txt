@@ -1,0 +1,13 @@
+------------------------------------------ tela de login
+numero de veiculos por cidade;
+numero de registros por cidade
+ocorrencias dos ultimos 3 meses por cidade
+
+--------------------------------------------------------- estatisitica
+Fbricantes com maiores ocorrencias (10 primeiros nos ultimos 3 mees)
+Modelo com maior indice de roubo (10 primeiros nos ultimos 3 meses)
+Horario com maior numero de roubos
+cidades com maior numero de roubo(10 primeiras cidades)
+cameras com maior numeros de registros de veiculos roubados
+
+
