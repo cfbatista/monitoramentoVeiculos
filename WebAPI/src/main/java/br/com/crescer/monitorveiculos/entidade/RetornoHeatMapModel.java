@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.entidade;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,13 +19,7 @@ import lombok.Setter;
 
 public class RetornoHeatMapModel {
 
-    private Long idcamera;
-
-    private BigDecimal longitude;
-
-    private BigDecimal latitude;
-
-    private String nome;
+    private Camera camera;
 
     private Date Data_Hora;
 
