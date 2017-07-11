@@ -1,7 +1,5 @@
     package br.com.crescer.monitorveiculos.repositorio;
 
-import br.com.crescer.monitorveiculos.entidade.ConsultaVeiculosModel;
-import br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import org.springframework.data.repository.CrudRepository;
 
