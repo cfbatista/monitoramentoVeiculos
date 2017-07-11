@@ -17,10 +17,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 public class RegistroCountModel {
-
     private Date dataInicial;
-
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date dataFinal;
-
 }

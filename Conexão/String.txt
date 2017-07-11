@@ -1,0 +1,12 @@
+CREVEID1
+CREVEID1
+
+ODEV =
+  (DESCRIPTION =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = 10.0.100.232)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = odev.cwinet.local)
+	  (SID = odev)
+    )
+  )

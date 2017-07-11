@@ -38,8 +38,8 @@ import lombok.Setter;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private static final String SEQ_NAME = "SEQ_USUARIO";
-
+    private static final String SEQ_NAME = "SQ_USUARIO";
+  
     @GeneratedValue(strategy = SEQUENCE, generator = SEQ_NAME)
     @SequenceGenerator(name = SEQ_NAME, sequenceName = SEQ_NAME, allocationSize = 1)
     @Id
