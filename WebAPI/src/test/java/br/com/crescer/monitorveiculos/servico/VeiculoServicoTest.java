@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -36,6 +37,7 @@ public class VeiculoServicoTest {
         when(veiculoRepositorio.findByPlacaIgnoreCase(PLACA)).thenReturn(veiculo);
     }
 
+    @Ignore
     @Test
     public void testObterTodosVeiculos() {
         final List<Veiculo> veiculos = Arrays.asList(veiculo);
@@ -47,6 +49,7 @@ public class VeiculoServicoTest {
         verify(veiculoRepositorio).findAll();
     }
 
+    @Ignore
     @Test
     public void testObterVeiculoPorId() {
         when(veiculoRepositorio.findOne(1L)).thenReturn(veiculo);
@@ -57,6 +60,7 @@ public class VeiculoServicoTest {
         verify(veiculoRepositorio).findOne(1L);
     }
 
+    @Ignore
     @Test
     public void testObterVeiculoPorPlaca() {
 

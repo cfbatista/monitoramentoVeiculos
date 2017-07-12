@@ -2,7 +2,6 @@ package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
-import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import java.util.List;
@@ -42,11 +41,11 @@ public class VeiculoServico {
     public Long buscarNumeroRegistros(String placa) {
         return registroRepositorio.countByPlaca(placa);
     }
-    
+
     public Long obterNumeroeRegistrosPorCamera() {
         return registroRepositorio.obterNumeroDeCamerasComRegistros();
     }
-    
+
     public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
         return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
     }
