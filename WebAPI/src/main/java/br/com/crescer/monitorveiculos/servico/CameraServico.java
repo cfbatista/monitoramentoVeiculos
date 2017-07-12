@@ -40,9 +40,14 @@ public class CameraServico {
         return cameraRepositorio.retornarModel(dataInicial, dataFinal, idcameraInicial, idcameraFinal, direcao);
     }
 
-    public List<HeatMapModel> calcularFator(List<RetornoHeatMapModel> lista, Long total) {
+    public List<HeatMapModel> calcularFator(List<RetornoHeatMapModel> lista) {
         List<HeatMapModel> retorno = new ArrayList<>();
-
+        
+        Long total = lista
+                .stream()
+                .mapToLong(e -> e.getCountRegistros())
+                .sum();
+        
         lista.stream().forEach(e -> {
             final Double fator = (e.getCountRegistros().doubleValue() / total) * 100;
             final HeatMapModel heatMapModel = new HeatMapModel(e.getCamera(), fator);

@@ -1,12 +1,16 @@
 app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService) {
 
     $scope.selecionar_orientacao = true;
+    $scope.dados_Rota = false;
+    $scope.botoes_Mapa = false;
 
     $scope.buscarCamerasPorSentido = function (direcao) {
         $scope.pegardirecao = direcao;
         AnaliseRotaService.buscarCameraSentido(direcao).then(response => {
             $scope.camerasSentido = response.data;
             toastr.success("Cameras carregadas com sucesso!!");
+            $scope.selecionar_orientacao = false;
+            $scope.dados_Rota = true;
         })
     }
 
@@ -16,7 +20,8 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             $scope.cameras = response.data;
             $scope.tamanho = $scope.cameras.length;
             $scope.camerasCalor = $scope.cameras;
-            console.log($scope.cameras)
+            $scope.dados_Rota = false;
+            $scope.botoes_Mapa = true;
         }).catch(error => console.log(error));
     }
 
