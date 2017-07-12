@@ -1,5 +1,7 @@
 app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService) {
 
+    $scope.selecionar_orientacao = true;
+
     $scope.buscarCamerasPorSentido = function (direcao) {
         $scope.pegardirecao = direcao;
         AnaliseRotaService.buscarCameraSentido(direcao).then(response => {
