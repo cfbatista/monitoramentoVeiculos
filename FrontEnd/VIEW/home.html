@@ -1,14 +1,7 @@
 <div class="container">
     <div class="row menu-fixo">
-            <ul>
-                <li class="column">
-                    <a href="#">
-                    <i class="fa fa-bars fa-2x"></i>
-                    </a>
-                </li>
-            </ul>
-            <h1 class="column">Monitor Veículos</h1>
-            <a type="button" href="#!/login" class="column column-25 float-right"> Login </a>
+        <h1 class="column">Monitor Veículos</h1>
+        <a type="button" href="#!/login" class="column column-25 float-right"> Login </a>
     </div>
     <div class="row corpo">
         <div class="column column-25 float-left">
@@ -78,55 +71,29 @@
     
 
 
-            <div class="column column-50 float-rigth">
-                <div class="row">
-                    <div class="column">
-                        <fusioncharts
-                            width="300"
-                            height="300"
-                            type= "column3d"
-                            dataFormat="json"
-                            theme = "carbon"
-                            dataSource="{{graficoTotalCidades}}">
-                        </fusioncharts>
+            <div class="column column-75 float-rigth">
+                <div class="column-25 float-left info">
+                    <span class="info-box"><i class="fa fa-google-plus"></i></span>
+                
+                    <div class="info-box-content">
+                        <span>{{totalCidade}}</span>
                     </div>
-
-
-                    <div class="column">
-                        <fusioncharts
-                            width="300"
-                            heigh="300"
-                            type= "column3d"
-                            dataFormat="json"
-                            theme="zune" 
-                            palettecolors="#0075c2"
-                            dataSource="{{graficoTotalVeiculos}}">
-                        </fusioncharts>
+                </div>
+                <div class="column-25 float-left info">
+                    <span class="info-box"><i class="fa fa-google-plus"></i></span>
+                
+                    <div class="info-box-content">
+                        <span>{{totalVeiculo}}</span>
                     </div>
-                <!--</div>-->
-                <!--<div class="row">-->
-                    <!--<div>
-                        <fusioncharts
-                            width="50%"
-                            heigh="400"
-                            type= "column3d"
-                            dataFormat="json"
-                            theme = "carbon"
-                            dataSource="{{graficoClonados}}">
-                        </fusioncharts>
-                    </div>-->
-
-                    <div class="column">
-                        <fusioncharts
-                            width="300"
-                            heigh="300"
-                            type= "column3d"
-                            dataFormat="json"
-                            theme = "carbon"
-                            dataSource="{{graficoUltimasOcorrencias}}">
-                        </fusioncharts>
+                </div>
+                <div class="column-25 float-left info">
+                    <span class="info-box"><i class="fa fa-google-plus"></i></span>
+                
+                    <div class="info-box-content">
+                        <span>{{ocorrencias}}</span>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </div>
