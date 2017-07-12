@@ -1,18 +1,18 @@
-<a href="#!/home">Home</a>
+<div class="container">
+    <div class="row"></div>
+    <div class="row">
+        <div class="column column-25"></div>
+        <div class="column column-50">
 
-<div class="container-Login">
-    <h1>Monitor Veiculos</h1>
-    <form name="formLogin" ng-submit="login(usuario)">
-        <div class="form-input-Login">
-            <input type="email" name="email" required ng-model="usuario.email" placeholder="Insira seu email">
+            <h1>Monitor Veiculos - Login</h1>
+            <form name="formLogin" ng-submit="login(usuario)">
+                <input type="email" name="email" required ng-model="usuario.email" placeholder="Insira seu email">
+                <input type="text" name="email" required ng-model="usuario.cpf" placeholder="Insira seu CPF">
+                <input type="password" name="senha" required ng-model="usuario.senha" placeholder="Insira sua senha">
+                <input type="submit" class="btn-login-Login" value="Login">
+                <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
+            </form>
         </div>
-      <div class="form-input-Login">
-            <input type="text" name="email" required ng-model="usuario.cpf" placeholder="Insira seu CPF">
-        </div>
-        <div class="form-input-Login">
-            <input type="password" name="senha" required ng-model="usuario.senha" placeholder="Insira sua senha">
-        </div>
-        <input type="submit" class="btn-login-Login" value="Login">
-        <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
-    </form>
+        <div class="column column-25"></div>
+    </div>
 </div>

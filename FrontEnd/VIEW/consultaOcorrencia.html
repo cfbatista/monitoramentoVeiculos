@@ -1,15 +1,22 @@
-<div>
-    <label for="buscarOcorrencia">Buscar ocorrência</label>
-    <input id="buscarOcorrencia" type="text" placeholder="Digite os dados da ocorrência" ng-model="ocorrencia">
-    <button ng-click="obterOcorrenciaUsuario(ocorrencia)">Buscar</button>
-</div>
+<div class="container">
+  <div class="row">
+    <div class="column column-25"></div>
+    <div class="column column-50">
 
+      <label for="buscarOcorrencia">Buscar ocorrência</label>
+      <input id="buscarOcorrencia" type="text" placeholder="Digite os dados da ocorrência" ng-model="ocorrencia">
+      <button ng-click="obterOcorrenciaUsuario(ocorrencia)">Buscar</button>
+
+    </div>
+    <div class="column column-25"></div>
+  </div>
+</div>
 <!--ARRUMAR PERMISSÃO - AUTORIDADES E ADMIN PODEM VER TODOS OS REGISTROS
 VER COMO TA VINDO OS DADOS E ARRUMAR TABELA-->
-
-
-<div>
-    <table>
+<div class="container">
+  <div class="row">
+    <div class="column">
+      <table>
         <thead>
           <tr>
             <th>Veículo</th>
@@ -33,5 +40,7 @@ VER COMO TA VINDO OS DADOS E ARRUMAR TABELA-->
             <th>{{a.ocorrencia}}</th>
           </tr>
         </tbody>
-      </table>    
+      </table>
+    </div>
+  </div>
 </div>

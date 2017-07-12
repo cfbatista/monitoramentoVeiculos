@@ -2,6 +2,8 @@ package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
+import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
+import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ public class VeiculoServico {
     private VeiculoRepositorio veiculoRepositorio;
     @Autowired
     private CameraRepositorio cameraRepositorio;
+    @Autowired
+    private RegistroRepositorio registroRepositorio;
 
     public List<Veiculo> obterTodosVeiculos() {
         return (List<Veiculo>) veiculoRepositorio.findAll();
@@ -33,5 +37,17 @@ public class VeiculoServico {
 
     public Veiculo obterVeiculoPorPlaca(String placa) {
         return veiculoRepositorio.findByPlacaIgnoreCase(placa);
+    }
+
+    public Long buscarNumeroRegistros(String placa) {
+        return registroRepositorio.countByPlaca(placa);
+    }
+    
+    public Long obterNumeroeRegistrosPorCamera() {
+        return registroRepositorio.obterNumeroDeCamerasComRegistros();
+    }
+    
+    public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
+        return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
     }
 }

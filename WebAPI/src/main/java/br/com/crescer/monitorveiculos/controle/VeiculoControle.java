@@ -39,4 +39,9 @@ public class VeiculoControle {
     public Veiculo obterPorPlaca(@PathVariable String placa) {
         return veiculoServico.obterVeiculoPorPlaca(placa);
     }
+    
+    @GetMapping(value = "/numeroregistros")
+    public Long obterOcorrencias(@PathVariable String placa){
+        return veiculoServico.buscarNumeroRegistros(placa);
+    }
 }
