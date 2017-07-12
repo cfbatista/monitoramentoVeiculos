@@ -23,17 +23,9 @@ public class RegistroServico {
     private List<Registro> obterRegistrosPorDataHora(Date dataInicial, Date dataFinal) {
         return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
     }
-
-    public Long countByRegistroWithVeiculo(String placa) {
-        return registroRepositorio.obterQuantidadeRegistrosVeiculo(placa);
-    }
-
+    
     public Long obterTotalCameras() {
         return registroRepositorio.count();
-    }
-
-    public Long obterNumeroeRegistrosPorCamera() {
-        return registroRepositorio.obterNumeroDeCamerasComRegistros();
     }
 
     public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {

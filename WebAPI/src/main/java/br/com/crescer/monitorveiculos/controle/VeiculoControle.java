@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
+import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.servico.VeiculoServico;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,8 +41,18 @@ public class VeiculoControle {
         return veiculoServico.obterVeiculoPorPlaca(placa);
     }
     
-    @GetMapping(value = "/numeroregistros")
-    public Long obterOcorrencias(@PathVariable String placa){
-        return veiculoServico.buscarNumeroRegistros(placa);
+//    @GetMapping(value = "/numeroregistros/{placa}")
+//    public Long obterRegistros(@PathVariable String placa){
+//        return veiculoServico.buscarNumeroRegistros(placa);
+//    }
+//    
+//    @GetMapping(value = "/numeroregistroscamera/{placa}")
+//    public Long obterRegistrosPorCamera(@PathVariable String placa){
+//        return veiculoServico.obterNumeroeRegistrosPorCamera(placa);
+//    }
+    
+    @GetMapping(value = "/consulta/{placa}")
+    public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa){
+        return veiculoServico.realizarBusca(placa);
     }
 }

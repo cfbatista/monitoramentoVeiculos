@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,6 +17,7 @@ import static org.mockito.Mockito.when;
  *
  * @author Diandra Rocha
  */
+@Ignore
 public class VeiculoServicoTest {
 
     @Mock

@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
+import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
@@ -22,7 +23,10 @@ public class VeiculoServico {
     private CameraRepositorio cameraRepositorio;
     @Autowired
     private RegistroRepositorio registroRepositorio;
-
+    @Autowired
+    private OcorrenciaRepositorio ocorrenciaRepositorio;
+    
+    
     public List<Veiculo> obterTodosVeiculos() {
         return (List<Veiculo>) veiculoRepositorio.findAll();
     }
@@ -38,16 +42,34 @@ public class VeiculoServico {
     public Veiculo obterVeiculoPorPlaca(String placa) {
         return veiculoRepositorio.findByPlacaIgnoreCase(placa);
     }
-
-    public Long buscarNumeroRegistros(String placa) {
+    
+    private Long obterNumeroOcorrencias(Veiculo veiculo){
+        return ocorrenciaRepositorio.countByVeiculo(veiculo);
+    }
+    
+    private Long buscarNumeroRegistros(String placa) {
         return registroRepositorio.countByPlaca(placa);
     }
     
-    public Long obterNumeroeRegistrosPorCamera() {
-        return registroRepositorio.obterNumeroDeCamerasComRegistros();
+    private Long obterNumeroeRegistrosPorCamera(String placa){
+        return registroRepositorio.obterNumeroDeCamerasComRegistros(placa);
     }
     
-    public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
+    private Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
         return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
+    }
+
+    public ConsultaVeiculosModel realizarBusca(String placa) {
+        
+        ConsultaVeiculosModel retorno = new ConsultaVeiculosModel();
+        Veiculo veiculo = obterVeiculoPorPlaca(placa);
+        
+        retorno.setTotalOcorrencias(obterNumeroOcorrencias(veiculo));
+        retorno.setTotalRegistros(buscarNumeroRegistros(placa));
+        retorno.setQuantidadeCameras(obterNumeroeRegistrosPorCamera(placa));
+        retorno.setCidadeVeiculo(veiculo.getCidade());
+        retorno.setVezesUltrapassouLimite(obterNumeroDeVezesQuePassouVelocidade(placa));
+        
+        return retorno;
     }
 }
