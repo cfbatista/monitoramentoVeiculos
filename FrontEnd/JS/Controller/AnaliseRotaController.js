@@ -15,7 +15,9 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     }
 
     $scope.pegarCameras = function (RegistroCountModel) {
-        RegistroCountModel.direcao = $scope.pegardirecao;
+
+        $scope.modelEnergia = RegistroCountModel.direcao = $scope.pegardirecao;
+        
         AnaliseRotaService.listarPontosEspecificos(RegistroCountModel).then(response => {
             $scope.cameras = response.data;
             $scope.tamanho = $scope.cameras.length;
@@ -28,7 +30,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     //pontos de calor
 
     $scope.heatMapData = [];
-
+    
     function criarMapaCalor(camerasCalor) {
         for (let i = 0; i < camerasCalor.length; i++) {
             $scope.heatMapData.push({ location: new google.maps.LatLng(camerasCalor[i].camera.latitude, camerasCalor[i].camera.longitude), weight: camerasCalor[i].fator });
@@ -74,20 +76,29 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     }
 
     //funcao para calcular a rota
-    function calculateAndDisplayRoute(directionsService, directionsDisplay, camerasCalor) {
+    function calculateAndDisplayRoute(directionsService, directionsDisplay, camerasCalor, modelEnergia) {
         var start = camerasCalor[0].camera.latitude + ',' + camerasCalor[0].camera.longitude;
         var end = camerasCalor[$scope.tamanho - 1].camera.latitude + ',' + camerasCalor[$scope.tamanho - 1].camera.longitude;
+        $scope.distanciaEntrePontos = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(camerasCalor[0].camera.latitude, camerasCalor[0].camera.longitude), new google.maps.LatLng(camerasCalor[$scope.tamanho - 1].camera.latitude, camerasCalor[$scope.tamanho - 1].camera.longitude));
+        
+        calculoEnergia(modelEnergia, distanciaEntrePontos);
+
         directionsService.route({
             origin: start,
             destination: end,
             travelMode: 'DRIVING'
         }, function (response, status) {
             if (status === 'OK') {
-                console.log(response);
                 directionsDisplay.setDirections(response);
             } else {
                 window.alert('Directions request failed due to ' + status);
             }
         });
+    }
+
+    function calculoEnergia(modelEnergia, distanciaEntrePontos){
+        AnaliseRotaService.buscarCalculoEnergia(modelEnergia, distanciaEntrePontos).then(response =>{
+            $scope.energia = response.data;
+        })
     }
 })

@@ -4,6 +4,7 @@ import br.com.crescer.monitorveiculos.entidade.Cidade;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.repositorio.CidadeRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +20,8 @@ public class CidadeServico {
     @Autowired
     private VeiculoRepositorio veiculoRepositorio;
 
-    public Iterable<Cidade> listarCidades() {
-        return cidadeRepositorio.findAll();
+    public List<Cidade> listarCidades() {
+        return (List<Cidade>) cidadeRepositorio.findAll();
     }
 
     public long totalCidades() {

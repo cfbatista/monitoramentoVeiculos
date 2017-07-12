@@ -1,11 +1,10 @@
 package br.com.crescer.monitorveiculos.controle;
 
-
 import br.com.crescer.monitorveiculos.entidade.Camera;
+import br.com.crescer.monitorveiculos.modelo.CalculoEnergiaModel;
 import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
 import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
-
 import br.com.crescer.monitorveiculos.servico.CameraServico;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.List;
@@ -29,20 +28,38 @@ public class CameraControle {
     CameraServico cameraServico;
     @Autowired
     RegistroServico registroServico;
-  
-    @GetMapping("buscarCameraPorSentido/{direcao}")
-    public List<Camera> buscarCamerasPorSentido(@PathVariable Character direcao){
+
+    @GetMapping("buscarcameraporsentido/{direcao}")
+    public List<Camera> buscarCamerasPorSentido(@PathVariable Character direcao) {
         return cameraServico.buscarCamerasPorDirecao(direcao);
     }
-  
+
     @PostMapping(value = "/heatmap")
     public List<HeatMapModel> retornarHeatMap(@RequestBody RegistroCountModel registroCountModel) {
-        List<RetornoHeatMapModel> models = cameraServico.retornarModel(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
+        List<RetornoHeatMapModel> models = cameraServico.retornarModel(registroCountModel.getData(),
                 registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
-//        Long contagem = registroServico.retornarContagemTotal(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
-//                registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
-
         return cameraServico.calcularFator(models);
+    }
+
+    @GetMapping(value = "obter/contagemtotal")
+    public Long contagemTotal() {
+        return cameraServico.contagemTotal();
+    }
+
+    @GetMapping(value = "obter/todascameras")
+    public List<Camera> obterTodas() {
+        return cameraServico.obterTodas();
+    }
+
+    @GetMapping(value = "/obterporid/{id}")
+    public Camera obterPorId(@PathVariable long id) {
+        return cameraServico.findById(id);
+    }
+
+    @PostMapping(value = "/energia")
+    public CalculoEnergiaModel obterEnergia(@RequestBody RegistroCountModel registroCountModel) {
+        return cameraServico.calculoEnergia(registroCountModel);
+
     }
 
 }
