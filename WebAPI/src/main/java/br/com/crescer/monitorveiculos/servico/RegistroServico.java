@@ -24,10 +24,6 @@ public class RegistroServico {
         return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
     }
 
-    public Long countByRegistroWithVeiculo(String placa) {
-        return registroRepositorio.obterQuantidadeRegistrosVeiculo(placa);
-    }
-
     public Long obterTotalCameras() {
         return registroRepositorio.count();
     }

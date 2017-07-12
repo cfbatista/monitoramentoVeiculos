@@ -7,7 +7,12 @@ import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,7 +71,8 @@ public class CameraServico {
     }
 
     public Long contagemRegistrosDeRota(Date data, Long idCameraInicial, Long idCameraFinal, Character direcao) {
-        return cameraRepositorio.contagemRegistrosDeRota(data, idCameraInicial, idCameraFinal, direcao);
+        List<Date> datas = calculaData(data);
+        return cameraRepositorio.contagemRegistrosDeRota(datas.get(0), datas.get(1), idCameraInicial, idCameraFinal, direcao);
     }
 
     public Double calculoKilometragem(Double metros) {
@@ -79,5 +85,17 @@ public class CameraServico {
         Double energia = km * KWH * registros;
         CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).build();
         return retorno;
+    }
+
+    public static List<Date> calculaData(Date data) {
+        LocalDateTime dataInicial = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault());
+        dataInicial.with(LocalTime.of(0, 0, 0));
+        ZonedDateTime zonaDataInicial = dataInicial.atZone(ZoneId.systemDefault());
+
+        LocalDateTime dataFinal = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault());
+        dataFinal.with(LocalTime.of(23, 59, 59));
+        ZonedDateTime zonaDataFinal = dataInicial.atZone(ZoneId.systemDefault());
+
+        return Arrays.asList(Date.from(zonaDataInicial.toInstant()), Date.from(zonaDataFinal.toInstant()));
     }
 }
