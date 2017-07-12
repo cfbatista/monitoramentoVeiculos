@@ -1,62 +1,6 @@
-.container-Login{
-    width: 600px;
-    height: 400px;
-    text-align: center;
-    margin: 0 auto;
-    background-color: black;
-    margin-top: 150px;
-    border-radius: 25px;
-    color:white;
-}
-.container-Login h1{
-  padding-top:20px;
-}
-.container-Login .form-input-Login input{
-    height: 45px;
-    width: 300px;
-    font-size: 18px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding-left: 10px;
-}
-.container-Login .btn-login-Login{
-  width:155px;
-  height:30px;
-  background-color:black;
-  color:white;
-}
-.container-Login .btn-login-Login:hover{
-  background-color:#fbaf41;
-}
-
-.container-Login-Cadastro{
-    width: 600px;
-    height: 750px;
-    text-align: center;
-    margin: 0 auto;
-    background-color: black;
-    margin-top: 80px;
-    border-radius: 25px;
-    color:white;
-}
-
-.container-Login-Cadastro h1{
-  padding-top:20px;
-}
-.container-Login-Cadastro .form-input-Login input{
-    height: 45px;
-    width: 300px;
-    font-size: 18px;
-    margin-bottom: 20px;
-    background-color: #fff;
-    padding-left: 10px;
-}
-.container-Login-Cadastro .btn-login-Login{
-  width:155px;
-  height:30px;
-  background-color:black;
-  color:white;
-}
-.container-Login-Cadastro .btn-login-Login:hover{
-  background-color:#fbaf41;
+body{
+    background-image: url("https://previews.123rf.com/images/zhudifeng/zhudifeng1205/zhudifeng120503473/13592636-An-old-brass-compass-on-a-Treasure-map-background-Stock-Photo.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
 }

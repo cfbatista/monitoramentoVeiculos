@@ -1,1 +1,2 @@
-body{box-sizing:border-box}.container{left:-70px;padding-top:30px}.row{padding-left:0;margin-left:0}.menu-fixo{margin-bottom:10px}
+body{box-sizing:border-box}.container{left:-70px;right:70px;padding-top:30px}.row{padding-left:0;margin-left:0;padding: 0;
+    left: -48px;right:-48px;position: relative;}.menu-fixo{margin-bottom:10px}
