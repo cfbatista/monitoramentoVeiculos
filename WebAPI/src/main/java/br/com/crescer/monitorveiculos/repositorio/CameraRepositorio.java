@@ -14,7 +14,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface CameraRepositorio extends CrudRepository<Camera, Long> {
 
-    @Query("SELECT new br.com.crescer.monitorveiculos.entidade.RetornoHeatMapModel "
+    @Query("SELECT new br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel "
             + "(re.camera, COUNT(re.idregistro)) "
             + "FROM Registro re "
             + "WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "

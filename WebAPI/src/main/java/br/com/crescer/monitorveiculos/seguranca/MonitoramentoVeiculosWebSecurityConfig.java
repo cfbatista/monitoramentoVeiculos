@@ -41,7 +41,7 @@ public class MonitoramentoVeiculosWebSecurityConfig extends WebSecurityConfigure
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity.ignoring()
                 .antMatchers(HttpMethod.POST, "/usuario/cadastrar")
-                .antMatchers(HttpMethod.GET, "/cidade/obtertodas")
+                .antMatchers(HttpMethod.GET, "/cidade/obternumerocidades")
                 .antMatchers(HttpMethod.GET, "/veiculo/obterTodos")
                 .antMatchers(HttpMethod.POST, "/registro/heatmap")
                 .antMatchers(HttpMethod.GET, "/veiculo/obterContagemCidade")

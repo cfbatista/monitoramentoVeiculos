@@ -26,9 +26,14 @@ import lombok.Setter;
 public class ConsultaVeiculosModel {
     
     private Long totalOcorrencias;
+    
     private Long totalRegistros;
+    
     private Long quantidadeCameras;
+    
     private Cidade cidadeVeiculo;
+    
     private Long vezesUltrapassouLimite;
+        
     private Long numeroDiasNoutraCidade;
 }

@@ -14,11 +14,19 @@ public class CidadeControle {
     @Autowired
     private CidadeServico cidadeServico;
 
+    //Todos Objetos Cidade
     @GetMapping(value = "/obtertodas")
     public Iterable<Cidade> pegarCidades() {
         return cidadeServico.listarCidades();
     }
     
+    //Todos numrero de cidades
+    @GetMapping(value = "/obternumerocidades")
+    public Long pegarNumeroCidades(){
+        return cidadeServico.totalCidades();
+    }
+    
+    //obter numero de cidades com registros
     @GetMapping(value = "/cidadescomregistro") 
     public Long pegarNumeroCidadesComRegistros(){ 
         return cidadeServico.numeroCidadesComRegistros(); 
