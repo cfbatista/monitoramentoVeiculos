@@ -1,87 +1,100 @@
-#map{
+.meu_mapa{
   height:700px;
   width:800px;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.meu_mapa #map{
   background-image: url("https://lh3.googleusercontent.com/1wbeaNj0iSDe4Yut-MnOpv-tGmE37TbZCGkKqQHVfQUH_G7v9SW_KC_qCcWrzWDtTVR7GrTZfWOHA4c=w1304-h702");
   top:50px;
   position:relative;
   margin:0 auto;
   text-align: center;
 }
-.mapaGeral{
-  height:200px;
-  width:600px;
-  margin: 0 auto;
-  margin-top:40px;
-  background-color:red;
+.opcoes{
+  height:650px;
+  width:750px;
+  height:600px;
+  width: 300px;
+  float: right;
+  margin-top: 80px;
 }
-.mapaGeral .direcao{
+.buscar_orientacao{
+  width:260px;
+  height:120px;
+  background-color:black;
+  text-align:center;
+  margin-bottom: 20px;
+}
+.buscar_orientacao .direcoes{
+  width:260px;
   height:80px;
-  width:600px;
-  background-color:blue;
 }
-.mapaGeral .direcao select{
-  width:70%;
-  height:30px;
-  margin-left:10px;
-  margin-top: 25px;
+.buscar_orientacao .direcoes select{
+  width:230px;
+  height:20px;
+  margin-top:50px;
+  margin-left:5px;
 }
-.mapaGeral .direcao input{
-  width:25%;
+.buscar_orientacao .pegar_rota{
+  width:260px;
+  height:40px;
+}
+.buscar_orientacao .pegar_rota input{
+  width:240px;
   height:25px;
+  margin-top:5px;
+  margin-left:5px;
+}
+.buscar_cameras{
+  width:260px;
+  height:250px;
   background-color:black;
+  text-align:center;
+  margin-bottom: 20px;
+}
+.buscar_cameras .rotas{
+  width:250px;
+  height:50px;
+}
+.buscar_cameras .rotas select{
+  width:250px;
+  height:20px;
+  margin-left:5px;
+  margin-top:3px;
+}
+.buscar_cameras .data{
+  width:250px;
+  height:140px;
+}
+.buscar_cameras .data p{
+  width:250px;
+  height:10px;
   color:white;
-  margin-left:10px;
-  margin-top: 5px;
 }
-.mapaGeral .direcao input:hover{
-  background-color:#fbaf41;
+.buscar_cameras .data input{
+  width:240px;
+  height:20px;
+  margin-left:5px;
+  margin-top:3px;
 }
-.rotas{
-  height:200px;
-  width:600px;
-  margin: 0 auto;
-  background-color:red;
+.buscar_cameras .submeter{
+  width:250px;
+  height:20px;
 }
-.rotas select{
-  width:90%;
+.buscar_cameras .submeter input{
   height:30px;
-  margin-left:10px;
-  margin-top: 25px;
+  width:200px;
+}
+.botoes{
+  width:260px;
+  height:60px;
+  background-color:black;
   text-align:center;
 }
-.rotas input{
-  width:25%;
-  height:25px;
-  background-color:black;
-  color:white;
-  margin-left:10px;
-  margin-top: 5px;
-}
-.rotas input:hover{
-  background-color:#fbaf41;
-}
-
-.data{
-  height:200px;
-  width:600px;
-  margin: 0 auto;
-  background-color:red;
-}
-.data select{
-  width:20%;
-  height:30px;
-  margin-left:10px;
-  margin-top: 25px;
-  text-align:center;
-}
-.data input{
-  width:25%;
-  height:25px;
-  background-color:black;
-  color:white;
-  margin-left:10px;
-  margin-top: 5px;
-}
-.data input:hover{
-  background-color:#fbaf41;
+.botoes input{
+  width:230px;
+  height:20px;
+  margin:5px;
 }
