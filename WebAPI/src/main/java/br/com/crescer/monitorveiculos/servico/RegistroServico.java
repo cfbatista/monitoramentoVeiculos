@@ -36,11 +36,6 @@ public class RegistroServico {
         return registroRepositorio.obterNumeroDeCamerasComRegistros();
     }
 
-    public Long retornarContagemTotal(Date dataInicial, Date dataFinal, Long idcameraInicial, Long idcameraFinal, Character direcao) {
-
-        return registroRepositorio.retornarContagemTotal(dataInicial, dataFinal, idcameraInicial, idcameraFinal, direcao);
-    }
-
     public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
         return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
     }
