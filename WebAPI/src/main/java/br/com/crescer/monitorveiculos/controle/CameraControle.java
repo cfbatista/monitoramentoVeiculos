@@ -39,10 +39,10 @@ public class CameraControle {
     public List<HeatMapModel> retornarHeatMap(@RequestBody RegistroCountModel registroCountModel) {
         List<RetornoHeatMapModel> models = cameraServico.retornarModel(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
                 registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
-        Long contagem = registroServico.retornarContagemTotal(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
-                registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
+//        Long contagem = registroServico.retornarContagemTotal(registroCountModel.getDataInicial(), registroCountModel.getDataFinal(),
+//                registroCountModel.getIdCameraInicial(), registroCountModel.getIdCameraFinal(), registroCountModel.getDirecao());
 
-        return cameraServico.calcularFator(models, contagem);
+        return cameraServico.calcularFator(models);
     }
 
 }
