@@ -24,17 +24,6 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
     @Query("SELECT COUNT(idcamera) FROM Registro GROUP BY idcamera")
     Long obterNumeroDeCamerasComRegistros();
 
-    @Query("SELECT COUNT(re.idregistro) FROM Registro re WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "
-            + "AND re.camera.idcamera BETWEEN :idCameraInicial AND :idCameraFinal "
-            + "AND re.camera.direcao = :direcao ")
-    Long retornarContagemTotal(
-            @Param("dataInicial") Date dataInicial,
-            @Param("dataFinal") Date dataFinal,
-            @Param("idCameraInicial") Long idCameraInicial,
-            @Param("idCameraFinal") Long idCameraFinal,
-            @Param("direcao") Character direcao
-    );
-
     @Query("SELECT COUNT(re.idregistro) FROM Registro re WHERE re.velocidade > re.camera.velocidadeMaxima AND re.placa = :placa")
     Long obterNumeroDeVezesQuePassouVelocidade(@Param("placa") String placa);
 

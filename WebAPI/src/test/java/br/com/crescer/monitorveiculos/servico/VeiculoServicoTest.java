@@ -2,10 +2,10 @@ package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -27,36 +27,44 @@ public class VeiculoServicoTest {
     @Mock
     private Veiculo veiculo;
 
-    @Mock
-    private List<Veiculo> veiculos;
+    private static final String PLACA = "ABCD-1234";
 
     @Before
     public void setUp() {
-        veiculo = Veiculo.builder().placa("ABCD-1234").idveiculo(1L).build();
-        when(veiculoRepositorio.findByPlacaIgnoreCase("ABCD-1234")).thenReturn(veiculo);
-        when(veiculoRepositorio.findOne(1L)).thenReturn(veiculo);
-        when(veiculoRepositorio.findAll()).thenReturn(veiculos);
+        when(veiculo.getPlaca()).thenReturn(PLACA);
+        when(veiculo.getIdveiculo()).thenReturn(1L);
+        when(veiculoRepositorio.findByPlacaIgnoreCase(PLACA)).thenReturn(veiculo);
     }
 
-    @Ignore
     @Test
     public void testObterTodosVeiculos() {
-        assertEquals(veiculos, veiculoServico.obterTodosVeiculos());
+        final List<Veiculo> veiculos = Arrays.asList(veiculo);
+        when(veiculoRepositorio.findAll()).thenReturn(veiculos);
+
+        final List<Veiculo> obterTodosVeiculos = veiculoServico.obterTodosVeiculos();
+
+        assertEquals(veiculos, obterTodosVeiculos);
         verify(veiculoRepositorio).findAll();
     }
 
-    @Ignore
     @Test
     public void testObterVeiculoPorId() {
-        assertEquals(veiculo, veiculoServico.obterVeiculoPorId(1L));
+        when(veiculoRepositorio.findOne(1L)).thenReturn(veiculo);
+
+        final Veiculo obterVeiculoPorId = veiculoServico.obterVeiculoPorId(1L);
+
+        assertEquals(veiculo, obterVeiculoPorId);
         verify(veiculoRepositorio).findOne(1L);
     }
 
-    @Ignore
     @Test
     public void testObterVeiculoPorPlaca() {
-        assertEquals(veiculo, veiculoServico.obterVeiculoPorPlaca("ABCD-1234"));
-        verify(veiculoRepositorio).findByPlacaIgnoreCase("ABCD-1234");
+
+        final Veiculo obterVeiculoPorPlaca = veiculoServico.obterVeiculoPorPlaca(PLACA);
+
+        assertEquals(veiculo, obterVeiculoPorPlaca);
+        assertEquals(PLACA, obterVeiculoPorPlaca.getPlaca());
+        verify(veiculoRepositorio).findByPlacaIgnoreCase(PLACA);
     }
 
 }
