@@ -10,3 +10,5 @@ WebAPI/target/test-classes/\.netbeans_automatic_build
 *.original
 
 WebAPI/target/classes/\.netbeans_automatic_build
+/WebAPI/nbproject/
+*.txt
