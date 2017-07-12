@@ -8,7 +8,7 @@ app.service('graficoService', function ($http) {
     }
 
     function obterCidades(){
-        return $http.get('http://localhost:9090/cidade/obtertodas');
+        return $http.get('http://localhost:9090/cidade/obternumerocidades');
     }
 
     function totalVeiculos(){

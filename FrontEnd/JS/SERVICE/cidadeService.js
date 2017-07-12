@@ -12,14 +12,14 @@ app.service('cidadeService',function($http){
 
 
     function obterCidades(){
-        return $http.get(url);
+        return $http.get(url + '/obtertodas');
     }
 
     function totalCidades(){
         return $http.get(url + '/obtertodas');
     }
 
-    function adicionarCidades(cidade){
+    function adicionarCidade(cidade){
         return $http.post(url, cidade);
     }
 

@@ -18,7 +18,9 @@ app.controller('graficoController', function($scope, $http, graficoService, $rou
   $scope.graficoTotalVeiculos = {
       "chart": {
           "caption": "Total de veículos",
-          "captionFontSize": "20"
+          "captionFontSize": "20",
+          "theme": "zune",
+        "palettecolors": "#0075c2"
       },
       "data": [{
           "label": "Figura 2",
@@ -52,11 +54,9 @@ app.controller('graficoController', function($scope, $http, graficoService, $rou
     
 
     function totalCidades(){
-        //  $http.get('http://localhost:9090/registro/cidade/obtertodas')
-        graficoService.obterCidades()
-        .then(response => {
-            console.log(response.data.length)
-            $scope.graficoTotalCidades.data[0].value = response.data.length;
+        graficoService.obterCidades().then(response => {
+            console.log(response.data)
+            $scope.graficoTotalCidades.data[0].value = response.data;
             //$scope.totalCidade = response.data;
         }).catch(error => console.log(error));   
     }
