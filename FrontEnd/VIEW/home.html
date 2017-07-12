@@ -1,129 +1,132 @@
-<div class="menus">
-    <div class="menu-fixo">
-        <ul>
-            <li>
-                <a href="#">
-                  <i class="fa fa-bars fa-2x"></i>
-                </a>
-            </li>
-        </ul>
-        <h1>Monitor Veículos</h1>
-        <button type="button" ng-click="logar()" class="botaologin"> Login </button>
+<div class="container">
+    <div class="row menu-fixo">
+            <ul>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-bars fa-2x"></i>
+                    </a>
+                </li>
+            </ul>
+            <h1 class="column">Monitor Veículos</h1>
+            <a type="button" href="#!/login" class="column column-25 float-right"> Login </a>
     </div>
+    <div class="row corpo">
+        <div class="column column-25 float-left">
+            <ul>
+                <li class="column">
+                    <a href="#">
+                        <i class="fa fa-home fa-2x"></i>
+                        <span class="nav-text">Home</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-location-arrow fa-2x"></i>
+                    <span class="nav-text">Cidades</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="/ocorrencias">
+                    <i class="fa fa-files-o fa-2x"></i>
+                    <span class="nav-text">Ocorrências</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-camera fa-2x"></i>
+                    <span class="nav-text">Câmeras</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-car fa-2x"></i>
+                    <span class="nav-text">Veículos</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-folder-open fa-2x"></i>
+                    <span class="nav-text">Suspeitos de clonagem</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-bar-chart-o fa-2x"></i>
+                    <span class="nav-text">Gráficos</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#!/analiserota">
+                    <i class="fa fa-map fa-2x"></i>
+                    <span class="nav-text">Rotas</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#">
+                    <i class="fa fa-map-marker fa-2x"></i>
+                    <span class="nav-text">Mapas</span>
+                    </a>
+                </li>
+                <li class="column">
+                    <a href="#" ng-click="logout()">
+                    <i class="fa c-off fa-2x"></i>
+                    <span class="nav-text">Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>    
+    
 
 
-
-    <nav class="main-menu">
-        <ul>
-            <li>
-                <a href="#">
-                <i class="fa fa-home fa-2x"></i>
-                <span class="nav-text">Home</span>
-                </a>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-                <i class="fa fa-location-arrow fa-2x"></i>
-                <span class="nav-text">Cidades</span>
-                </a>
-            </li>
-            <li class="has-subnav">
-                <a href="/ocorrencias">
-                <i class="fa fa-files-o fa-2x"></i>
-                <span class="nav-text">Ocorrências</span>
-                </a>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-                <i class="fa fa-camera fa-2x"></i>
-                <span class="nav-text">Câmeras</span>
-                </a>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-                <i class="fa fa-car fa-2x"></i>
-                <span class="nav-text">Veículos</span>
-                </a>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-                <i class="fa fa-folder-open fa-2x"></i>
-                <span class="nav-text">Suspeitos de clonagem</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                <i class="fa fa-bar-chart-o fa-2x"></i>
-                <span class="nav-text">Gráficos</span>
-                </a>
-            </li>
-            <li>
-                <a href="#!/analiserota">
-                <i class="fa fa-map fa-2x"></i>
-                <span class="nav-text">Rotas</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                <i class="fa fa-map-marker fa-2x"></i>
-                <span class="nav-text">Mapas</span>
-                </a>
-            </li>
-        </ul>
-        <ul class="logout">
-            <li>
-                <a href="#" ng-click="logout()">
-                <i class="fa c-off fa-2x"></i>
-                <span class="nav-text">Logout</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-</div>
-
-<div class="graficos">
-    <div>
-        <fusioncharts
-            width="50%"
-            height="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoTotalCidades}}">
-        </fusioncharts>
-    </div>
+            <div class="column column-50 float-rigth">
+                <div class="row">
+                    <div class="column">
+                        <fusioncharts
+                            width="300"
+                            height="300"
+                            type= "column3d"
+                            dataFormat="json"
+                            theme = "carbon"
+                            dataSource="{{graficoTotalCidades}}">
+                        </fusioncharts>
+                    </div>
 
 
-    <div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoTotalVeiculos}}">
-        </fusioncharts>
-    </div>
+                    <div class="column">
+                        <fusioncharts
+                            width="300"
+                            heigh="300"
+                            type= "column3d"
+                            dataFormat="json"
+                            theme="zune" 
+                            palettecolors="#0075c2"
+                            dataSource="{{graficoTotalVeiculos}}">
+                        </fusioncharts>
+                    </div>
+                <!--</div>-->
+                <!--<div class="row">-->
+                    <!--<div>
+                        <fusioncharts
+                            width="50%"
+                            heigh="400"
+                            type= "column3d"
+                            dataFormat="json"
+                            theme = "carbon"
+                            dataSource="{{graficoClonados}}">
+                        </fusioncharts>
+                    </div>-->
 
-    <!--<div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoClonados}}">
-        </fusioncharts>
-    </div>-->
-
-    <div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoUltimasOcorrencias}}">
-        </fusioncharts>
-    </div>
+                    <div class="column">
+                        <fusioncharts
+                            width="300"
+                            heigh="300"
+                            type= "column3d"
+                            dataFormat="json"
+                            theme = "carbon"
+                            dataSource="{{graficoUltimasOcorrencias}}">
+                        </fusioncharts>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>

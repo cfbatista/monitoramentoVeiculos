@@ -26,8 +26,9 @@
             <input type="text" name="bairro" required ng-model="usuario.bairro" placeholder="Insira seu bairro">
         </div>
         <div class="form-input-Login">
-            <label for="opcionais">Selecione seu(s) Opciona(is)l:</label>
+            <label for="opcionais">Selecione sua Cidade:</label>
             <select ng-model="usuario.idcidade" class="form-control">
+                <option disabled>Selecione uma cidade</option>
                 <option ng-repeat="cidade in cidades" value="{{cidade.idcidade}}">{{cidade.nome}}</option>
             </select>
         </div>
