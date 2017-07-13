@@ -1,7 +1,8 @@
 #map{
-  height:650px;
+  height:600px;
   width:100%;
   float: left;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 10px;
+  background-image: url("https://tr4.cbsistatic.com/hub/i/r/2013/07/10/37ecfa44-e907-11e2-bc00-02911874f8c8/thumbnail/770x578/5668e502ed57b79bd550daae06e831cd/logo-map-maker.png");
+  background-repeat: none;
 }

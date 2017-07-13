@@ -20,4 +20,6 @@ public class CalculoEnergiaModel {
     private Double distancia;
 
     private Double energia;
+    
+    private Double numeroVeiculos;
 }

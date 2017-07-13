@@ -1,91 +1,99 @@
-<div class="row menu-fixo">
+<div class="menu-fixo">
+    <h1>Monitor Veículos</h1>
+    <div class="login">
+
+        <ul ng-show="!logado">
+            <li id="login">
+                <a id="login-trigger" href="">
+				Logar
+			</a>
+                <div id="login-content">
+                    <form novalidate name="formLogin" ng-submit="login(usuario)">
+                        <fieldset id="inputs">
+                            <input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">
+                            <input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
+                            <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
+                        </fieldset>
+                        <fieldset id="actions">
+                            <input type="submit" id="submit" value="Logar">
+                        </fieldset>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <!--
+			<ul ng-show="logado">
+			    <li id="login">
+					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
+				</li>
+			</ul>-->
+
+    </div>
+</div>
+
+<nav class="main-menu">
     <ul>
-        <li class="column">
+        <li>
             <a href="#">
                 <i class="fa fa-bars fa-2x"></i>
             </a>
         </li>
+
+        <li>
+            <a href="#">
+                <i class="fa fa-home fa-2x"></i>
+            </a>
+        </li>
+
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-location-arrow fa-2x"></i>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-files-o fa-2x"></i>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-camera fa-2x"></i>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-car fa-2x"></i>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-folder-open fa-2x"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-bar-chart-o fa-2x"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-map fa-2x"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+            </a>
+        </li>
     </ul>
-    <h1 class="column">Monitor Veículos</h1>
-    <a type="button" href="#!/login" class="column column-25 float-right"> Login </a>
-</div>
+</nav>
 
 <div class="container">
     <div class="row">
-        <div class="column column-20">
-            <nav class="main-menu">
-                <ul>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-home fa-2x"></i>
-                            <span class="nav-text">Home</span>
-                        </a>
-                    </li>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-location-arrow fa-2x"></i>
-                            <span class="nav-text">Cidades</span>
-                        </a>
-                    </li>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-files-o fa-2x"></i>
-                            <span class="nav-text">Ocorrências</span>
-                        </a>
-                    </li>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-camera fa-2x"></i>
-                            <span class="nav-text">Câmeras</span>
-                        </a>
-                    </li>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-car fa-2x"></i>
-                            <span class="nav-text">Veículos</span>
-                        </a>
-                    </li>
-                    <li class="has-subnav">
-                        <a href="#">
-                            <i class="fa fa-folder-open fa-2x"></i>
-                            <span class="nav-text">Suspeitos de clonagem</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-bar-chart-o fa-2x"></i>
-                            <span class="nav-text">Gráficos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#!/analiserota">
-                            <i class="fa fa-map fa-2x"></i>
-                            <span class="nav-text">Rotas</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-map-marker fa-2x"></i>
-                            <span class="nav-text">Mapas</span>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="logout">
-                    <li>
-                        <a href="#" ng-click="logout()">
-                            <i class="fa c-off fa-2x"></i>
-                            <span class="nav-text">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-
-
-        <div class="column column-60">
+        <div class="column column-80">
             <div id="map"></div>
         </div>
-
         <div class="column column-20">
             <div ng-show="selecionar_orientacao">
                 <form ng-submit="buscarCamerasPorSentido(direcao)">
@@ -130,19 +138,22 @@
 
 <div class="container">
     <div class="row">
-        <div class="column column-30">
-
+        <div class="column column-20"></div>
+        <div class="column column-20" align="center">
+            <img src="https://png.icons8.com/map-marker/ios7/50" title="Map Marker" width="50" height="50">
+            <label>Distancia em KM</label>
+            <p>{{energia.distancia}}</p>
         </div>
-        <div class="column column-30">
-            <div>
-                <label align="center">Distancia entre os pontos</label>
-                    <p>{{energia.distancia}}</p>
-                <label align="center">Energia desperdicada</label>
-                    <p>{{energia.energia}} kWh</p>
-            </div>
+        <div class="column column-20" align="center">
+            <img src="https://png.icons8.com/lightning-bolt/ios7/50" title="Lightning Bolt" width="50" height="50">
+            <label>Energia</label>
+            <p>{{energia.energia}}</p>
         </div>
-        <div class="column column-30">
-
+        <div class="column column-20" align="center">
+            <img src="https://png.icons8.com/traffic-jam/ios7/50" title="Traffic Jam" width="50" height="50">
+            <label>Numero de veiculos</label>
+            <p>{{veiculoConsultado.numeroDiasNoutraCidade}}</p>
         </div>
+        <div class="column column-20"></div>
     </div>
 </div>

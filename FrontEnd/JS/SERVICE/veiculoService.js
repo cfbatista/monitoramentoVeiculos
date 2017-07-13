@@ -4,9 +4,6 @@ app.service('veiculoService', function($http) {
 
     return {
         obterTotalVeiculos: obterTotalVeiculos,
-        obterTodosVeiculos: obterTodosVeiculos,
-        obterVeiculoPorId: obterVeiculoPorId,
-        obterVeiculoPorPlaca: obterVeiculoPorPlaca,
         obterConsulta: obterConsulta,
     }
 
@@ -14,16 +11,8 @@ app.service('veiculoService', function($http) {
         return $http.get(url + '/obter/contagem');
     }
 
-    function obterTodosVeiculos() {
-        return $http.get(url + '/obter/todos');
-    }
-
     function obterVeiculoPorId(id) {
         return $http.get(url + '/obter/' + id);
-    }
-
-    function obterVeiculoPorPlaca(placa) {
-        return $http.get(url + '/obter/' + placa);
     }
 
     function obterConsulta(placa) {
