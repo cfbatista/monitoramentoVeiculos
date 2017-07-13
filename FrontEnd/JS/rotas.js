@@ -33,7 +33,8 @@ app.config(function($routeProvider){
         })
 
         .when('/veiculo', {
-            templateUrl: 'VIEW/veiculo.html'
+            templateUrl: 'VIEW/veiculo.html',
+            controller: 'veiculoController'
         })
         .when('/cadastroOcorrencia', {
             templateUrl: 'VIEW/cadastroOcorrencia.html',
