@@ -58,8 +58,7 @@ public class CameraControle {
 
     @PostMapping(value = "/energia")
     public CalculoEnergiaModel obterEnergia(@RequestBody RegistroCountModel registroCountModel) {
-        return cameraServico.calculoEnergia(registroCountModel);
-
+            return cameraServico.calculoEnergia(registroCountModel);
     }
 
 }

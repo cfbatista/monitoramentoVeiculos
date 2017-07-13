@@ -16,8 +16,9 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.pegarCameras = function (RegistroCountModel) {
 
-        $scope.modelEnergia = RegistroCountModel.direcao = $scope.pegardirecao;
-        
+        RegistroCountModel.direcao = $scope.pegardirecao;
+        $scope.modelEnergia = RegistroCountModel;
+
         AnaliseRotaService.listarPontosEspecificos(RegistroCountModel).then(response => {
             $scope.cameras = response.data;
             $scope.tamanho = $scope.cameras.length;
@@ -79,9 +80,11 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     function calculateAndDisplayRoute(directionsService, directionsDisplay, camerasCalor, modelEnergia) {
         var start = camerasCalor[0].camera.latitude + ',' + camerasCalor[0].camera.longitude;
         var end = camerasCalor[$scope.tamanho - 1].camera.latitude + ',' + camerasCalor[$scope.tamanho - 1].camera.longitude;
-        $scope.distanciaEntrePontos = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(camerasCalor[0].camera.latitude, camerasCalor[0].camera.longitude), new google.maps.LatLng(camerasCalor[$scope.tamanho - 1].camera.latitude, camerasCalor[$scope.tamanho - 1].camera.longitude));
         
-        calculoEnergia(modelEnergia, distanciaEntrePontos);
+        $scope.distanciaEntrePontos = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(camerasCalor[0].camera.latitude, camerasCalor[0].camera.longitude), new google.maps.LatLng(camerasCalor[$scope.tamanho - 1].camera.latitude, camerasCalor[$scope.tamanho - 1].camera.longitude));
+        $scope.modelEnergia.metros = $scope.distanciaEntrePontos;
+        
+        calculoEnergia($scope.modelEnergia);
 
         directionsService.route({
             origin: start,
@@ -96,9 +99,10 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         });
     }
 
-    function calculoEnergia(modelEnergia, distanciaEntrePontos){
-        AnaliseRotaService.buscarCalculoEnergia(modelEnergia, distanciaEntrePontos).then(response =>{
+    function calculoEnergia(modelEnergia){
+        AnaliseRotaService.buscarCalculoEnergia(modelEnergia).then(response =>{
             $scope.energia = response.data;
+            console.log($scope.energia);
         })
     }
 })

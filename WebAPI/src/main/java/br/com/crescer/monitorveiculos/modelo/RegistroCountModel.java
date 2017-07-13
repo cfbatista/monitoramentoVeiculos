@@ -19,7 +19,6 @@ import lombok.Setter;
 @Builder
 public class RegistroCountModel {
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
     private Date data;
 
     private Long idCameraInicial;

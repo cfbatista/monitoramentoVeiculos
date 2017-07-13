@@ -113,11 +113,8 @@
                             <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
                         </select>
 
-                        <label>Periodo inicial</label>
-                        <input type="date" ng-model="RegistroCountModel.dataInicial">
-
-                        <label>Periodo final</label>
-                        <input type="date" ng-model="RegistroCountModel.dataFinal">
+                        <label>Dia de Pesquisa</label>
+                        <input type="date" ng-model="RegistroCountModel.data">
 
                         <input type="submit" value="Buscar Rota">
                     </fieldset>
@@ -127,6 +124,25 @@
                 <input type="submit" ng-click="click()" value="Plotar Mapa">
                 <input type="submit" ng-click="tracarRota()" value="Calcular rota">
             </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="column column-30">
+
+        </div>
+        <div class="column column-30">
+            <div>
+                <label align="center">Distancia entre os pontos</label>
+                    <p>{{energia.distancia}}</p>
+                <label align="center">Energia desperdicada</label>
+                    <p>{{energia.energia}} kWh</p>
+            </div>
+        </div>
+        <div class="column column-30">
+
         </div>
     </div>
 </div>
