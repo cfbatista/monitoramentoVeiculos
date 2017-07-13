@@ -21,5 +21,5 @@ public class CalculoEnergiaModel {
 
     private Double energia;
     
-    private Double numeroVeiculos;
+    private Long numeroVeiculos;
 }

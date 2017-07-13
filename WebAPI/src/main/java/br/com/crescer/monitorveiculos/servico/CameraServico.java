@@ -82,7 +82,7 @@ public class CameraServico {
         Double km = calculoKilometragem(model.getMetros());
         Long registros = contagemRegistrosDeRota(model.getData(), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
         Double energia = km * KWH * registros;
-        CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).build();
+        CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).numeroVeiculos(registros).build();
         return retorno;
     }
    

@@ -142,17 +142,17 @@
         <div class="column column-20" align="center">
             <img src="https://png.icons8.com/map-marker/ios7/50" title="Map Marker" width="50" height="50">
             <label>Distancia em KM</label>
-            <p>{{energia.distancia}}</p>
+            <p>{{energia.distancia | number:2}}</p>
         </div>
         <div class="column column-20" align="center">
             <img src="https://png.icons8.com/lightning-bolt/ios7/50" title="Lightning Bolt" width="50" height="50">
             <label>Energia</label>
-            <p>{{energia.energia}}</p>
+            <p>{{energia.energia | number:2}}</p>
         </div>
         <div class="column column-20" align="center">
             <img src="https://png.icons8.com/traffic-jam/ios7/50" title="Traffic Jam" width="50" height="50">
             <label>Numero de veiculos</label>
-            <p>{{veiculoConsultado.numeroDiasNoutraCidade}}</p>
+            <p>{{energia.numeroVeiculos}}</p>
         </div>
         <div class="column column-20"></div>
     </div>
