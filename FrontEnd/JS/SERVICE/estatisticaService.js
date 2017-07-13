@@ -1,8 +1,8 @@
-app.service('estatisticaService', function($http){
-    
+app.service('estatisticaService', function($http) {
+
     var url = 'http://localhost:9090/estatistica';
 
-    return{
+    return {
         fabricantesMaiorOcorrencia: fabricantesMaiorOcorrencia,
         modelosMaisRoubados: modelosMaisRoubados,
         horarioComMaiorRoubo: horarioComMaiorRoubo,
@@ -10,23 +10,23 @@ app.service('estatisticaService', function($http){
         camerasComMaisVeiculosRoubados: camerasComMaisVeiculosRoubados
     }
 
-    function fabricantesMaiorOcorrencia(){
-        return $http.get(url + '/fabricantesMaiorOcorrencia');
+    function fabricantesMaiorOcorrencia() {
+        return $http.get(url + '/obter/topmarcas');
     }
 
-    function modelosMaisRoubados(){
-        return $http.get(url + '/modelosMaisRoubados');
+    function modelosMaisRoubados() {
+        return $http.get(url + 'obter/topmodelos');
     }
 
-    function horarioComMaiorRoubo(){
+    function horarioComMaiorRoubo() {
         return $http.get(url + '/horarioComMaiorRoubo');
     }
 
-    function cidadesComMaisRoubos(){
-        return $http.get(url + '/cidadesComMaisRoubos');
+    function cidadesComMaisRoubos() {
+        return $http.get(url + '/obter/topcidades');
     }
 
-    function camerasComMaisVeiculosRoubados(){
+    function camerasComMaisVeiculosRoubados() {
         return $http.get(url + '/camerasComMaisVeiculosRoubados');
     }
 });
