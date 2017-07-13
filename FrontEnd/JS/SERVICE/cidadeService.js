@@ -17,7 +17,7 @@ app.service('cidadeService', function($http) {
     return {
         obterCidades: obterCidades,
         totalCidades: totalCidades,
-        cidadescomregistro: cidadesComRegistro
+        cidadesComRegistro: cidadesComRegistro
     }
 
 });
