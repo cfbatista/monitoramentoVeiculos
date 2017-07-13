@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.servico;
 
-import br.com.crescer.monitorveiculos.entidade.Camera;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
@@ -71,14 +70,14 @@ public class VeiculoServico {
         retorno.setNumeroDiasNoutraCidade(registroRepositorio.obterNumeroVezesVeiculoForaSuaCidade(placa, pegarPrimeiroDiaMes(), pegarUltimoDiaMes()));
         return retorno;
     }
-    
-    public Date pegarPrimeiroDiaMes(){
+
+    public Date pegarPrimeiroDiaMes() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
         return cal.getTime();
     }
-    
-    public Date pegarUltimoDiaMes(){
+
+    public Date pegarUltimoDiaMes() {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
         return cal.getTime();
