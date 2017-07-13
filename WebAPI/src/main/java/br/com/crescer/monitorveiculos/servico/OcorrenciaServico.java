@@ -47,4 +47,8 @@ public class OcorrenciaServico {
     public List<RetornoTop> topModelosOcorrencia() {
         return ocorrenciaRepositorio.topModelosOcorrencia();
     }
+
+    public List<RetornoTop> topCidadesOcorrencia() {
+        return ocorrenciaRepositorio.topCidadesOcorrencia();
+    }
 }

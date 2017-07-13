@@ -1,8 +1,20 @@
-app.service('cidadeService',function($http){
-    
+app.service('cidadeService', function($http) {
+
     var url = 'http://localhost:9090/cidade';
 
-    return{
+    function obterCidades() {
+        return $http.get(url + '/obter/todas');
+    }
+
+    function totalCidades() {
+        return $http.get(url + '/obter/numerocidades');
+    }
+
+    function cidadesComRegistro() {
+        return $http.get(url + 'obter/cidadescomregistro');
+    }
+
+    return {
         obterCidades: obterCidades,
         totalCidades: totalCidades,
         adicionarCidade: adicionarCidade,
@@ -10,24 +22,4 @@ app.service('cidadeService',function($http){
         deletarCidade: deletarCidade
     }
 
-
-    function obterCidades(){
-        return $http.get(url + '/obtertodas');
-    }
-
-    function totalCidades(){
-        return $http.get(url + '/obtertodas');
-    }
-
-    function adicionarCidade(cidade){
-        return $http.post(url, cidade);
-    }
-
-    function atualizarCidade(cidade){
-        return $http.post(url, cidade);
-    }
-
-    function deletarCidade(cidade){
-        return $http.delete(cidade);
-    }
 });

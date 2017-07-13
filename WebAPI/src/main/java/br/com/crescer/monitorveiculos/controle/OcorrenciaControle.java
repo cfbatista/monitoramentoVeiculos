@@ -44,4 +44,9 @@ public class OcorrenciaControle {
         return ocorrenciaServico.topModelosOcorrencia();
     }
 
+    @GetMapping(value = "obter/topcidades")
+    public List<RetornoTop> topCidadesOcorrencia() {
+        return ocorrenciaServico.topCidadesOcorrencia();
+    }
+
 }
