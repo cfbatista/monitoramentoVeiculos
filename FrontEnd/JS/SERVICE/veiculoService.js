@@ -1,37 +1,32 @@
-app.service('veiculoService', function($http){
+app.service('veiculoService', function($http) {
 
     var url = 'http://localhost:9090/veiculo';
 
-    return{
-        obterVeiculo: obterVeiculo,
-        obterVeiculoPlaca: obterVeiculoPlaca,
-        obterVeiculoClonado: obterVeiculoClonado,
-        adicionarVeiculo: adicionarVeiculo,
-        atualizarVeiculo: atualizarVeiculo,
-        deletarVeiculo: deletarVeiculo
+    return {
+        obterTotalVeiculos: obterTotalVeiculos,
+        obterTodosVeiculos: obterTodosVeiculos,
+        obterVeiculoPorId: obterVeiculoPorId,
+        obterVeiculoPorPlaca: obterVeiculoPorPlaca,
+        obterConsulta: obterConsulta,
     }
 
-    function obterVeiculo(){
-        return $http.get(url);
+    function obterTotalVeiculos() {
+        return $http.get(url + '/obter/contagem');
     }
 
-    function obterVeiculoPlaca(placa){
-        return $http.get(url + '/placa');
+    function obterTodosVeiculos() {
+        return $http.get(url + '/obter/todos');
     }
 
-    function obterVeiculoClonado(){
-        return $http.get(url + '/clonado');
+    function obterVeiculoPorId(id) {
+        return $http.get(url + '/obter/' + id);
     }
 
-    function adicionarVeiculo(veiculo){
-        return $http.post(url, veiculo);
+    function obterVeiculoPorPlaca(placa) {
+        return $http.get(url + '/obter/' + placa);
     }
 
-    function atualizarVeiculo(veiculo){
-        return $http.post(url, veiculo);
-    }
-
-    function deletarVeiculo(veiculo){
-        return $http.delete(veiculo);
+    function obterConsulta(placa) {
+        return $http.get(url + '/consulta/' + placa);
     }
 });

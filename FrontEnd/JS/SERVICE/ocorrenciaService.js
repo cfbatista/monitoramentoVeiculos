@@ -1,31 +1,16 @@
-app.service('ocorrenciaService', function($http){
+app.service('ocorrenciaService', function($http) {
     var url = 'http://localhost:9090/ocorrencia';
 
-    return{
-        obterOcorrencias: obterOcorrencias,
-        obterOcorrenciaUsuario: obterOcorrenciaUsuario,
+    function obterTodasOcorrencias() {
+        return $http.get(url + 'obter/todas');
+    }
+
+    function adicionarOcorrencia(ocorrencia) {
+        return $http.post(url, ocorrencia);
+    }
+
+    return {
+        obterTodasOcorrencias: obterTodasOcorrencias,
         adicionarOcorrencia: adicionarOcorrencia,
-        atualizarOcorrencia: atualizarOcorrencia,
-        deletarOcorrencia: deletarOcorrencia
     }
-
-
-    function obterOcorrencias(){
-        return $http.get(url);
-    }
-
-    function obterOcorrenciaUsuario(usuario){
-        return $http.get(url + '/usuario');
-    }
-
-    function adicionarOcorrencia(ocorrencia){
-        return $http.post(url, ocorrencia);
-    }
-
-    function atualizarOcorrencia(ocorrencia){
-        return $http.post(url, ocorrencia);
-    }
-    function deletarOcorrencia(ocorrencia){
-        return $http.delete(ocorrencia);
-    }
-}); 
+});
