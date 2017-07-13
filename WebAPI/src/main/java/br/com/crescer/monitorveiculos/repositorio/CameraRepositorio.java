@@ -42,4 +42,5 @@ public interface CameraRepositorio extends CrudRepository<Camera, Long> {
             @Param("idCameraFinal") Long idCameraFinal,
             @Param("direcao") Character direcao
     );
+
 }

@@ -4,7 +4,6 @@ app.config(function($routeProvider){
 
         .when('/home', {
             controller: 'homeController',
-            controller: 'graficoController',
             controller: 'loginController',
             templateUrl: 'VIEW/home.html'
         })
@@ -17,6 +16,10 @@ app.config(function($routeProvider){
          .when('/cadastro', {
             controller: 'cadastroController',
             templateUrl: 'VIEW/cadastro.html'
+        })
+        .when('/cadastroCamera', {
+            controller: 'adminController',
+            templateUrl: 'VIEW/cadastroCamera.html'
         })
 
         .when('/analiserota', {

@@ -15,17 +15,17 @@ import org.springframework.data.repository.query.Param;
  */
 public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
 
-    List<Registro> findByDataHoraBetween(Date dataInicial, Date dataFinal);
+    public List<Registro> findByDataHoraBetween(Date dataInicial, Date dataFinal);
 
-    Long countByCameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
+    public Long countByCameraAndDataHoraBetween(Camera camera, Date dataInicial, Date dataFinal);
 
-    Long countByPlaca(String placa);
+    public Long countByPlaca(String placa);
 
     @Query("SELECT COUNT (DISTINCT ca.idcamera) FROM Registro re INNER JOIN re.camera ca WHERE re.placa = :placa")
-    Long obterNumeroDeCamerasComRegistros(@Param("placa") String placa);
+    public Long obterNumeroDeCamerasComRegistros(@Param("placa") String placa);
 
     @Query("SELECT COUNT(re.idregistro) FROM Registro re WHERE re.velocidade > re.camera.velocidadeMaxima AND re.placa = :placa")
-    Long obterNumeroDeVezesQuePassouVelocidade(@Param("placa") String placa);
+    public Long obterNumeroDeVezesQuePassouVelocidade(@Param("placa") String placa);
 
     @Query(value = "select count( distinct trunc(r.data_hora) ) "
             + "from registro r inner join "
@@ -34,7 +34,7 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
             + "inner join camera c "
             + "on c.idcidade != v.idcidade where "
             + "r.data_hora BETWEEN :dataInicial and :dataFinal", nativeQuery = true)
-    Long obterNumeroVezesVeiculoForaSuaCidade(
+    public Long obterNumeroVezesVeiculoForaSuaCidade(
             @Param("placa") String placa,
             @Param("dataInicial") Date dataInicial,
             @Param("dataFinal") Date dataFinal);
@@ -50,5 +50,7 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
     public Long contagemRegistrosHorario(
             @Param("dataInicial") Date dataInicial,
             @Param("dataFinal") Date dataFinal);
+
+    public Long countByDataHoraBetween(Date data1, Date data2);
 
 }

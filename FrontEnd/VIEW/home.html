@@ -12,7 +12,7 @@
 				Logar
 			</a>
 			<div id="login-content">
-			    <form novalidate name="formLogin" ng-submit="login(usuario)"> 
+                <form novalidate name="formLogin" ng-submit="login(usuario)"> 
 					<fieldset id="inputs">
 						<input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">   
 				    	<input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
@@ -20,13 +20,14 @@
 					</fieldset>
 					<fieldset id="actions">
 						<input type="submit" id="submit" value="Logar">
+                        <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
 					</fieldset>
 				</form>
 			    </div>                     
 		    </li>
 	    </ul>
-<!--
-			<ul ng-show="logado">
+
+			<!--<ul ng-show="logado">
 			    <li id="login">
 					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
 				</li>
@@ -96,19 +97,19 @@
   
   <div class="info">
      <div class="infos">
-       {{totalCidades}}
+         <p>Total de cidades</p>
+       <h2>{{totalCidades}}</h2>
      </div>
     <div class="infos">
-      {{totalVeiculos}}
+        <p>Total de veículos</p>
+      <h2>{{totalVeiculos}}</h2>
     </div>
     <div class="infos">
-      {{ocorrenciasUltimos3meses}}
-    </div>
-    <div class="infos">
-      Alguma coisa
+        <p>Total de ocorrências dos últimos 3 meses</p>
+      <h2>{{ocorrenciasUltimos3meses}}</h2>
     </div>
   </div>
-  
+
 </body>
 
 </html>
