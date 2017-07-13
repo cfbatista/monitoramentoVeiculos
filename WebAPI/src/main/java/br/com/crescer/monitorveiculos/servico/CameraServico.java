@@ -6,7 +6,6 @@ import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
 import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
-import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
@@ -24,61 +23,59 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class CameraServico {
-
+    
     @Autowired
     private CameraRepositorio cameraRepositorio;
-    @Autowired
-    private RegistroRepositorio registroRepositorio;
-
+    
     private static final Double KWH = 0.66;
-
+    
     public Camera findById(long id) {
         return cameraRepositorio.findOne(id);
     }
-
+    
     public long contagemTotal() {
         return cameraRepositorio.count();
     }
-
+    
     public List<Camera> obterTodas() {
         return (List<Camera>) cameraRepositorio.findAll();
     }
-
+    
     public List<RetornoHeatMapModel> retornarModel(Date data, Long idcameraInicial, Long idcameraFinal, Character direcao) {
-
-        return cameraRepositorio.retornarModel(data, idcameraInicial, idcameraFinal, direcao);
+        List<Date> datas = calculaData(data);
+        return cameraRepositorio.retornarModel(datas.get(0), datas.get(1), idcameraInicial, idcameraFinal, direcao);
     }
-
+    
     public List<HeatMapModel> calcularFator(List<RetornoHeatMapModel> lista) {
         List<HeatMapModel> retorno = new ArrayList<>();
-
+        
         Long total = lista
                 .stream()
                 .mapToLong(e -> e.getCountRegistros())
                 .sum();
-
+        
         lista.stream().forEach(e -> {
             final Double fator = (e.getCountRegistros().doubleValue() / total) * 100;
             final HeatMapModel heatMapModel = new HeatMapModel(e.getCamera(), fator);
             retorno.add(heatMapModel);
         });
-
+        
         return retorno;
     }
-
+    
     public List<Camera> buscarCamerasPorDirecao(Character direcao) {
         return cameraRepositorio.findByDirecao(direcao);
     }
-
+    
     public Long contagemRegistrosDeRota(Date data, Long idCameraInicial, Long idCameraFinal, Character direcao) {
         List<Date> datas = calculaData(data);
         return cameraRepositorio.contagemRegistrosDeRota(datas.get(0), datas.get(1), idCameraInicial, idCameraFinal, direcao);
     }
-
+    
     public Double calculoKilometragem(Double metros) {
         return metros / 1000;
     }
-
+    
     public CalculoEnergiaModel calculoEnergia(RegistroCountModel model) {
         Double km = calculoKilometragem(model.getMetros());
         Long registros = contagemRegistrosDeRota(model.getData(), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
@@ -86,16 +83,14 @@ public class CameraServico {
         CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).build();
         return retorno;
     }
-
+    
     public static List<Date> calculaData(Date data) {
-        LocalDateTime dataInicial = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault());
-        dataInicial.with(LocalTime.of(0, 0, 0));
+        LocalDateTime dataInicial = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault()).with(LocalTime.of(0, 0, 0, 0));
         ZonedDateTime zonaDataInicial = dataInicial.atZone(ZoneId.systemDefault());
-
-        LocalDateTime dataFinal = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault());
-        dataFinal.with(LocalTime.of(23, 59, 59));
-        ZonedDateTime zonaDataFinal = dataInicial.atZone(ZoneId.systemDefault());
-
+        
+        LocalDateTime dataFinal = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault()).with(LocalTime.of(23, 59, 59, 59));
+        ZonedDateTime zonaDataFinal = dataFinal.atZone(ZoneId.systemDefault());
+        
         return Arrays.asList(Date.from(zonaDataInicial.toInstant()), Date.from(zonaDataFinal.toInstant()));
     }
 }
