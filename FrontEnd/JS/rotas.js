@@ -5,6 +5,7 @@ app.config(function($routeProvider){
         .when('/home', {
             controller: 'homeController',
             controller: 'graficoController',
+            controller: 'loginController',
             templateUrl: 'VIEW/home.html'
         })
  
