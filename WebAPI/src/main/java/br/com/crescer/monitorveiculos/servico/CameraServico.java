@@ -5,6 +5,7 @@ import br.com.crescer.monitorveiculos.modelo.CalculoEnergiaModel;
 import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
 import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
+import br.com.crescer.monitorveiculos.modelo.VeiculosPorSemanaModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -12,6 +13,7 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,6 +85,19 @@ public class CameraServico {
         CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).build();
         return retorno;
     }
+   
+    public List<VeiculosPorSemanaModel> calcularNumeroVeiculosPorDiaSemana(RegistroCountModel model){
+        List<Date> diasSemana = pegarDiasSemana(model.getData());
+        VeiculosPorSemanaModel veiculosModel = new VeiculosPorSemanaModel();
+        List<VeiculosPorSemanaModel> retorno = null;
+        for(int i = 0; i < diasSemana.size()-2; i++){
+            Long NumeroVeiculos  = cameraRepositorio.contagemRegistrosDeRota(diasSemana.get(i), diasSemana.get(i+1), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
+            veiculosModel.setDiaSemana(diasSemana.get(i));
+            veiculosModel.setNumeroCarros(NumeroVeiculos);
+            retorno.add(veiculosModel);
+        }
+        return retorno;
+    }
     
     public static List<Date> calculaData(Date data) {
         LocalDateTime dataInicial = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault()).with(LocalTime.of(0, 0, 0, 0));
@@ -93,4 +108,18 @@ public class CameraServico {
         
         return Arrays.asList(Date.from(zonaDataInicial.toInstant()), Date.from(zonaDataFinal.toInstant()));
     }
+    
+     public List<Date> pegarDiasSemana(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int dia = cal.get(Calendar.DAY_OF_WEEK);
+        cal.add(Calendar.DAY_OF_MONTH, -dia+1);
+        List<Date> retorno = null;
+        for(int i = 0; i<8; i++){ 
+            cal.add(Calendar.DAY_OF_WEEK, i);
+            retorno.add(cal.getTime());
+        }
+        return retorno;
+    }
+    
 }
