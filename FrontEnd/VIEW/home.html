@@ -1,113 +1,114 @@
-<div class="container">
-    <div class="row menu-fixo">
-        <ul>
-            <li class="column">
-                <a href="#">
-                    <i class="fa fa-bars fa-2x"></i>
-                </a>
-            </li>
-        </ul>
-        <h1 class="column">Monitor Veículos</h1>
-        <a type="button" href="#!/login" class="column column-25 float-right"> Login </a>
+<html>
+<head>
+</head>
+<body>
+  <div class="menu-fixo">
+    <h1>Monitor Veículos</h1>
+    <div class="login">
+      
+      <ul ng-show="!logado">
+		<li id="login">
+		    <a id="login-trigger" href="">
+				Logar
+			</a>
+			<div id="login-content">
+			    <form novalidate name="formLogin" ng-submit="login(usuario)"> 
+					<fieldset id="inputs">
+						<input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">   
+				    	<input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
+                        <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
+					</fieldset>
+					<fieldset id="actions">
+						<input type="submit" id="submit" value="Logar">
+					</fieldset>
+				</form>
+			    </div>                     
+		    </li>
+	    </ul>
+<!--
+			<ul ng-show="logado">
+			    <li id="login">
+					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
+				</li>
+			</ul>-->
+      
     </div>
-    <div class="row corpo">
-        <div class="column column-25 float-left">
-            <ul>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-home fa-2x"></i>
-                        <span class="nav-text">Home</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-location-arrow fa-2x"></i>
-                        <span class="nav-text">Cidades</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="/ocorrencias">
-                        <i class="fa fa-files-o fa-2x"></i>
-                        <span class="nav-text">Ocorrências</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-camera fa-2x"></i>
-                        <span class="nav-text">Câmeras</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-car fa-2x"></i>
-                        <span class="nav-text">Veículos</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-folder-open fa-2x"></i>
-                        <span class="nav-text">Suspeitos de clonagem</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-bar-chart-o fa-2x"></i>
-                        <span class="nav-text">Gráficos</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#!/analiserota">
-                        <i class="fa fa-map fa-2x"></i>
-                        <span class="nav-text">Rotas</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#">
-                        <i class="fa fa-map-marker fa-2x"></i>
-                        <span class="nav-text">Mapas</span>
-                    </a>
-                </li>
-                <li class="column">
-                    <a href="#" ng-click="logout()">
-                        <i class="fa c-off fa-2x"></i>
-                        <span class="nav-text">Logout</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
+  </div>
 
+  <nav class="main-menu">
+    <ul>
+      <li>
+        <a href="#">
+          <i class="fa fa-bars fa-2x"></i>
+        </a>
+      </li>
 
+      <li>
+        <a href="#">
+          <i class="fa fa-home fa-2x"></i>
+        </a>
+      </li>
+      
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-location-arrow fa-2x"></i>
+        </a>
 
-        <div class="column column-50 float-rigth">
-            <div class="row">
-                <div class="column">
-                    <fusioncharts width="300" height="300" type="column3d" dataFormat="json" theme="carbon" dataSource="{{graficoTotalCidades}}">
-                    </fusioncharts>
-                </div>
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-files-o fa-2x"></i>
+        </a>
 
-
-                <div class="column">
-                    <fusioncharts width="300" heigh="300" type="column3d" dataFormat="json" theme="zune" palettecolors="#0075c2" dataSource="{{graficoTotalVeiculos}}">
-                    </fusioncharts>
-                </div>
-                <!--</div>-->
-                <!--<div class="row">-->
-                <!--<div>
-                        <fusioncharts
-                            width="50%"
-                            heigh="400"
-                            type= "column3d"
-                            dataFormat="json"
-                            theme = "carbon"
-                            dataSource="{{graficoClonados}}">
-                        </fusioncharts>
-                    </div>-->
-
-                <div class="column">
-                    <fusioncharts width="300" heigh="300" type="column3d" dataFormat="json" theme="carbon" dataSource="{{graficoUltimasOcorrencias}}">
-                    </fusioncharts>
-                </div>
-            </div>
-        </div>
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-camera fa-2x"></i>
+        </a>
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-car fa-2x"></i>
+        </a>
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-folder-open fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-bar-chart-o fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-map fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-map-marker fa-2x"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+  
+  <div class="info">
+     <div class="infos">
+       {{totalCidades}}
+     </div>
+    <div class="infos">
+      {{totalVeiculos}}
     </div>
-</div>
+    <div class="infos">
+      {{ocorrenciasUltimos3meses}}
+    </div>
+    <div class="infos">
+      Alguma coisa
+    </div>
+  </div>
+  
+</body>
+
+</html>
