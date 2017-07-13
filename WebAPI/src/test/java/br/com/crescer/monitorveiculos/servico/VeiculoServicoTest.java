@@ -17,6 +17,7 @@ import static org.mockito.Mockito.when;
  *
  * @author Diandra Rocha
  */
+@Ignore
 public class VeiculoServicoTest {
 
     @Mock
