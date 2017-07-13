@@ -8,7 +8,8 @@ app.service('usuarioService', function($http){
         obterPorId: obterPorId,
         adicionarUsuario: adicionarUsuario,
         updateUsuario: updateUsuario,
-        obterCameras: obterCameras
+        obterCameras: obterCameras,
+        adicionarCamera: adicionarCamera
        
     }
 
@@ -41,5 +42,9 @@ app.service('usuarioService', function($http){
         },
             data: cliente
         });
+    }
+
+    function adicionarCamera(camera){
+        return $http.post(url, camera);
     }
 });

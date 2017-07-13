@@ -1,4 +1,4 @@
-app.controller('autoridadeController', function($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService, usuarioController, homeController){
+app.controller('autoridadeController', function($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService, homeService, cidadeService){
     var usuario = $routeParams.id;
     var permissao;
 
@@ -8,8 +8,6 @@ app.controller('autoridadeController', function($scope, $routeParams, $location,
         }).catch(error => console.log(error));;
     }
 
-    //Ver como a permissao ta vindo
-    if(permissao === 'admin' || permissao === 'autoridade'){
         obterCameras();
 
         function obterCameras(){
@@ -29,10 +27,5 @@ app.controller('autoridadeController', function($scope, $routeParams, $location,
                 $scope.veiculo = response.data;
             }).catch(error => console.log(error));
         }
-        // Falta fazer os método:
-        // -Estatistica
-        // -Deslocamento X Cidades
-        // -Consulta Preditiva
-        // -Análise Rota
-    }
+    
 });
