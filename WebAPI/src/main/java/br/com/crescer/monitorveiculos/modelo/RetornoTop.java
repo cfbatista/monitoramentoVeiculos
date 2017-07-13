@@ -12,9 +12,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 
-public class RetornoTopMarcasOcorrencia {
+public class RetornoTop {
 
-    private String nomeOcorrencia;
+    private String nome;
 
-    private Long numeroOcorrencia;
+    private Long quantidade;
 }
