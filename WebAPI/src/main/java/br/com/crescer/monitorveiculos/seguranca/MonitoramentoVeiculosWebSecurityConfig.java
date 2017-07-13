@@ -53,7 +53,8 @@ public class MonitoramentoVeiculosWebSecurityConfig extends WebSecurityConfigure
                 .antMatchers(HttpMethod.POST, "/camera/heatmapModel")
                 .antMatchers(HttpMethod.POST, "/registro/heatmapContagem")
                 .antMatchers(HttpMethod.POST, "/camera/heatmap")
-                .antMatchers(HttpMethod.POST, "/camera/energia");
+                .antMatchers(HttpMethod.POST, "/camera/energia")
+                .antMatchers(HttpMethod.GET, "/registro/obter/veiculossuspeitos");
     }
 
     @Bean
