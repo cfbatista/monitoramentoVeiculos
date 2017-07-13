@@ -23,7 +23,7 @@ public class RegistroServico {
     private List<Registro> obterRegistrosPorDataHora(Date dataInicial, Date dataFinal) {
         return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
     }
-    
+  
     public Long obterTotalCameras() {
         return registroRepositorio.count();
     }

@@ -31,12 +31,12 @@ public interface CameraRepositorio extends CrudRepository<Camera, Long> {
     public List<Camera> findByDirecao(Character direcao);
 
     @Query("SELECT COUNT(re.idregistro) FROM Registro re "
-            + "WHERE re.dataHora IN :data "
+            + "WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "
             + "AND re.camera.idcamera BETWEEN :idCameraInicial AND :idCameraFinal "
-            + "AND re.camera.direcao = :direcao "
-            + "GROUP BY TRUNC(re.dataHora)")
+            + "AND re.camera.direcao = :direcao")
     public Long contagemRegistrosDeRota(
-            @Param("data") Date data,
+            @Param("dataInicial") Date dataInicial,
+            @Param("dataFinal") Date dataFinal,
             @Param("idCameraInicial") Long idCameraInicial,
             @Param("idCameraFinal") Long idCameraFinal,
             @Param("direcao") Character direcao
