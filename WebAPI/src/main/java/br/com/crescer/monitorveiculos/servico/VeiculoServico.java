@@ -3,6 +3,7 @@ package br.com.crescer.monitorveiculos.servico;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
+import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
 import java.util.List;
@@ -54,7 +55,9 @@ public class VeiculoServico {
         return registroRepositorio.obterNumeroDeCamerasComRegistros(placa);
     }
     
-    private Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
+    private Long obterNumeroDeVezesQuePassouVelocidade(String placa){
+        return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
+    }
 
     public ConsultaVeiculosModel realizarBusca(String placa) {
         
