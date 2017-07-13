@@ -68,6 +68,7 @@ public class VeiculoServico {
         retorno.setQuantidadeCameras(obterNumeroeRegistrosPorCamera(placa));
         retorno.setCidadeVeiculo(veiculo.getCidade());
         retorno.setVezesUltrapassouLimite(obterNumeroDeVezesQuePassouVelocidade(placa));
+        retorno.setNumeroDiasNoutraCidade(registroRepositorio.obterNumeroVezesVeiculoForaSuaCidade(placa, pegarPrimeiroDiaMes(), pegarUltimoDiaMes()));
         return retorno;
     }
     
