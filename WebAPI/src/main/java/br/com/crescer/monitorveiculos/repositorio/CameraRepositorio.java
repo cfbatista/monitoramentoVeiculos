@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.repositorio;
 
 import br.com.crescer.monitorveiculos.entidade.Camera;
+import br.com.crescer.monitorveiculos.entidade.Cidade;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
 import java.util.Date;
 import java.util.List;
@@ -42,5 +43,4 @@ public interface CameraRepositorio extends CrudRepository<Camera, Long> {
             @Param("idCameraFinal") Long idCameraFinal,
             @Param("direcao") Character direcao
     );
-
 }

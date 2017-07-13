@@ -1,5 +1,6 @@
 package br.com.crescer.monitorveiculos.servico;
 
+import br.com.crescer.monitorveiculos.entidade.Camera;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;

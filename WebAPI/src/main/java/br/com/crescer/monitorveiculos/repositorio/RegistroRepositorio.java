@@ -41,9 +41,9 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
         @Param("dataInicial") Date dataInicial,
         @Param("dataFinal") Date dataFinal);
 
-//    @Query("SELECT new br.com.crescer.monitorveiculos.modelo.VeiculoSuspeito "
-//            + "( (DISTINCT re.veiculo), COUNT(re.idregistro), COUNT(DISTINCT re.cidade.uf)) "
-//            + "FROM Registro re GROUP BY re.veiculo.placa, re.dataHora "
-//            + "HAVING COUNT(DISTINCT re.cidade.uf) > 1")
-//    List<VeiculoSuspeito> obterVeiculosSuspeitos();
+    @Query("SELECT new br.com.crescer.monitorveiculos.modelo.VeiculoSuspeito "
+            + "(re.placa, COUNT(re.idregistro), COUNT(DISTINCT re.camera.idcidade.uf)) "
+            + "FROM Registro re GROUP BY re.placa "
+            + "HAVING COUNT(DISTINCT re.camera.idcidade.uf) > 1")
+    public List<VeiculoSuspeito> obterVeiculosSuspeitos();
 }
