@@ -5,6 +5,8 @@ import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,7 +67,19 @@ public class VeiculoServico {
         retorno.setQuantidadeCameras(obterNumeroeRegistrosPorCamera(placa));
         retorno.setCidadeVeiculo(veiculo.getCidade());
         retorno.setVezesUltrapassouLimite(obterNumeroDeVezesQuePassouVelocidade(placa));
-
+        retorno.setNumeroDiasNoutraCidade(registroRepositorio.obterNumeroVezesVeiculoForaSuaCidade(placa, pegarPrimeiroDiaMes(), pegarUltimoDiaMes()));
         return retorno;
+    }
+    
+    public Date pegarPrimeiroDiaMes(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return cal.getTime();
+    }
+    
+    public Date pegarUltimoDiaMes(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return cal.getTime();
     }
 }
