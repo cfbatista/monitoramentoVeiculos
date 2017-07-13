@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Ocorrencia;
+import br.com.crescer.monitorveiculos.modelo.RetornoTop;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import java.util.Calendar;
 import java.util.Date;
@@ -37,5 +38,13 @@ public class OcorrenciaServico {
         call.add(Calendar.MONTH, -3);
         Date d = call.getTime();
         return d;
+    }
+
+    public List<RetornoTop> topMarcasOcorrencia() {
+        return ocorrenciaRepositorio.topMarcasOcorrencia();
+    }
+
+    public List<RetornoTop> topModelosOcorrencia() {
+        return ocorrenciaRepositorio.topModelosOcorrencia();
     }
 }

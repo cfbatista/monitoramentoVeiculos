@@ -1,6 +1,7 @@
 package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Ocorrencia;
+import br.com.crescer.monitorveiculos.modelo.RetornoTop;
 import br.com.crescer.monitorveiculos.servico.OcorrenciaServico;
 import java.util.List;
 import javax.validation.Valid;
@@ -32,4 +33,15 @@ public class OcorrenciaControle {
     public Long pegarTresUltimosMesesOcorrencias() {
         return ocorrenciaServico.listarOcorrenciasUltimosTresMeses();
     }
+
+    @GetMapping(value = "obter/topmarcas")
+    public List<RetornoTop> topMarcasOcorrencia() {
+        return ocorrenciaServico.topMarcasOcorrencia();
+    }
+
+    @GetMapping(value = "obter/topmodelos")
+    public List<RetornoTop> topModelosOcorrencia() {
+        return ocorrenciaServico.topModelosOcorrencia();
+    }
+
 }
