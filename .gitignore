@@ -12,3 +12,7 @@ WebAPI/target/test-classes/\.netbeans_automatic_build
 WebAPI/target/classes/\.netbeans_automatic_build
 /WebAPI/nbproject/
 *.txt
+
+WebAPI/target/surefire-reports/TEST-br\.com\.crescer\.monitorveiculos\.servico\.VeiculoServicoTest\.xml
+
+WebAPI/target/surefire-reports/TEST-br\.com\.crescer\.monitorveiculos\.servico\.UsuarioServicoTest\.xml
