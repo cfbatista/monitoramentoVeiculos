@@ -2,6 +2,7 @@ package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Usuario;
 import br.com.crescer.monitorveiculos.repositorio.UsuarioRepositorio;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -44,7 +45,7 @@ public class UsuarioServicoTest {
 
     @Ignore
     @Test
-    public void testSave() {
+    public void testSave() throws MonitoramentoVeiculosException {
         assertEquals(usuario, usuarioServico.save(usuario));
         verify(usuarioRepositorio).save(usuario);
     }
