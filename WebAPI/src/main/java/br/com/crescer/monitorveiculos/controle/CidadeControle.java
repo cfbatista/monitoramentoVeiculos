@@ -28,7 +28,7 @@ public class CidadeControle {
     }
 
     //obter numero de cidades com registros
-    @GetMapping(value = "obter/cidadescomregistro")
+    @GetMapping(value = "/obter/cidadescomregistro")
     public Long pegarNumeroCidadesComRegistros() {
         return cidadeServico.numeroCidadesComRegistros();
     }

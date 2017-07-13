@@ -1,8 +1,8 @@
 app.controller('homeController', function ($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService) {
     //obterCameras();
-    //obterVeiculos();
-    //obterOcorrencias();
-    //obterVeiculosClonados();
+    obterVeiculos();
+    obterOcorrencias();
+    obterVeiculosClonados();
 
     function obterCameras() {
         usuarioService.obterCameras().then(response => {
