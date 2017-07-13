@@ -2,10 +2,11 @@ package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Camera;
 import br.com.crescer.monitorveiculos.modelo.CalculoEnergiaModel;
+import br.com.crescer.monitorveiculos.modelo.DataModel;
+import br.com.crescer.monitorveiculos.modelo.DiaSemanaRegistros;
 import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
 import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
-import br.com.crescer.monitorveiculos.modelo.VeiculosPorSemanaModel;
 import br.com.crescer.monitorveiculos.servico.CameraServico;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.List;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -60,12 +60,13 @@ public class CameraControle {
 
     @PostMapping(value = "/energia")
     public CalculoEnergiaModel obterEnergia(@RequestBody RegistroCountModel registroCountModel) {
-            return cameraServico.calculoEnergia(registroCountModel);
+        return cameraServico.calculoEnergia(registroCountModel);
     }
-    
-    @PostMapping(value = "/veiculosnasemana")
-    public List<VeiculosPorSemanaModel> CalcularNumeroVeiculosSemana(@RequestBody RegistroCountModel registroCountModel){
-        return cameraServico.calcularNumeroVeiculosPorDiaSemana(registroCountModel);
+
+    @PostMapping(value = "obter/contagemdiassemana")
+    public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(@RequestBody DataModel model) {
+        return cameraServico.obterContagemPorDiaDaSemana(model.getData());
+
     }
 
 }
