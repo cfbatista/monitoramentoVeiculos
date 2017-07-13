@@ -1,4 +1,4 @@
-package br.com.crescer.monitorveiculos.entidade;
+package br.com.crescer.monitorveiculos.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,8 +15,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class HeatMapModel {
 
-    private Camera camera;
-    private Double fator;
+public class VeiculoSuspeito {
+
+    private String placa;
+
+    private Long registros;
+
+    private Long estadosDiferentes;
+
 }

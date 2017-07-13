@@ -7,15 +7,11 @@ app.factory('AnaliseRotaService', function ($http) {
     }
 
     function buscarCameraSentido(direcao){
-        return $http.get(urlBase + '/buscarCameraPorSentido/' + direcao);
+        return $http.get(urlBase + '/buscarcameraporsentido/' + direcao);
     }
 
-    function buscarCalculoEnergia(distancia) {
-        return $http({
-            url: urlBase + '/energia',
-            params: { distancia: distancia },
-            method: 'GET'
-        })
+    function buscarCalculoEnergia(modelEnergica) {
+        return $http.post(urlBase + '/energia', modelEnergica);
     }
     
     return{

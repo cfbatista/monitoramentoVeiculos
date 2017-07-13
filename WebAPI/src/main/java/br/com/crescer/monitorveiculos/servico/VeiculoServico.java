@@ -1,10 +1,13 @@
 package br.com.crescer.monitorveiculos.servico;
 
+import br.com.crescer.monitorveiculos.entidade.Camera;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
-import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
+import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,9 +22,9 @@ public class VeiculoServico {
     @Autowired
     private VeiculoRepositorio veiculoRepositorio;
     @Autowired
-    private CameraRepositorio cameraRepositorio;
-    @Autowired
     private RegistroRepositorio registroRepositorio;
+    @Autowired
+    private OcorrenciaRepositorio ocorrenciaRepositorio;
 
     public List<Veiculo> obterTodosVeiculos() {
         return (List<Veiculo>) veiculoRepositorio.findAll();
@@ -39,15 +42,45 @@ public class VeiculoServico {
         return veiculoRepositorio.findByPlacaIgnoreCase(placa);
     }
 
-    public Long buscarNumeroRegistros(String placa) {
+    private Long obterNumeroOcorrencias(Veiculo veiculo) {
+        return ocorrenciaRepositorio.countByVeiculo(veiculo);
+    }
+
+    private Long buscarNumeroRegistros(String placa) {
         return registroRepositorio.countByPlaca(placa);
     }
-    
-    public Long obterNumeroeRegistrosPorCamera() {
-        return registroRepositorio.obterNumeroDeCamerasComRegistros();
+
+    private Long obterNumeroeRegistrosPorCamera(String placa) {
+        return registroRepositorio.obterNumeroDeCamerasComRegistros(placa);
+    }
+
+    private Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
+        return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
+    }
+
+    public ConsultaVeiculosModel realizarBusca(String placa) {
+
+        ConsultaVeiculosModel retorno = new ConsultaVeiculosModel();
+        Veiculo veiculo = obterVeiculoPorPlaca(placa);
+
+        retorno.setTotalOcorrencias(obterNumeroOcorrencias(veiculo));
+        retorno.setTotalRegistros(buscarNumeroRegistros(placa));
+        retorno.setQuantidadeCameras(obterNumeroeRegistrosPorCamera(placa));
+        retorno.setCidadeVeiculo(veiculo.getCidade());
+        retorno.setVezesUltrapassouLimite(obterNumeroDeVezesQuePassouVelocidade(placa));
+        retorno.setNumeroDiasNoutraCidade(registroRepositorio.obterNumeroVezesVeiculoForaSuaCidade(placa, pegarPrimeiroDiaMes(), pegarUltimoDiaMes()));
+        return retorno;
     }
     
-    public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
-        return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
+    public Date pegarPrimeiroDiaMes(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
+        return cal.getTime();
+    }
+    
+    public Date pegarUltimoDiaMes(){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMaximum(Calendar.DAY_OF_MONTH));
+        return cal.getTime();
     }
 }

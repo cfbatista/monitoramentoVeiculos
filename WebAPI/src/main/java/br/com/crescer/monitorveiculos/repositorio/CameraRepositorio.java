@@ -17,12 +17,13 @@ public interface CameraRepositorio extends CrudRepository<Camera, Long> {
     @Query("SELECT new br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel "
             + "(re.camera, COUNT(re.idregistro)) "
             + "FROM Registro re "
-            + "WHERE re.dataHora IN :data "
+            + "WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "
             + "AND re.camera.idcamera BETWEEN :idCameraInicial AND :idCameraFinal "
             + "AND re.camera.direcao = :direcao "
             + "GROUP BY re.camera")
     public List<RetornoHeatMapModel> retornarModel(
-            @Param("data") Date data,
+            @Param("dataInicial") Date dataInicial,
+            @Param("dataFinal") Date dataFinal,
             @Param("idCameraInicial") Long idCameraInicial,
             @Param("idCameraFinal") Long idCameraFinal,
             @Param("direcao") Character direcao
@@ -31,15 +32,14 @@ public interface CameraRepositorio extends CrudRepository<Camera, Long> {
     public List<Camera> findByDirecao(Character direcao);
 
     @Query("SELECT COUNT(re.idregistro) FROM Registro re "
-            + "WHERE re.dataHora IN :data "
+            + "WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "
             + "AND re.camera.idcamera BETWEEN :idCameraInicial AND :idCameraFinal "
-            + "AND re.camera.direcao = :direcao "
-            + "GROUP BY TRUNC(re.dataHora)")
+            + "AND re.camera.direcao = :direcao")
     public Long contagemRegistrosDeRota(
-            @Param("data") Date data,
+            @Param("dataInicial") Date dataInicial,
+            @Param("dataFinal") Date dataFinal,
             @Param("idCameraInicial") Long idCameraInicial,
             @Param("idCameraFinal") Long idCameraFinal,
             @Param("direcao") Character direcao
     );
-
 }
