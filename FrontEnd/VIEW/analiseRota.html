@@ -41,8 +41,7 @@
         </div>
     </div>
 </div>
-<br>
-<br>
+<br><br>
 <div class="container">
     <div class="row">
         <div class="column column-100">
@@ -50,38 +49,45 @@
         </div>
     </div>
 </div>
-<br>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="column column-20"></div>
-        <div class="column column-20" align="center">
-            <img src="https://png.icons8.com/map-marker/ios7/50" title="Map Marker" width="50" height="50">
-            <label>Distancia em KM</label>
-            <strong>{{energia.distancia | number:2}} KM</strong>
+<br><br>
+<div ng-show="mapaPlotado">
+    <div class="container">
+        <div class="row">
+            <div class="column column-20"></div>
+            <div class="column column-20" align="center">
+                <img src="https://png.icons8.com/map-marker/ios7/50" title="Map Marker" width="50" height="50">
+                <label>Distancia em KM</label>
+                <strong>{{energia.distancia | number:2}} KM</strong>
+            </div>
+            <div class="column column-20" align="center">
+                <img src="https://png.icons8.com/lightning-bolt/ios7/50" title="Lightning Bolt" width="50" height="50">
+                <label>Energia</label>
+                <strong>{{energia.energia | number:2}} KWH</strong>
+            </div>
+            <div class="column column-20" align="center">
+                <img src="https://png.icons8.com/traffic-jam/ios7/50" title="Traffic Jam" width="50" height="50">
+                <label>Numero de veiculos</label>
+                <strong>{{energia.numeroVeiculos}}</strong>
+            </div>
+            <div class="column column-20"></div>
         </div>
-        <div class="column column-20" align="center">
-            <img src="https://png.icons8.com/lightning-bolt/ios7/50" title="Lightning Bolt" width="50" height="50">
-            <label>Energia</label>
-            <strong>{{energia.energia | number:2}} KWH</strong>
-        </div>
-        <div class="column column-20" align="center">
-            <img src="https://png.icons8.com/traffic-jam/ios7/50" title="Traffic Jam" width="50" height="50">
-            <label>Numero de veiculos</label>
-            <strong>{{energia.numeroVeiculos}}</strong>
-        </div>
-        <div class="column column-20"></div>
     </div>
-</div>
-<br>
-<br>
-<div class="container">
-    <div class="row">
-        <div class="column column-50">
-            <fusioncharts width="500" height="400" type="column2d" datasource="{{veiculoPorHorario}}"> </fusioncharts>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="column column-50">
+                <fusioncharts width="500" height="400" type="column2d" datasource="{{veiculoPorHorario}}"> </fusioncharts>
+            </div>
+            <div class="column column-50">
+                <fusioncharts width="500" height="400" type="column2d" datasource="{{veiculoPorDia}}"> </fusioncharts>
+            </div>
         </div>
-        <div class="column column-50">
-            <fusioncharts width="500" height="400" type="column2d" datasource="{{veiculoPorDia}}"> </fusioncharts>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="column column-100">
+                <input type="submit" value="Voltar" ng-click="voltar()">
+            </div>
         </div>
     </div>
 </div>

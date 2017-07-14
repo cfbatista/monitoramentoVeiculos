@@ -3,6 +3,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     $scope.selecionar_orientacao = true;
     $scope.dados_Rota = false;
     $scope.botoes_Mapa = false;
+    $scope.mapaPlotado = false;
 
     $scope.buscarCamerasPorSentido = function (direcao) {
         $scope.pegardirecao = direcao;
@@ -74,6 +75,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.tracarRota = function () {
         calculateAndDisplayRoute(directionsService, directionsDisplay, $scope.camerasCalor);
+        $scope.mapaPlotado = true;
     }
 
     //funcao para calcular a rota
@@ -146,4 +148,8 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             theme: "zune"
         },
     };
+
+    $scope.voltar = function(){
+        window.location.reload();
+    }
 })

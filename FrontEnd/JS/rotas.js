@@ -15,7 +15,12 @@ app.config(function($routeProvider){
         })
         .when('/cadastroCamera', {
             controller: 'adminController',
-            templateUrl: 'VIEW/cadastroCamera.html'
+            templateUrl: 'VIEW/cadastroCamera.html',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
         })
         .when('/analiserota', {
             controller: 'analiseRotaController',
@@ -28,19 +33,39 @@ app.config(function($routeProvider){
         })
         .when('/veiculo', {
             templateUrl: 'VIEW/veiculo.html',
-            controller: 'veiculoController'
+            controller: 'veiculoController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
         })
         .when('/cadastroOcorrencia', {
             templateUrl: 'VIEW/cadastroOcorrencia.html',
-            controller: 'ocorrenciaController'
+            controller: 'ocorrenciaController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
         })
         .when('/consultaOcorrencia', {
             templateUrl: 'VIEW/consultaOcorrencia.html',
-            controller: 'ocorrenciaController'
+            controller: 'ocorrenciaController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
         })
         .when('/estatistica', {
             templateUrl: 'VIEW/estatistica.html',
-            controller: 'estatisticaController'
+            controller: 'estatisticaController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
         })
         .otherwise({redirectTo: '/home'});
 });
