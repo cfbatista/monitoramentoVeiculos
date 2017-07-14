@@ -3,9 +3,7 @@ app.config(function($routeProvider){
     $routeProvider
 
         .when('/home', {
-            controller: 'graficoController',
             controller: 'homeController',
-            controller: 'loginController',
             templateUrl: 'VIEW/home.html'
         })
  
