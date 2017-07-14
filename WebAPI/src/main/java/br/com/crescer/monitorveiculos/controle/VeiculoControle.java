@@ -40,19 +40,19 @@ public class VeiculoControle {
     public Veiculo obterPorPlaca(@PathVariable String placa) {
         return veiculoServico.obterVeiculoPorPlaca(placa);
     }
-    
-//    @GetMapping(value = "/numeroregistros/{placa}")
-//    public Long obterRegistros(@PathVariable String placa){
-//        return veiculoServico.buscarNumeroRegistros(placa);
-//    }
-//    
-//    @GetMapping(value = "/numeroregistroscamera/{placa}")
-//    public Long obterRegistrosPorCamera(@PathVariable String placa){
-//        return veiculoServico.obterNumeroeRegistrosPorCamera(placa);
-//    }
-    
+
+    @GetMapping(value = "/numeroregistros/{placa}")
+    public Long obterRegistros(@PathVariable String placa) {
+        return veiculoServico.buscarNumeroRegistros(placa);
+    }
+
+    @GetMapping(value = "/numeroregistroscamera/{placa}")
+    public Long obterRegistrosPorCamera(@PathVariable String placa) {
+        return veiculoServico.obterNumeroeRegistrosPorCamera(placa);
+    }
+
     @GetMapping(value = "/consulta/{placa}")
-    public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa){
+    public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa) {
         return veiculoServico.realizarBusca(placa);
     }
 }

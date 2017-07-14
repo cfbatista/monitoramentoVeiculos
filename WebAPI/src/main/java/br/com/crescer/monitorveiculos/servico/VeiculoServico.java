@@ -41,19 +41,19 @@ public class VeiculoServico {
         return veiculoRepositorio.findByPlacaIgnoreCase(placa);
     }
 
-    private Long obterNumeroOcorrencias(Veiculo veiculo) {
+    public Long obterNumeroOcorrencias(Veiculo veiculo) {
         return ocorrenciaRepositorio.countByVeiculo(veiculo);
     }
 
-    private Long buscarNumeroRegistros(String placa) {
+    public Long buscarNumeroRegistros(String placa) {
         return registroRepositorio.countByPlaca(placa);
     }
 
-    private Long obterNumeroeRegistrosPorCamera(String placa) {
+    public Long obterNumeroeRegistrosPorCamera(String placa) {
         return registroRepositorio.obterNumeroDeCamerasComRegistros(placa);
     }
 
-    private Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
+    public Long obterNumeroDeVezesQuePassouVelocidade(String placa) {
         return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
     }
 

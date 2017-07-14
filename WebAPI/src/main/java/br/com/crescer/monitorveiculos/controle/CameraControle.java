@@ -67,4 +67,23 @@ public class CameraControle {
     public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(@RequestBody DataModel model) {
         return cameraServico.obterContagemPorDiaDaSemana(model.getData());
     }
+
+    @PostMapping(value = "obter/numeroregistros")
+    public Long contagemRegistros(@RequestBody RegistroCountModel registroCountModel) {
+        return cameraServico.contagemRegistrosDeRota(registroCountModel.getData(),
+                registroCountModel.getIdCameraInicial(),
+                registroCountModel.getIdCameraFinal(),
+                registroCountModel.getDirecao());
+    }
+
+    @PostMapping(value = "obter/mediavelocidade")
+    public Double mediaVelocidade(@RequestBody RegistroCountModel model) {
+        return cameraServico.mediaVelocidade(model);
+    }
+
+    @GetMapping(value = "obter/foramaximovelocidade/{idCamera}")
+    public List<String> bterPlacasQuePassaramVelocidade(@PathVariable Long idCamera) {
+        return cameraServico.obterPlacasQuePassaramVelocidade(idCamera);
+    }
+
 }
