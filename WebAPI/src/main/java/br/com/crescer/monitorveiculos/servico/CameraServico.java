@@ -132,4 +132,21 @@ public class CameraServico {
 
     }
 
+    public Long somaVelocidades(RegistroCountModel model) {
+        List<Date> datas = calculaData(model.getData());
+        return cameraRepositorio.somaVelocidades(datas.get(0), datas.get(1),
+                model.getIdCameraInicial(), model.getDirecao());
+    }
+
+    public Double mediaVelocidade(RegistroCountModel model) {
+        Long contagem = contagemRegistrosDeRota(model.getData(), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
+        Long soma = somaVelocidades(model);
+
+        return soma / contagem.doubleValue();
+    }
+
+    public List<String> obterPlacasQuePassaramVelocidade(Long idCamera) {
+        return cameraRepositorio.obterPlacasQuePassaramVelocidade(idCamera);
+    }
+
 }

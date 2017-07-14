@@ -30,6 +30,11 @@ public class RegistroControle {
         return registroService.obterVeiculosSuspeitos();
     }
 
+    @GetMapping(value = "obter/numeroveiculossuspeitos")
+    public int obterNumeroVeiculosSuspeitos() {
+        return registroService.obterNumeroDeVeiculosClonados();
+    }
+
     @PostMapping(value = "/obter/veiculosporhorario")
     public List<RetornoHorariosModel> obterContagemPorHorario(@RequestBody DataModel model) {
         List<RetornoHorariosModel> lista = new ArrayList<>();

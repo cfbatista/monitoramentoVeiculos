@@ -43,4 +43,18 @@ public interface CameraRepositorio extends CrudRepository<Camera, Long> {
             @Param("direcao") Character direcao
     );
 
+    @Query("SELECT SUM(re.velocidade) FROM Registro re "
+            + "WHERE re.dataHora BETWEEN :dataInicial AND :dataFinal "
+            + "AND re.camera.idcamera = :idCamera "
+            + "AND re.camera.direcao = :direcao")
+    public Long somaVelocidades(
+            @Param("dataInicial") Date dataInicial,
+            @Param("dataFinal") Date dataFinal,
+            @Param("idCamera") Long idCamera,
+            @Param("direcao") Character direcao
+    );
+
+    @Query("SELECT re.placa FROM Registro re WHERE re.velocidade > re.camera.velocidadeMaxima AND re.camera.idcamera = :idCamera")
+    public List<String> obterPlacasQuePassaramVelocidade(@Param("idCamera") Long idCamera);
+
 }

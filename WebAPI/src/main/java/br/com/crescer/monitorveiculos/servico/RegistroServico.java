@@ -40,6 +40,10 @@ public class RegistroServico {
         return registroRepositorio.obterVeiculosSuspeitos();
     }
 
+    public int obterNumeroDeVeiculosClonados() {
+        return registroRepositorio.obterVeiculosSuspeitos().size();
+    }
+
     public RetornoHorariosModel retornarPorHorarios(Date data, Horario horario) {
         LocalDateTime dataAux = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault());
 
