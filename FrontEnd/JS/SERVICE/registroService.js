@@ -1,4 +1,5 @@
-app.service('registroService', function ($http) {
+    app.service('registroService', function ($http) {
+    
     var url = 'http://localhost:9090/registro';
 
     return {
@@ -10,7 +11,7 @@ app.service('registroService', function ($http) {
         return $http.get(url);
     }
 
-    function buscarRegistrosVeiculosPorHorario(data) {
-        return $http.post(url + '/obter/veiculosporhorario', data);
+    function buscarRegistrosVeiculosPorHorario(model) {
+        return $http.post(url + '/obter/veiculosporhorario', model);
     }
 });

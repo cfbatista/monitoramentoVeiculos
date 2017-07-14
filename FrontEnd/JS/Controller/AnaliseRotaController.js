@@ -1,4 +1,4 @@
-app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService, registroService, veiculoService) {
+app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService, registroService, cameraService) {
 
     $scope.selecionar_orientacao = true;
     $scope.dados_Rota = false;
@@ -83,10 +83,11 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         
         $scope.distanciaEntrePontos = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(camerasCalor[0].camera.latitude, camerasCalor[0].camera.longitude), new google.maps.LatLng(camerasCalor[$scope.tamanho - 1].camera.latitude, camerasCalor[$scope.tamanho - 1].camera.longitude));
         $scope.modelEnergia.metros = $scope.distanciaEntrePontos;
-        
+        var model = new Object;
+        model.data = $scope.modelEnergia.data;
         calculoEnergia($scope.modelEnergia);
-        buscarRegistroVeiculosPorData($scope.modelEnergia.data);
-        buscarRegistroVeiculosPorHorario($scope.modelEnergia.data);
+        buscarRegistroVeiculosPorData(model);
+        buscarRegistroVeiculosPorHorario(model);
 
         directionsService.route({
             origin: start,
@@ -109,16 +110,16 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     function buscarRegistroVeiculosPorHorario(data){
         registroService.buscarRegistrosVeiculosPorHorario(data).then(response =>{
-            $scope.veiculosPorHoraario = response.data;
-            console.log($scope.veiculosPorHoraario);
+            $scope.veiculosPorHorario = response.data;
+            console.log($scope.veiculosPorHorario);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
     
     function buscarRegistroVeiculosPorData(data){
-        veiculoService.buscarRegistroVeiculosPorData(data).then(response =>{
-            $scope.veiculosPorHoraario = response.data;
-            console.log($scope.veiculosPorHoraario);
+        cameraService.buscarRegistroVeiculosPorData(data).then(response =>{
+            $scope.veiculosPorData = response.data;
+            console.log($scope.veiculosPorData);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 })
