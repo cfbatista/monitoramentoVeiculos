@@ -1,4 +1,4 @@
-app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService) {
+app.controller('analiseRotaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, AnaliseRotaService, registroService, veiculoService) {
 
     $scope.selecionar_orientacao = true;
     $scope.dados_Rota = false;
@@ -11,7 +11,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             toastr.success("Cameras carregadas com sucesso!!");
             $scope.selecionar_orientacao = false;
             $scope.dados_Rota = true;
-        })
+        }).catch(error => toastr.error('Selecione algum campo válido!'))
     }
 
     $scope.pegarCameras = function (RegistroCountModel) {
@@ -25,7 +25,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             $scope.camerasCalor = $scope.cameras;
             $scope.dados_Rota = false;
             $scope.botoes_Mapa = true;
-        }).catch(error => console.log(error));
+        }).catch(error => toastr.error('Algum campo inválido, insira novamente!'));
     }
 
     //pontos de calor
@@ -85,6 +85,8 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         $scope.modelEnergia.metros = $scope.distanciaEntrePontos;
         
         calculoEnergia($scope.modelEnergia);
+        buscarRegistroVeiculosPorData($scope.modelEnergia.data);
+        buscarRegistroVeiculosPorHorario($scope.modelEnergia.data);
 
         directionsService.route({
             origin: start,
@@ -94,7 +96,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             if (status === 'OK') {
                 directionsDisplay.setDirections(response);
             } else {
-                window.alert('Directions request failed due to ' + status);
+                toastr.error('Tente novamente!' + status);
             }
         });
     }
@@ -102,7 +104,21 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     function calculoEnergia(modelEnergia){
         AnaliseRotaService.buscarCalculoEnergia(modelEnergia).then(response =>{
             $scope.energia = response.data;
-            console.log($scope.energia);
-        })
+        }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
+    }
+
+    function buscarRegistroVeiculosPorHorario(data){
+        registroService.buscarRegistrosVeiculosPorHorario(data).then(response =>{
+            $scope.veiculosPorHoraario = response.data;
+            console.log($scope.veiculosPorHoraario);
+        }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
+    }
+
+    
+    function buscarRegistroVeiculosPorData(data){
+        veiculoService.buscarRegistroVeiculosPorData(data).then(response =>{
+            $scope.veiculosPorHoraario = response.data;
+            console.log($scope.veiculosPorHoraario);
+        }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 })

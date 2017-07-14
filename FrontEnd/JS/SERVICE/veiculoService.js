@@ -5,6 +5,7 @@ app.service('veiculoService', function($http) {
     return {
         obterTotalVeiculos: obterTotalVeiculos,
         obterConsulta: obterConsulta,
+        buscarRegistroVeiculosPorData: buscarRegistroVeiculosPorData
     }
 
     function obterTotalVeiculos() {
@@ -17,5 +18,9 @@ app.service('veiculoService', function($http) {
 
     function obterConsulta(placa) {
         return $http.get(url + '/consulta/' + placa);
+    }
+
+    function buscarRegistroVeiculosPorData(data){
+        return $http.post('http://localhost:9090/camera/obter/contagemdiassemana', data);
     }
 });
