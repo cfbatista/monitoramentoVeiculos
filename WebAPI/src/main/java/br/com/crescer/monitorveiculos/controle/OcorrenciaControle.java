@@ -48,5 +48,4 @@ public class OcorrenciaControle {
     public List<RetornoTop> topCidadesOcorrencia() {
         return ocorrenciaServico.topCidadesOcorrencia();
     }
-
 }
