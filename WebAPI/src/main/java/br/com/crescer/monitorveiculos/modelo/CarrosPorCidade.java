@@ -19,6 +19,7 @@ import lombok.Setter;
 public class CarrosPorCidade {
 
     private Cidade cidade;
+    
     private Long contagemCarros;
 
 }

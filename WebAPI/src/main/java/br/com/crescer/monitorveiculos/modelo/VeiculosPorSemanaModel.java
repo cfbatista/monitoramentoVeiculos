@@ -22,7 +22,6 @@ import lombok.Setter;
 
 public class VeiculosPorSemanaModel {
     
-    @JsonFormat(pattern="dd/MM/yyyy")
     private Date diaSemana;
     
     private Long numeroCarros;

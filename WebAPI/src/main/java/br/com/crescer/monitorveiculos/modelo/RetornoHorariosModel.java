@@ -20,5 +20,6 @@ import lombok.Setter;
 public class RetornoHorariosModel {
 
     private Horario horario;
+    
     private Long contagem;
 }

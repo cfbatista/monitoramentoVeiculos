@@ -63,10 +63,8 @@ public class CameraControle {
         return cameraServico.calculoEnergia(registroCountModel);
     }
 
-    @PostMapping(value = "obter/contagemdiassemana")
+    @PostMapping(value = "/obter/contagemdiassemana")
     public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(@RequestBody DataModel model) {
         return cameraServico.obterContagemPorDiaDaSemana(model.getData());
-
     }
-
 }

@@ -18,6 +18,7 @@ import lombok.Setter;
 public class DiaSemanaRegistros {
 
     private String dia;
+    
     private Long contagem;
 
 }
