@@ -1,4 +1,4 @@
-app.service('veiculoService', function($http) {
+app.service('veiculoService', function ($http) {
 
     var url = 'http://localhost:9090/veiculo';
 
@@ -18,9 +18,5 @@ app.service('veiculoService', function($http) {
 
     function obterConsulta(placa) {
         return $http.get(url + '/consulta/' + placa);
-    }
-
-    function buscarRegistroVeiculosPorData(data){
-        return $http.post('http://localhost:9090/camera/obter/contagemdiassemana', data);
     }
 });
