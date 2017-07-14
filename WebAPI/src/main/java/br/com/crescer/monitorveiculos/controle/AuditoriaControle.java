@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuditoriaControle {
 
     @Autowired
-    AuditoriaServico auditoriaServico;
+    private AuditoriaServico auditoriaServico;
 
     @Secured("ROLE_ADMINISTRADOR")
     @GetMapping(value = "/obterAuditorias")
