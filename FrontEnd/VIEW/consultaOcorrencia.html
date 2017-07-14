@@ -1,46 +1,145 @@
-<div class="container">
-  <div class="row">
-    <div class="column column-25"></div>
-    <div class="column column-50">
+<html>
 
-      <label for="buscarOcorrencia">Buscar ocorrência</label>
-      <input id="buscarOcorrencia" type="text" placeholder="Digite os dados da ocorrência" ng-model="ocorrencia">
-      <button ng-click="obterOcorrenciaUsuario(ocorrencia)">Buscar</button>
+<head>
+</head>
+
+<body>
+  <div class="menu-fixo">
+    <h1>Monitor Veículos</h1>
+    <div class="login">
+
+      <ul ng-show="!logado">
+        <li id="login">
+          <a id="login-trigger" href="">
+				Logar
+			</a>
+          <div id="login-content">
+            <form novalidate name="formLogin" ng-submit="login(usuario)">
+              <fieldset id="inputs">
+                <input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">
+                <input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
+                <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
+              </fieldset>
+              <fieldset id="actions">
+                <input type="submit" id="submit" value="Logar">
+                <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
+              </fieldset>
+            </form>
+          </div>
+        </li>
+      </ul>
+
+      <!--<ul ng-show="logado">
+			    <li id="login">
+					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
+				</li>
+			</ul>-->
 
     </div>
-    <div class="column column-25"></div>
   </div>
-</div>
-<!--ARRUMAR PERMISSÃO - AUTORIDADES E ADMIN PODEM VER TODOS OS REGISTROS
+
+  <nav class="main-menu">
+    <ul>
+      <li>
+        <a href="#">
+          <i class="fa fa-bars fa-2x"></i>
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fa fa-home fa-2x"></i>
+        </a>
+      </li>
+
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-location-arrow fa-2x"></i>
+        </a>
+
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-files-o fa-2x"></i>
+        </a>
+
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-camera fa-2x"></i>
+        </a>
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-car fa-2x"></i>
+        </a>
+      </li>
+      <li class="has-subnav">
+        <a href="#">
+          <i class="fa fa-folder-open fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-bar-chart-o fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-map fa-2x"></i>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fa fa-map-marker fa-2x"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="column column-25"></div>
+      <div class="column column-50">
+
+        <label for="buscarOcorrencia">Buscar ocorrência</label>
+        <input id="buscarOcorrencia" type="text" placeholder="Digite os dados da ocorrência" ng-model="ocorrencia">
+        <button ng-click="obterOcorrenciaUsuario(ocorrencia)">Buscar</button>
+
+      </div>
+      <div class="column column-25"></div>
+    </div>
+  </div>
+  <!--ARRUMAR PERMISSÃO - AUTORIDADES E ADMIN PODEM VER TODOS OS REGISTROS
 VER COMO TA VINDO OS DADOS E ARRUMAR TABELA-->
-<div class="container">
-  <div class="row">
-    <div class="column">
-      <table>
-        <thead>
-          <tr>
-            <th>Veículo</th>
-            <th>Data e hora</th>
-            <th>Tipo de ocorrência</th>
-            <th>Estacionado</th>
-            <th>Arma de fogo</th>
-            <th>Número de meliantes</th>
-            <th>Número de vitimas</th>
-            <th>Sexo do(a) Proprietário(a)</th>
-            <th>Idade da vítima</th>
-            <th>Meliante estava em outro veículo</th>
-            <th>Outros pertences foram levados</th>
-            <th>Veículo segurado</th>
-            <th>Veículo com rastreador</th>
-            <th>Situação da ocorrência</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="a in registros | orderBy: 'id'">
-            <th>{{a.ocorrencia}}</th>
-          </tr>
-        </tbody>
-      </table>
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <table>
+          <thead>
+            <tr>
+              <th>Veículo</th>
+              <th>Data e hora</th>
+              <th>Tipo de ocorrência</th>
+              <th>Estacionado</th>
+              <th>Arma de fogo</th>
+              <th>Número de meliantes</th>
+              <th>Número de vitimas</th>
+              <th>Sexo do(a) Proprietário(a)</th>
+              <th>Idade da vítima</th>
+              <th>Meliante estava em outro veículo</th>
+              <th>Outros pertences foram levados</th>
+              <th>Veículo segurado</th>
+              <th>Veículo com rastreador</th>
+              <th>Situação da ocorrência</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="a in registros | orderBy: 'id'">
+              <th>{{a.ocorrencia}}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-</div>
