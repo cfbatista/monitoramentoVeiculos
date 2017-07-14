@@ -33,7 +33,7 @@ public class UsuarioServico {
 
         }
 
-        usuario.setPermissao(MonitoramentoVeiculosRoles.USUARIO);
+        usuario.setPermissao(MonitoramentoVeiculosRoles.ROLE_USUARIO);
         return usuarioRepositorio.save(usuario);
     }
 

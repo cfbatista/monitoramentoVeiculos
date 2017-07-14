@@ -2,6 +2,7 @@ package br.com.crescer.monitorveiculos.entidade;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -111,5 +112,19 @@ public class Ocorrencia implements Serializable {
     @JoinColumn(name = "IDVEICULO", referencedColumnName = "IDVEICULO")
     @ManyToOne(optional = false)
     private Veiculo veiculo;
+
+    @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
+    @ManyToOne(optional = false)
+    private Usuario usuario;
+
+    @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
+    @ManyToOne(optional = false)
+    private Cidade cidade;
+
+    @Column(name = "LATITUDE")
+    private BigInteger latitude;
+
+    @Column(name = "LONGITUDE")
+    private BigInteger longitude;
 
 }

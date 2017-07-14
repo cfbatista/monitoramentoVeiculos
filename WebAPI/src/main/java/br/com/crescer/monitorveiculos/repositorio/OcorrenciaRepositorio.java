@@ -31,8 +31,10 @@ public interface OcorrenciaRepositorio extends CrudRepository<Ocorrencia, Long> 
     public List<RetornoTop> topModelosOcorrencia();
 
     @Query("SELECT new br.com.crescer.monitorveiculos.modelo.RetornoTop "
-            + "(oc.veiculo.cidade.nome, COUNT(oc.idocorrencia)) "
-            + "FROM Ocorrencia oc WHERE ROWNUM <= 10 GROUP BY oc.veiculo.cidade ORDER BY COUNT(oc.idocorrencia) DESC")
+            + "(oc.cidade.nome, COUNT(oc.idocorrencia)) "
+            + "FROM Ocorrencia oc WHERE ROWNUM <= 10 GROUP BY oc.cidade.nome ORDER BY COUNT(oc.idocorrencia) DESC")
     public List<RetornoTop> topCidadesOcorrencia();
 
+    @Query("SELECT * FROM Ocorrencia oc WHERE oc.usuario.idusuario = :idusuario")
+    public List<Ocorrencia> listarPorUsuario(@Param("idusuario") Long idusuario);
 }

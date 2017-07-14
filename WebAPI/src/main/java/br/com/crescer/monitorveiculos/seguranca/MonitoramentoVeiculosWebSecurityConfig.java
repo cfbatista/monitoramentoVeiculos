@@ -42,18 +42,9 @@ public class MonitoramentoVeiculosWebSecurityConfig extends WebSecurityConfigure
         webSecurity.ignoring()
                 .antMatchers(HttpMethod.POST, "/usuario/cadastrar")
                 .antMatchers(HttpMethod.GET, "/cidade/obternumerocidades")
-                .antMatchers(HttpMethod.GET, "/veiculo/obterTodos")
-                .antMatchers(HttpMethod.POST, "/registro/heatmap")
                 .antMatchers(HttpMethod.GET, "/veiculo/obterContagemCidade")
-                .antMatchers(HttpMethod.GET, "/veiculo/obterContagemCidade")
-                .antMatchers(HttpMethod.GET, "/cidade/cidadescomregistro")
                 .antMatchers(HttpMethod.GET, "/veiculo/obterContagem")
                 .antMatchers(HttpMethod.GET, "/ocorrencia/tresultimosmeses")
-                .antMatchers(HttpMethod.GET, "/ocorrencia/resultimosmeses")
-                .antMatchers(HttpMethod.POST, "/camera/heatmapModel")
-                .antMatchers(HttpMethod.POST, "/registro/heatmapContagem")
-                .antMatchers(HttpMethod.POST, "/camera/heatmap")
-                .antMatchers(HttpMethod.POST, "/camera/energia")
                 .antMatchers(HttpMethod.GET, "/registro/obter/veiculossuspeitos");
     }
 
