@@ -50,7 +50,7 @@ public class OcorrenciaControle {
     public List<RetornoTop> topCidadesOcorrencia() {
         return ocorrenciaServico.topCidadesOcorrencia();
     }
-
+  
     @GetMapping(value = "/obter/ocorrenciasusuario/{idusuario}")
     public List<Ocorrencia> listarPorUsuario(@PathVariable("idusuario") Long idusuario) {
         return ocorrenciaServico.listarPorUsuario(idusuario);
@@ -61,5 +61,4 @@ public class OcorrenciaControle {
     public List<Ocorrencia> listarTodas() {
         return ocorrenciaServico.listarTodas();
     }
-
 }
