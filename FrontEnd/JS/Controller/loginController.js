@@ -1,7 +1,5 @@
 app.controller('loginController', function ($scope, $routeParams, $location, authService, authConfig, toastr) {
 
-    console.log("teste");
-
     $scope.login = function (usuario) {
         if ($scope.formLogin.$valid) {
             authService.login(usuario)

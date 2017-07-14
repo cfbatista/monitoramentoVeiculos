@@ -1,4 +1,4 @@
-app.controller('homeController', function ($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService, graficoService) {
+app.controller('homeController', function ($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService, graficoService, registroService) {
 
     totalCidades();
     function totalCidades() {
@@ -21,11 +21,12 @@ app.controller('homeController', function ($scope, $routeParams, $location, auth
         }).catch(error => console.log(error));
     }
 
-    // function totalVeiculosClonados(){
-    //     graficoService.totalVeiculosClonados().then(response => {
-    //         $scope.totalClonado.data[0] = response.data.length;
-    //     }).catch(error => console.log(error));
-    // }
+    totalVeiculosClonados();
+    function totalVeiculosClonados(){
+        registroService.buscarNumeroVeiculoClonados().then(response => {
+            $scope.totalClonado = response.data;
+        }).catch(error => console.log(error));
+    }
 
     $scope.logar = function () {
         $location.path("/login")

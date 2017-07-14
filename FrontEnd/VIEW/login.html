@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="row">
+        <div class="column column-20"></div>
+        <div class="column column-60">
+            <div id="login-content">
+                <form novalidate name="formLogin" ng-submit="login(usuario)">
+                    <fieldset id="inputs">
+                        <input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">
+                        <input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
+                        <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="submit" value="Logar">
+                        <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <div class="column column-20"></div>
+    </div>
+</div>
