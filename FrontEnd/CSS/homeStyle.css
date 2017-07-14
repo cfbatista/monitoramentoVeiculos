@@ -75,7 +75,7 @@ div #login-content {
 }
 
 .main-menu {
-background:#606E67;
+background:lightgray;
 top:0;
 position:fixed;
 height:100%;
@@ -205,5 +205,9 @@ padding:0;
 
 .main-menu ul li:hover{
   transition: 1s;
-  background: purple;
+  background: rgba(163, 67, 84, 1);
+}
+
+.login{
+    margin-top: 30px;
 }

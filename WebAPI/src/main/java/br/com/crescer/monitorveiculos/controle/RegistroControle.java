@@ -31,7 +31,6 @@ public class RegistroControle {
         return registroService.obterVeiculosSuspeitos();
     }
 
-    @Secured("ROLE_ADMINISTRADOR")
     @GetMapping(value = "obter/numeroveiculossuspeitos")
     public int obterNumeroVeiculosSuspeitos() {
         return registroService.obterNumeroDeVeiculosClonados();

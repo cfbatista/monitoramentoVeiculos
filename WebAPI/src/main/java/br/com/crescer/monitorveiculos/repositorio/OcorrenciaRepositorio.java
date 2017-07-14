@@ -35,6 +35,6 @@ public interface OcorrenciaRepositorio extends CrudRepository<Ocorrencia, Long> 
             + "FROM Ocorrencia oc WHERE ROWNUM <= 10 GROUP BY oc.cidade.nome ORDER BY COUNT(oc.idocorrencia) DESC")
     public List<RetornoTop> topCidadesOcorrencia();
 
-    @Query("SELECT * FROM Ocorrencia oc WHERE oc.usuario.idusuario = :idusuario")
+    @Query("SELECT oc FROM Ocorrencia oc WHERE oc.usuario.idusuario = :idusuario")
     public List<Ocorrencia> listarPorUsuario(@Param("idusuario") Long idusuario);
 }
