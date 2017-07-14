@@ -8,6 +8,7 @@ import br.com.crescer.monitorveiculos.servico.ComponenteServico;
 import br.com.crescer.monitorveiculos.servico.VeiculoServico;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,6 +59,7 @@ public class VeiculoControle {
         return veiculoServico.obterNumeroeRegistrosPorCamera(placa);
     }
 
+    @Secured("ROLE_ADMINISTRADOR")
     @GetMapping(value = "/consulta/{placa}")
     public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa) {
         Auditoria aud = Auditoria.builder()

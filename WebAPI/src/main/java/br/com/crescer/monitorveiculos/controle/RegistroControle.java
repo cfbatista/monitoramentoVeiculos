@@ -8,6 +8,7 @@ import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,7 @@ public class RegistroControle {
         return registroService.obterVeiculosSuspeitos();
     }
 
+    @Secured("ROLE_ADMINISTRADOR")
     @GetMapping(value = "obter/numeroveiculossuspeitos")
     public int obterNumeroVeiculosSuspeitos() {
         return registroService.obterNumeroDeVeiculosClonados();

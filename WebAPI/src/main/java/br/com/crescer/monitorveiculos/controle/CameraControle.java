@@ -82,7 +82,7 @@ public class CameraControle {
     }
 
     @GetMapping(value = "obter/foramaximovelocidade/{idCamera}")
-    public List<String> bterPlacasQuePassaramVelocidade(@PathVariable Long idCamera) {
+    public List<String> obterPlacasQuePassaramVelocidade(@PathVariable Long idCamera) {
         return cameraServico.obterPlacasQuePassaramVelocidade(idCamera);
     }
 
