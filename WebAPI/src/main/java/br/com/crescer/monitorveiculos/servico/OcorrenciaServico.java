@@ -51,4 +51,12 @@ public class OcorrenciaServico {
     public List<RetornoTop> topCidadesOcorrencia() {
         return ocorrenciaRepositorio.topCidadesOcorrencia();
     }
+
+    public List<Ocorrencia> listarPorUsuario(Long idusuario) {
+        return ocorrenciaRepositorio.listarPorUsuario(idusuario);
+    }
+
+    public List<Ocorrencia> listarTodas() {
+        return (List<Ocorrencia>) ocorrenciaRepositorio.findAll();
+    }
 }
