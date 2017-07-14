@@ -4,6 +4,7 @@
 
     return {
         obterRegistros: obterRegistros,
+        buscarNumeroVeiculoClonados: buscarNumeroVeiculoClonados,
         buscarRegistrosVeiculosPorHorario:  buscarRegistrosVeiculosPorHorario
     }
 
@@ -13,5 +14,9 @@
 
     function buscarRegistrosVeiculosPorHorario(model) {
         return $http.post(url + '/obter/veiculosporhorario', model);
+    }
+
+    function buscarNumeroVeiculoClonados(){
+        return $http.get(url + '/obter/numeroveiculossuspeitos');
     }
 });

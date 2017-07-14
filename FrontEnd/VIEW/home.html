@@ -1,115 +1,18 @@
-<html>
-<head>
-</head>
-<body>
-  <div class="menu-fixo">
-    <h1>Monitor Veículos</h1>
-    <div class="login">
-      
-      <ul ng-show="!logado">
-		<li id="login">
-		    <a id="login-trigger" href="">
-				Logar
-			</a>
-			<div id="login-content">
-                <form novalidate name="formLogin" ng-submit="login(usuario)"> 
-					<fieldset id="inputs">
-						<input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">   
-				    	<input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
-                        <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
-					</fieldset>
-					<fieldset id="actions">
-						<input type="submit" id="submit" value="Logar">
-                        <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
-					</fieldset>
-				</form>
-			    </div>                     
-		    </li>
-	    </ul>
-
-			<!--<ul ng-show="logado">
-			    <li id="login">
-					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
-				</li>
-			</ul>-->
-      
-    </div>
+<div class="info">
+  <div class="infos">
+    <p>Total de cidades</p>
+    <h2>{{totalCidades}}</h2>
   </div>
-
-  <nav class="main-menu">
-    <ul>
-      <li>
-        <a href="#">
-          <i class="fa fa-bars fa-2x"></i>
-        </a>
-      </li>
-
-      <li>
-        <a href="#">
-          <i class="fa fa-home fa-2x"></i>
-        </a>
-      </li>
-      
-      <li class="has-subnav">
-        <a href="#">
-          <i class="fa fa-location-arrow fa-2x"></i>
-        </a>
-
-      </li>
-      <li class="has-subnav">
-        <a href="#">
-          <i class="fa fa-files-o fa-2x"></i>
-        </a>
-
-      </li>
-      <li class="has-subnav">
-        <a href="#">
-          <i class="fa fa-camera fa-2x"></i>
-        </a>
-      </li>
-      <li class="has-subnav">
-        <a href="#">
-          <i class="fa fa-car fa-2x"></i>
-        </a>
-      </li>
-      <li class="has-subnav">
-        <a href="#">
-          <i class="fa fa-folder-open fa-2x"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-bar-chart-o fa-2x"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-map fa-2x"></i>
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <i class="fa fa-map-marker fa-2x"></i>
-        </a>
-      </li>
-    </ul>
-  </nav>
-  
-  <div class="info">
-     <div class="infos">
-         <p>Total de cidades</p>
-       <h2>{{totalCidades}}</h2>
-     </div>
-    <div class="infos">
-        <p>Total de veículos</p>
-      <h2>{{totalVeiculos}}</h2>
-    </div>
-    <div class="infos">
-        <p>Total de ocorrências dos últimos 3 meses</p>
-      <h2>{{ocorrenciasUltimos3meses}}</h2>
-    </div>
+  <div class="infos">
+    <p>Total de veículos</p>
+    <h2>{{totalVeiculos}}</h2>
   </div>
-
-</body>
-
-</html>
+  <div class="infos">
+    <p>Total de ocorrências dos últimos 3 meses</p>
+    <h2>{{ocorrenciasUltimos3meses}}</h2>
+  </div>
+  <div class="infos">
+    <p>Total de veiculos suspeitos</p>
+    <h2>{{totalClonado}}</h2>
+  </div>
+</div>

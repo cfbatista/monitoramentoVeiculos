@@ -1,149 +1,50 @@
-<html>
-
-<head>
-</head>
-
-<body>
-    <div class="menu-fixo">
-        <h1>Monitor Veículos</h1>
-        <div class="login">
-
-            <ul ng-show="!logado">
-                <li id="login">
-                    <a id="login-trigger" href="">
-				Logar
-			</a>
-                    <div id="login-content">
-                        <form novalidate name="formLogin" ng-submit="login(usuario)">
-                            <fieldset id="inputs">
-                                <input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">
-                                <input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
-                                <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
-                            </fieldset>
-                            <fieldset id="actions">
-                                <input type="submit" id="submit" value="Logar">
-                                <input type="submit" class="btn-login-Login" ng-click="cadastrar()" value="Cadastre-se">
-                            </fieldset>
-                        </form>
-                    </div>
-                </li>
-            </ul>
-
-            <!--<ul ng-show="logado">
-			    <li id="login">
-					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
-				</li>
-			</ul>-->
-
-        </div>
-    </div>
-
-    <nav class="main-menu">
-        <ul>
-            <li>
-                <a href="#">
-          <i class="fa fa-bars fa-2x"></i>
-        </a>
-            </li>
-
-            <li>
-                <a href="#">
-          <i class="fa fa-home fa-2x"></i>
-        </a>
-            </li>
-
-            <li class="has-subnav">
-                <a href="#">
-          <i class="fa fa-location-arrow fa-2x"></i>
-        </a>
-
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-          <i class="fa fa-files-o fa-2x"></i>
-        </a>
-
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-          <i class="fa fa-camera fa-2x"></i>
-        </a>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-          <i class="fa fa-car fa-2x"></i>
-        </a>
-            </li>
-            <li class="has-subnav">
-                <a href="#">
-          <i class="fa fa-folder-open fa-2x"></i>
-        </a>
-            </li>
-            <li>
-                <a href="#">
-          <i class="fa fa-bar-chart-o fa-2x"></i>
-        </a>
-            </li>
-            <li>
-                <a href="#">
-          <i class="fa fa-map fa-2x"></i>
-        </a>
-            </li>
-            <li>
-                <a href="#">
-          <i class="fa fa-map-marker fa-2x"></i>
-        </a>
-            </li>
-        </ul>
-    </nav>
-
-    <div class="container">
-        <div class="row">
-            <div class="column column-25"></div>
-            <div class="column column-50">
-                <h1>Monitor Veiculos</h1>
-                <form name="formLogin" ng-submit="novaOcorrencia(usuario)">
-                    <label for="opcionais">Selecione seu Veiculo:</label>
-                    <select ng-model="ocorrencia.veiculo" class="form-control">
+<div class="container">
+    <div class="row">
+        <div class="column column-25"></div>
+        <div class="column column-50">
+            <h1>Monitor Veiculos</h1>
+            <form name="formLogin" ng-submit="novaOcorrencia(usuario)">
+                <label for="opcionais">Selecione seu Veiculo:</label>
+                <select ng-model="ocorrencia.veiculo" class="form-control">
                     <option ng-repeat="veiculo in veiculos" value="{{veiculo}}">{{veiculo.nome}}</option>
                 </select>
 
-                    <label for="opcionais">Data do ocorrido</label>
-                    <input type="date" ng-model="ocorrencia.data_hora">
+                <label for="opcionais">Data do ocorrido</label>
+                <input type="date" ng-model="ocorrencia.data_hora">
 
-                    <label for="opcionais">Selecione o tipo:</label>
-                    <select ng-model="ocorrencia.TIPO_OCORRENCIA" class="form-control">
+                <label for="opcionais">Selecione o tipo:</label>
+                <select ng-model="ocorrencia.TIPO_OCORRENCIA" class="form-control">
                     <option  value="R">Roubo</option>
                     <option  value="S">Sequestro</option>
                     <option  value="F">Furto</option>
                 </select>
 
-                    <label for="opcionais">Estava estacionado?</label>
-                    <select ng-model="ocorrencia.estacionado" class="form-control">
+                <label for="opcionais">Estava estacionado?</label>
+                <select ng-model="ocorrencia.estacionado" class="form-control">
                     <option  value="S">Sim</option>
                     <option  value="N">Não</option>
                 </select>
 
-                    <label for="opcionais">Estava dentro do Carro?</label>
-                    <select ng-model="ocorrencia.ESTAVA_NO_CARRO" class="form-control">
+                <label for="opcionais">Estava dentro do Carro?</label>
+                <select ng-model="ocorrencia.ESTAVA_NO_CARRO" class="form-control">
                     <option  value="S">Sim</option>
                     <option  value="N">Não</option>
                 </select>
 
-                    <label for="numero_meliantes">Numero de meliantes</label>
-                    <input type="number" ng-model="ocorrencia.numero_meliantes">
+                <label for="numero_meliantes">Numero de meliantes</label>
+                <input type="number" ng-model="ocorrencia.numero_meliantes">
 
-                    <label for="numero_meliantes">Numero de vitimas</label>
-                    <input type="number" ng-model="ocorrencia.numero_vitimas">
+                <label for="numero_meliantes">Numero de vitimas</label>
+                <input type="number" ng-model="ocorrencia.numero_vitimas">
 
-                    <label for="opcionais">Estava dentro do Carro?</label>
-                    <select ng-model="ocorrencia.ESTAVA_NO_CARRO" class="form-control">
+                <label for="opcionais">Estava dentro do Carro?</label>
+                <select ng-model="ocorrencia.ESTAVA_NO_CARRO" class="form-control">
                     <option  value="S">Sim</option>
                     <option  value="N">Não</option>
                 </select>
-                    <input type="submit" value="Cadastrar Ocorrência">
-                </form>
-            </div>
-            <div class="column column-25"></div>
+                <input type="submit" value="Cadastrar Ocorrência">
+            </form>
         </div>
+        <div class="column column-25"></div>
     </div>
+</div>

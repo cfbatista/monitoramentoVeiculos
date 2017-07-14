@@ -113,38 +113,37 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     function buscarRegistroVeiculosPorHorario(data) {
         registroService.buscarRegistrosVeiculosPorHorario(data).then(response => {
-            $scope.veiculosPorHorario = response.data;
+            let dataResponse = [];
+            response.data.forEach(element => {
+                dataResponse.push({ label: element.horario, value: element.contagem });
+            });
+            $scope.veiculoPorHorario.data = dataResponse;
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
     function buscarRegistroVeiculosPorData(data) {
         cameraService.buscarRegistroVeiculosPorData(data).then(response => {
-            $scope.veiculosPorData = response.data;
+            let dataResponse = [];
+            response.data.forEach(element => {
+                dataResponse.push({ label: element.dia, value: element.contagem });
+            });
+            $scope.veiculoPorDia.data = dataResponse;
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
-    $scope.myDataSource = {
+    $scope.veiculoPorHorario = {
         chart: {
-            caption: "Harry's SuperMart",
-            subCaption: "Top 5 stores in last month by revenue",
-            numberPrefix: "$",
-            theme: "fint"
+            caption: "HORARIO X VEICULOS",
+            subCaption: "Fluxo de veiculos por horário",
+            theme: "zune"
         },
-        data: [{
-            label: "Bakersfield Central",
-            value: "880000"
-        }, {
-            label: "Garden Groove harbour",
-            value: "730000"
-        }, {
-            label: "Los Angeles Topanga",
-            value: "590000"
-        }, {
-            label: "Compton-Rancho Dom",
-            value: "520000"
-        }, {
-            label: "Daly City Serramonte",
-            value: "330000"
-        }]
+    };
+
+    $scope.veiculoPorDia = {
+        chart: {
+            caption: "DIAS SEMANA X VEICULOS",
+            subCaption: "Fluxo de veiculos por dias da semana",
+            theme: "zune"
+        },
     };
 })

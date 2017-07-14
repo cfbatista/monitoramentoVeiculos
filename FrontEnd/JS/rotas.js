@@ -1,17 +1,14 @@
 app.config(function($routeProvider){
 
     $routeProvider
-
         .when('/home', {
             controller: 'homeController',
             templateUrl: 'VIEW/home.html'
         })
- 
          .when('/login', {
             controller: 'loginController',
             templateUrl: 'VIEW/login.html'
         })
-        
          .when('/cadastro', {
             controller: 'cadastroController',
             templateUrl: 'VIEW/cadastro.html'
@@ -20,7 +17,6 @@ app.config(function($routeProvider){
             controller: 'adminController',
             templateUrl: 'VIEW/cadastroCamera.html'
         })
-
         .when('/analiserota', {
             controller: 'analiseRotaController',
             templateUrl: 'VIEW/analiseRota.html',
@@ -30,7 +26,6 @@ app.config(function($routeProvider){
                 }
             }
         })
-
         .when('/veiculo', {
             templateUrl: 'VIEW/veiculo.html',
             controller: 'veiculoController'
@@ -47,6 +42,5 @@ app.config(function($routeProvider){
             templateUrl: 'VIEW/estatistica.html',
             controller: 'estatisticaController'
         })
-
         .otherwise({redirectTo: '/home'});
 });
