@@ -1,57 +1,119 @@
-<div class="estatistica">
-    <div>
-        <fusioncharts
-            width="50%"
-            height="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoFabricantesMaiorOcorrencia}}">
-        </fusioncharts>
+<div class="menu-fixo">
+    <h1>Monitor Veículos</h1>
+    <div class="login">
+
+        <ul ng-show="!logado">
+            <li id="login">
+                <a id="login-trigger" href="">
+				Logar
+			</a>
+                <div id="login-content">
+                    <form novalidate name="formLogin" ng-submit="login(usuario)">
+                        <fieldset id="inputs">
+                            <input id="email" type="email" name="Email" placeholder="Email" required ng-model="usuario.email">
+                            <input id="cpf" type="number" name="Cpf" placeholder="CPF" required ng-model="usuario.cpf">
+                            <input id="password" type="password" name="Password" placeholder="Senha" required ng-model="usuario.senha">
+                        </fieldset>
+                        <fieldset id="actions">
+                            <input type="submit" id="submit" value="Logar">
+                        </fieldset>
+                    </form>
+                </div>
+            </li>
+        </ul>
+        <!--
+			<ul ng-show="logado">
+			    <li id="login">
+					<a id="login-trigger" href="" ng-click="logout()">Log Out</a>
+				</li>
+			</ul>-->
+
     </div>
+</div>
 
+<nav class="main-menu">
+    <ul>
+        <li>
+            <a href="#">
+                <i class="fa fa-bars fa-2x"></i>
+            </a>
+        </li>
 
-    <div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoModelosMaisRoubados}}">
-        </fusioncharts>
+        <li>
+            <a href="#">
+                <i class="fa fa-home fa-2x"></i>
+            </a>
+        </li>
+
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-location-arrow fa-2x"></i>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-files-o fa-2x"></i>
+            </a>
+
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-camera fa-2x"></i>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-car fa-2x"></i>
+            </a>
+        </li>
+        <li class="has-subnav">
+            <a href="#">
+                <i class="fa fa-folder-open fa-2x"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-bar-chart-o fa-2x"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-map fa-2x"></i>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="column column-50">
+            <fusioncharts width="500" height="400" type="column2d" dataFormat="json" dataSource="{{graficoFabricantesMaiorOcorrencia}}"></fusioncharts>
+        </div>
+        <div class="column column-50">
+            <fusioncharts width="500" height="400" type="column2d" dataFormat="json" dataSource="{{graficoModelosMaisRoubados}}"></fusioncharts>
+        </div>
     </div>
+</div>
 
-    <div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoHorarioComMaiorRoubo}}">
-        </fusioncharts>
+<div class="container">
+    <div class="row">
+        <div class="column column-50">
+            <fusioncharts width="500" height="400" type="column2d" dataFormat="json" dataSource="{{graficoHorarioComMaiorRoubo}}"></fusioncharts>
+        </div>
+        <div class="column column-50">
+            <fusioncharts width="500" height="400" type="column2d" dataFormat="json" dataSource="{{graficoCidadesComMaisRoubos}}"></fusioncharts>
+        </div>
     </div>
-
-    <div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoCidadesComMaisRoubos}}">
-        </fusioncharts>
-    </div>
-
-    <div>
-        <fusioncharts
-            width="50%"
-            heigh="400"
-            type= "column3d"
-            dataFormat="json"
-            theme = "carbon"
-            dataSource="{{graficoCamerasComMaisVeiculosRoubados}}">
-        </fusioncharts>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="column column-100">
+            <fusioncharts width="800" height="400" type="column2d" dataFormat="json" dataSource="{{graficoCamerasComMaisVeiculosRoubados}}"></fusioncharts>
+        </div>
     </div>
 </div>
