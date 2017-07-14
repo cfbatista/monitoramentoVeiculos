@@ -59,30 +59,35 @@ app.controller('estatisticaController', function($scope, $http, estatisticaServi
     function fabricantesMaiorOcorrencia(){
         estatisticaService.fabricantesMaiorOcorrencia().then(response => {
             $scope.graficoFabricantesMaiorOcorrencia.data[0].value = response.data;
+            console.log($scope.graficoFabricantesMaiorOcorrencia);
         });
     }
 
     function modelosMaisRoubados(){
         estatisticaService.modelosMaisRoubados().then(response => {
             $scope.graficoModelosMaisRoubados.data[0].value = response.data;
+            console.log($scope.graficoModelosMaisRoubados);
         });
     }
 
     function horarioComMaiorRoubo(){
         estatisticaService.horarioComMaiorRoubo().then(response => {
             $scope.graficoHorarioComMaiorRoubo.data[0].value = response.data;
+            console.log($scope.graficoHorarioComMaiorRoubo);
         });
     }
 
     function cidadesComMaisRoubos(){
         estatisticaService.cidadesComMaisRoubos().then(response => {
             $scope.graficoCidadesComMaisRoubos.data[0].value = response.data;
+            console.log($scope.graficoCidadesComMaisRoubos);
         });
     }
 
     function camerasComMaisVeiculosRoubados(){
         estatisticaService.camerasComMaisVeiculosRoubados().then(response => {
             $scope.graficoCamerasComMaisVeiculosRoubados.data[0].value = respose.data;
+            console.log($scope.graficoCamerasComMaisVeiculosRoubados);
         });
     }
 });

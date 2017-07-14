@@ -5,7 +5,6 @@ app.service('veiculoService', function ($http) {
     return {
         obterTotalVeiculos: obterTotalVeiculos,
         obterConsulta: obterConsulta,
-        buscarRegistroVeiculosPorData: buscarRegistroVeiculosPorData
     }
 
     function obterTotalVeiculos() {

@@ -31,7 +31,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     //pontos de calor
 
     $scope.heatMapData = [];
-    
+
     function criarMapaCalor(camerasCalor) {
         for (let i = 0; i < camerasCalor.length; i++) {
             $scope.heatMapData.push({ location: new google.maps.LatLng(camerasCalor[i].camera.latitude, camerasCalor[i].camera.longitude), weight: camerasCalor[i].fator });
@@ -78,13 +78,16 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     //funcao para calcular a rota
     function calculateAndDisplayRoute(directionsService, directionsDisplay, camerasCalor, modelEnergia) {
+
         var start = camerasCalor[0].camera.latitude + ',' + camerasCalor[0].camera.longitude;
         var end = camerasCalor[$scope.tamanho - 1].camera.latitude + ',' + camerasCalor[$scope.tamanho - 1].camera.longitude;
-        
+
         $scope.distanciaEntrePontos = google.maps.geometry.spherical.computeDistanceBetween(new google.maps.LatLng(camerasCalor[0].camera.latitude, camerasCalor[0].camera.longitude), new google.maps.LatLng(camerasCalor[$scope.tamanho - 1].camera.latitude, camerasCalor[$scope.tamanho - 1].camera.longitude));
         $scope.modelEnergia.metros = $scope.distanciaEntrePontos;
+
         var model = new Object;
         model.data = $scope.modelEnergia.data;
+
         calculoEnergia($scope.modelEnergia);
         buscarRegistroVeiculosPorData(model);
         buscarRegistroVeiculosPorHorario(model);
@@ -102,24 +105,46 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         });
     }
 
-    function calculoEnergia(modelEnergia){
-        AnaliseRotaService.buscarCalculoEnergia(modelEnergia).then(response =>{
+    function calculoEnergia(modelEnergia) {
+        AnaliseRotaService.buscarCalculoEnergia(modelEnergia).then(response => {
             $scope.energia = response.data;
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
-    function buscarRegistroVeiculosPorHorario(data){
-        registroService.buscarRegistrosVeiculosPorHorario(data).then(response =>{
+    function buscarRegistroVeiculosPorHorario(data) {
+        registroService.buscarRegistrosVeiculosPorHorario(data).then(response => {
             $scope.veiculosPorHorario = response.data;
-            console.log($scope.veiculosPorHorario);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
-    
-    function buscarRegistroVeiculosPorData(data){
-        cameraService.buscarRegistroVeiculosPorData(data).then(response =>{
+    function buscarRegistroVeiculosPorData(data) {
+        cameraService.buscarRegistroVeiculosPorData(data).then(response => {
             $scope.veiculosPorData = response.data;
-            console.log($scope.veiculosPorData);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
+
+    $scope.myDataSource = {
+        chart: {
+            caption: "Harry's SuperMart",
+            subCaption: "Top 5 stores in last month by revenue",
+            numberPrefix: "$",
+            theme: "fint"
+        },
+        data: [{
+            label: "Bakersfield Central",
+            value: "880000"
+        }, {
+            label: "Garden Groove harbour",
+            value: "730000"
+        }, {
+            label: "Los Angeles Topanga",
+            value: "590000"
+        }, {
+            label: "Compton-Rancho Dom",
+            value: "520000"
+        }, {
+            label: "Daly City Serramonte",
+            value: "330000"
+        }]
+    };
 })
