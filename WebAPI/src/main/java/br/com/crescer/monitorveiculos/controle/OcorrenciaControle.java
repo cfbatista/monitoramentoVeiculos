@@ -19,7 +19,7 @@ public class OcorrenciaControle {
     @Autowired
     private OcorrenciaServico ocorrenciaServico;
 
-    @GetMapping(value = "obter/todas")
+    @GetMapping(value = "/obter/todas")
     public List<Ocorrencia> pegarTodasOcorrencias() {
         return ocorrenciaServico.todasOcorrencias();
     }
@@ -29,22 +29,22 @@ public class OcorrenciaControle {
         return ocorrenciaServico.criarOcorrencia(ocorrencia);
     }
 
-    @GetMapping(value = "obter/tresultimosmeses")
+    @GetMapping(value = "/obter/tresultimosmeses")
     public Long pegarTresUltimosMesesOcorrencias() {
         return ocorrenciaServico.listarOcorrenciasUltimosTresMeses();
     }
 
-    @GetMapping(value = "obter/topmarcas")
+    @GetMapping(value = "/obter/topmarcas")
     public List<RetornoTop> topMarcasOcorrencia() {
         return ocorrenciaServico.topMarcasOcorrencia();
     }
 
-    @GetMapping(value = "obter/topmodelos")
+    @GetMapping(value = "/obter/topmodelos")
     public List<RetornoTop> topModelosOcorrencia() {
         return ocorrenciaServico.topModelosOcorrencia();
     }
 
-    @GetMapping(value = "obter/topcidades")
+    @GetMapping(value = "/obter/topcidades")
     public List<RetornoTop> topCidadesOcorrencia() {
         return ocorrenciaServico.topCidadesOcorrencia();
     }

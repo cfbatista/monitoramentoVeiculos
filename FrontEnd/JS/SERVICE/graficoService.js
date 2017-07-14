@@ -10,11 +10,11 @@ app.service('graficoService', function($http) {
     }
 
     function obterCidades() {
-        return $http.get(url + 'cidade/obternumerocidades');
+        return $http.get(url + 'cidade/obter/numerocidades');
     }
 
     function totalVeiculos() {
-        return $http.get(url + 'veiculo/obterContagem');
+        return $http.get(url + 'veiculo/obter/contagem');
     }
 
     function totalVeiculosClonados() {
@@ -22,6 +22,6 @@ app.service('graficoService', function($http) {
     }
 
     function ocorrenciasUltimos3meses() {
-        return $http.get(url + 'ocorrencia/tresultimosmeses');
+        return $http.get(url + 'ocorrencia/obter/tresultimosmeses');
     }
 });
