@@ -123,7 +123,6 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
                 dataResponse.push({ label: element.dia, value: element.contagem });
             });
             $scope.veiculoPorDia.data = dataResponse;
-            console.log($scope.veiculoPorDia.data);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
@@ -134,7 +133,6 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
                 dataResponse.push({ label: element.horario, value: element.contagem });
             });
             $scope.veiculoPorHorario.data = dataResponse;
-            console.log($scope.veiculoPorHorario.data);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 
@@ -155,6 +153,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             subCaption: "Fluxo de veiculos por dias da semana",
             xAxisname: "Dias da semana",
             yAxisName: "Numero de carros",
+            baseFontSize: 14,
             theme: "zune"
         },
     };
