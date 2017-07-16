@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.modelo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

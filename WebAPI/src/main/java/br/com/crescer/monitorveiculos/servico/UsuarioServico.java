@@ -19,6 +19,7 @@ public class UsuarioServico {
     private UsuarioRepositorio usuarioRepositorio;
 
     public Usuario findByEmail(String email) {
+
         return usuarioRepositorio.findByEmail(email);
     }
 

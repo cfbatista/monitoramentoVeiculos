@@ -1,9 +1,10 @@
 package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Horario;
-import br.com.crescer.monitorveiculos.entidade.Registro;
+import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHorariosModel;
 import br.com.crescer.monitorveiculos.modelo.VeiculoSuspeito;
+import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -23,10 +24,8 @@ public class RegistroServico {
 
     @Autowired
     RegistroRepositorio registroRepositorio;
-
-    private List<Registro> obterRegistrosPorDataHora(Date dataInicial, Date dataFinal) {
-        return registroRepositorio.findByDataHoraBetween(dataInicial, dataFinal);
-    }
+    @Autowired
+    CameraRepositorio cameraRepositorio;
 
     public Long obterTotalCameras() {
         return registroRepositorio.count();
@@ -44,8 +43,8 @@ public class RegistroServico {
         return registroRepositorio.obterVeiculosSuspeitos().size();
     }
 
-    public RetornoHorariosModel retornarPorHorarios(Date data, Horario horario) {
-        LocalDateTime dataAux = LocalDateTime.ofInstant(data.toInstant(), ZoneId.systemDefault());
+    public RetornoHorariosModel retornarPorHorarios(RegistroCountModel model, Horario horario) {
+        LocalDateTime dataAux = LocalDateTime.ofInstant(model.getData().toInstant(), ZoneId.systemDefault());
 
         List<LocalTime> horarios = horario.getHorarios();
         LocalDateTime dataInicial = dataAux.with(horarios.get(0));
@@ -57,7 +56,8 @@ public class RegistroServico {
         ZonedDateTime zonedDate2 = dataFinal.atZone(ZoneId.systemDefault());
         Date dataFinalD = Date.from(zonedDate2.toInstant());
 
-        Long contagem = registroRepositorio.contagemRegistrosHorario(dataInicialD, dataFinalD);
+        Long contagem = cameraRepositorio.contagemRegistrosDeRota(dataInicialD, dataFinalD,
+                model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
 
         return new RetornoHorariosModel(horario, contagem);
 

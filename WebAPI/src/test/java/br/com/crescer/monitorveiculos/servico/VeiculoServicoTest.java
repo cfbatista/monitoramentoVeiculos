@@ -2,6 +2,7 @@ package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.Assert.assertEquals;
@@ -51,7 +52,7 @@ public class VeiculoServicoTest {
     }
 
     @Test
-    public void testObterVeiculoPorId() {
+    public void testObterVeiculoPorId() throws MonitoramentoVeiculosException {
         when(veiculoRepositorio.findOne(1L)).thenReturn(veiculo);
 
         final Veiculo obterVeiculoPorId = veiculoServico.obterVeiculoPorId(1L);
@@ -61,7 +62,7 @@ public class VeiculoServicoTest {
     }
 
     @Test
-    public void testObterVeiculoPorPlaca() {
+    public void testObterVeiculoPorPlaca() throws MonitoramentoVeiculosException {
 
         final Veiculo obterVeiculoPorPlaca = veiculoServico.obterVeiculoPorPlaca(PLACA);
 

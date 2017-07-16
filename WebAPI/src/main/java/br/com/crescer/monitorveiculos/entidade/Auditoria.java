@@ -2,7 +2,6 @@ package br.com.crescer.monitorveiculos.entidade;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -42,18 +41,19 @@ public class Auditoria implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "IDAUDITORIA")
     private Long idauditoria;
 
+    @Basic(optional = false)
+    @NotNull
     @Size(max = 255)
-    @Column(name = "TIPOCONSULTA")
     private String tipoconsulta;
+
+    @Basic(optional = false)
+    @NotNull
+    private String dadoconsultado;
 
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
     private Usuario usuario;
-
-    @Column(name = "DADOCONSULTADO")
-    private String dadoconsultado;
 
 }

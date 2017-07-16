@@ -2,11 +2,11 @@ package br.com.crescer.monitorveiculos.controle;
 
 import br.com.crescer.monitorveiculos.entidade.Camera;
 import br.com.crescer.monitorveiculos.modelo.CalculoEnergiaModel;
-import br.com.crescer.monitorveiculos.modelo.DataModel;
 import br.com.crescer.monitorveiculos.modelo.DiaSemanaRegistros;
 import br.com.crescer.monitorveiculos.modelo.HeatMapModel;
 import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
 import br.com.crescer.monitorveiculos.servico.CameraServico;
 import br.com.crescer.monitorveiculos.servico.RegistroServico;
 import java.util.List;
@@ -54,8 +54,8 @@ public class CameraControle {
     }
 
     @GetMapping(value = "/obterporid/{id}")
-    public Camera obterPorId(@PathVariable long id) {
-        return cameraServico.findById(id);
+    public Camera obterPorId(@PathVariable long id) throws MonitoramentoVeiculosException {
+        return cameraServico.obterPotId(id);
     }
 
     @PostMapping(value = "/energia")
@@ -64,8 +64,8 @@ public class CameraControle {
     }
 
     @PostMapping(value = "/obter/contagemdiassemana")
-    public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(@RequestBody DataModel model) {
-        return cameraServico.obterContagemPorDiaDaSemana(model.getData());
+    public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(@RequestBody RegistroCountModel model) {
+        return cameraServico.obterContagemPorDiaDaSemana(model);
     }
 
     @PostMapping(value = "obter/numeroregistros")

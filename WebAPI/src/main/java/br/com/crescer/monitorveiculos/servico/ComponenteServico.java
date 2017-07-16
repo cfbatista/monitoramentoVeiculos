@@ -24,7 +24,7 @@ public class ComponenteServico {
                 .map(Authentication::getPrincipal)
                 .map(User.class::cast)
                 .map(User::getUsername)
-                .map(usuarioServico::findByEmail)
+                .map((email) -> usuarioServico.findByEmail(email))
                 .orElse(null);
     }
 
