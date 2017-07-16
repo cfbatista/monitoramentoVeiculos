@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row">
+        <div class="column column-100">
+            <br>
+            <div align="center">
+                <h1>Veículos clonados</h1>
+            </div>
+            <div ng-show="clonados">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Placa</th>
+                            <th>Numero Registros</th>
+                            <th>Numero de Estados Diferentes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="veiculo in veiculosClonados">
+                            <td>{{veiculo.placa}}</td>
+                            <td>{{veiculo.registros}}</td>
+                            <td>{{veiculo.estadosDiferentes}}</td>
+                            <div ng-if="view">
+                                <td><i ng-class="view ? 'fa fa-eye fa-2x' : 'fa fa-spinner fa-spin fa-2x'" ng-click="buscarVeiculo(veiculo.placa)" title="Ver Detalhes"></i></td>
+                            </div>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="clonado">
+    <div class="container">
+        <div class="row">
+            <div class="column column-100">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Marca</th>
+                            <th>Modelo</th>
+                            <th>Cor</th>
+                            <th>Placa</th>
+                            <th>Ano do modelo</th>
+                            <th>Cidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{veiculoBuscado.marca.nome}}</td>
+                            <td>{{veiculoBuscado.modelo}}</td>
+                            <td>{{veiculoBuscado.cor}}</td>
+                            <td>{{veiculoBuscado.placa}}</td>
+                            <td>{{veiculoBuscado.anoModelo}}</td>
+                            <td>{{veiculoBuscado.cidade.nome}}</td>
+                            <td><input type="submit" ng-click="voltar()" value="Voltar"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="column column-10"></div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="column column-100">
+                 <div align="center"><h3>Cidade do Veículo</h3></div>
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>

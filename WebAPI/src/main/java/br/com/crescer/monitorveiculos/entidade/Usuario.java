@@ -56,7 +56,6 @@ public class Usuario implements Serializable {
     @Size(min = 1, max = 100)
     private String senha;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
     @Basic(optional = false)
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)

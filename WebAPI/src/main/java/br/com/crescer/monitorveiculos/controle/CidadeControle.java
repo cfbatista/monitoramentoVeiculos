@@ -17,7 +17,8 @@ public class CidadeControle {
 
     @GetMapping(value = "/obter/todas")
     public List<Cidade> pegarCidades() {
-        return cidadeServico.listarCidades();
+        List<Cidade> retorno = cidadeServico.listarCidades(); 
+        return retorno;
     }
 
     @GetMapping(value = "/obter/numerocidades")

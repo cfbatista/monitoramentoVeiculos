@@ -38,7 +38,8 @@ public class VeiculoServico {
     }
 
     public Veiculo obterVeiculoPorPlaca(String placa) {
-        return veiculoRepositorio.findByPlacaIgnoreCase(placa);
+        Veiculo retorno = veiculoRepositorio.findByPlacaIgnoreCase(placa);
+        return retorno;
     }
 
     public Long obterNumeroOcorrencias(Veiculo veiculo) {

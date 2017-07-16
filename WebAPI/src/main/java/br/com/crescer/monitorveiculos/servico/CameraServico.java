@@ -15,8 +15,10 @@ import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -65,7 +67,7 @@ public class CameraServico {
             retorno.add(heatMapModel);
         });
 
-        return retorno;
+        return retorno.stream().sorted(Comparator.comparing(e -> e.getCamera().getIdcamera())).collect(Collectors.toList());
     }
 
     public List<Camera> buscarCamerasPorDirecao(Character direcao) {
@@ -84,7 +86,7 @@ public class CameraServico {
     public CalculoEnergiaModel calculoEnergia(RegistroCountModel model) {
         Double km = calculoKilometragem(model.getMetros());
         Long registros = contagemRegistrosDeRota(model.getData(), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
-        Double energia = km * KWH * registros;
+        Double energia = (km * KWH * registros)/1000;
         CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).numeroVeiculos(registros).build();
         return retorno;
     }

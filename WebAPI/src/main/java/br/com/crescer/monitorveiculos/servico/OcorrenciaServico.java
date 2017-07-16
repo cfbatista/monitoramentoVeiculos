@@ -15,8 +15,8 @@ public class OcorrenciaServico {
     @Autowired
     private OcorrenciaRepositorio ocorrenciaRepositorio;
 
-    public List<Ocorrencia> todasOcorrencias() {
-        return (List<Ocorrencia>) ocorrenciaRepositorio.findAll();
+    public Iterable<Ocorrencia> todasOcorrencias() {
+        return ocorrenciaRepositorio.findAll();
     }
 
     public Ocorrencia criarOcorrencia(Ocorrencia ocorrencia) {
@@ -58,5 +58,9 @@ public class OcorrenciaServico {
 
     public List<Ocorrencia> listarTodas() {
         return (List<Ocorrencia>) ocorrenciaRepositorio.findAll();
+    }
+
+    public Ocorrencia pegarOcorrenciaId(Long id) {
+        return ocorrenciaRepositorio.findOne(id);
     }
 }

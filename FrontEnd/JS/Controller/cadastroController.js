@@ -1,14 +1,15 @@
 app.controller('cadastroController', function ($scope, $routeParams, $location, authService, authConfig, toastr, usuarioService, cidadeService) {
 
-    obterCidades();
+    obterTodasCidades();
 
-    function obterCidades() {
+    function obterTodasCidades() {
         cidadeService.obterCidades().then(response => {
             $scope.cidades = response.data;
-        }).catch(error => console.log(error));;
+        }).catch(error => console.log(error));
     }
 
     function novoUsuario(usuario) {
+        alert("teste");
         usuarioService.adicionarUsuario(usuario).then(r => {
             authService.login($scope.usuario).then(response => {
                 $location.path("/home");
@@ -19,7 +20,4 @@ app.controller('cadastroController', function ($scope, $routeParams, $location, 
             toastr.error(error.data.message);
         })
     }
-
-    $scope.novoUsuario = novoUsuario;
-
 });

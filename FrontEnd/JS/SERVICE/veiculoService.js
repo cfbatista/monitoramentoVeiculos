@@ -5,16 +5,16 @@ app.service('veiculoService', function ($http) {
     return {
         obterTotalVeiculos: obterTotalVeiculos,
         obterConsulta: obterConsulta,
+        obterVeiculoPorPlaca: obterVeiculoPorPlaca
     }
 
     function obterTotalVeiculos() {
         return $http.get(url + '/obter/contagem');
     }
 
-    function obterVeiculoPorId(id) {
-        return $http.get(url + '/obter/' + id);
+    function obterVeiculoPorPlaca(placa){
+        return $http.get(url + '/obter/clonado/' + placa);
     }
-
     function obterConsulta(placa) {
         return $http.get(url + '/consulta/' + placa);
     }
