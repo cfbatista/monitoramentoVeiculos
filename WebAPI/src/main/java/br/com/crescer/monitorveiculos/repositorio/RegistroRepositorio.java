@@ -40,9 +40,9 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
             @Param("dataFinal") Date dataFinal);
 
     @Query("SELECT new br.com.crescer.monitorveiculos.modelo.VeiculoSuspeito "
-            + "(re.placa, COUNT(re.idregistro), COUNT(DISTINCT re.camera.idcidade.uf)) "
+            + "(re.placa, COUNT(re.idregistro), COUNT(DISTINCT re.camera.cidade.uf)) "
             + "FROM Registro re GROUP BY re.placa "
-            + "HAVING COUNT(DISTINCT re.camera.idcidade.uf) > 1")
+            + "HAVING COUNT(DISTINCT re.camera.cidade.uf) > 1")
     public List<VeiculoSuspeito> obterVeiculosSuspeitos();
 
     @Query("SELECT COUNT(re.idregistro) "
