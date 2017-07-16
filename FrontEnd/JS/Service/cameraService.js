@@ -7,11 +7,11 @@ app.service('cameraService', function($http) {
     }
 
     function contagemTotal() {
-        return $http.get(url + 'obter/contagemtotal');
+        return $http.get(url + '/obter/contagemtotal');
     }
 
     function obterTodasCameras() {
-        return $http.get(url + 'obter/todascameras');
+        return $http.get(url + '/obter/todascameras');
     }
 
     function obterPorId(id) {
@@ -27,7 +27,7 @@ app.service('cameraService', function($http) {
     }
 
     function obterContagemRegistrosPorRota(RegistroCountModel) {
-        return $http.post(url + '/obter/numeroregistros', RegistroCountModel);
+        return $http.post(url + '/obter/detalhescamera/numeroregistros', RegistroCountModel);
     }
 
     function obterVelocidadeMedia(RegistroCountModel) {

@@ -76,15 +76,6 @@ app.config(function($routeProvider){
                 }
             }
         })
-        .when('/ocorrencia', {
-            templateUrl: 'VIEW/ocorrencia.html',
-            controller: 'ocorrenciaController',
-            resolve: {
-                autenticado: function (authService) {
-                    return authService.isAutenticadoPromise();
-                }
-            }
-        })
         .when('/consultacamera', {
             templateUrl: 'VIEW/consultaCamera.html',
             controller: 'cameraController',

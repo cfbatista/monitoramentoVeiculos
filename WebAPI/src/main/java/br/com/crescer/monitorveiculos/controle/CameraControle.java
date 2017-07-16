@@ -68,22 +68,30 @@ public class CameraControle {
         return cameraServico.obterContagemPorDiaDaSemana(model);
     }
 
-    @PostMapping(value = "obter/numeroregistros")
+    @PostMapping(value = "/obter/numeroregistros")
     public Long contagemRegistros(@RequestBody RegistroCountModel registroCountModel) {
         return cameraServico.contagemRegistrosDeRota(registroCountModel.getData(),
                 registroCountModel.getIdCameraInicial(),
                 registroCountModel.getIdCameraFinal(),
                 registroCountModel.getDirecao());
     }
+    
+    @PostMapping(value = "/obter/detalhescamera/numeroregistros")
+    public Long contagemRegistrosCameraDetalhes(@RequestBody RegistroCountModel registroCountModel) throws MonitoramentoVeiculosException {
+        Camera camera = cameraServico.obterPotId(registroCountModel.getIdCameraInicial());
+        return cameraServico.contagemRegistrosDeRota(registroCountModel.getData(),
+                camera.getIdcamera(),
+                camera.getIdcamera(),
+                camera.getDirecao());
+    }
 
-    @PostMapping(value = "obter/mediavelocidade")
+    @PostMapping(value = "/obter/mediavelocidade")
     public Double mediaVelocidade(@RequestBody RegistroCountModel model) {
         return cameraServico.mediaVelocidade(model);
     }
 
-    @GetMapping(value = "obter/foramaximovelocidade/{idCamera}")
+    @GetMapping(value = "/obter/foramaximovelocidade/{idCamera}")
     public List<String> obterPlacasQuePassaramVelocidade(@PathVariable Long idCamera) {
         return cameraServico.obterPlacasQuePassaramVelocidade(idCamera);
     }
-
 }

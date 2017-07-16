@@ -4,13 +4,6 @@ app.controller('ocorrenciaController', function ($scope, $routeParams, $location
     $scope.view = true;
     $scope.detalhesOcorrencia = false;
 
-    $scope.cadastro = function () {
-        $location.path('/cadastroOcorrencia');
-    }
-    $scope.consulta = function () {
-        $location.path('/consultaOcorrencia');
-    }
-
     obterOcorrencias();
     function obterOcorrencias() {
         ocorrenciaService.obterTodasOcorrencias().then(response => {
