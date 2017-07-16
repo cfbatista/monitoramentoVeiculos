@@ -66,9 +66,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
             LatLng = new google.maps.LatLng(lat, long);
             marker = new google.maps.Marker({
                 position: LatLng,
-                map: map,
-                icon: 'https://png.icons8.com/maximum-speed/office/40',
-                animation: google.maps.Animation.BOUNCE
+                map: map
             });
         }
     }
@@ -110,7 +108,12 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
     function calculoEnergia(modelEnergia) {
         AnaliseRotaService.buscarCalculoEnergia(modelEnergia).then(response => {
             $scope.energia = response.data;
+            numeroCasasAlimentadasComEnergiaMensalmente($scope.energia.energia);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
+    }
+
+    function numeroCasasAlimentadasComEnergiaMensalmente(energia) {
+        $scope.energia.numeroCasas = (energia / 170) * 30;
     }
 
     function buscarRegistroVeiculosPorHorario(data) {
@@ -135,8 +138,11 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.veiculoPorHorario = {
         chart: {
-            caption: "HORARIO X VEICULOS",
+            caption: "HORÁRIO X VEICULOS",
             subCaption: "Fluxo de veiculos por horário",
+            xAxisname: "Horários",
+            yAxisName: "Numero de carros",
+            baseFontSize: 14,
             theme: "zune"
         },
     };
@@ -145,11 +151,13 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         chart: {
             caption: "DIAS SEMANA X VEICULOS",
             subCaption: "Fluxo de veiculos por dias da semana",
+            xAxisname: "Dias da semana",
+            yAxisName: "Numero de carros",
             theme: "zune"
         },
     };
 
-    $scope.voltar = function(){
+    $scope.voltar = function () {
         window.location.reload();
     }
 })

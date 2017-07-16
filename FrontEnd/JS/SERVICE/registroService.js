@@ -5,7 +5,8 @@
     return {
         obterRegistros: obterRegistros,
         buscarNumeroVeiculoClonados: buscarNumeroVeiculoClonados,
-        buscarRegistrosVeiculosPorHorario:  buscarRegistrosVeiculosPorHorario
+        buscarRegistrosVeiculosPorHorario:  buscarRegistrosVeiculosPorHorario,
+        buscarVeiculosSuspeitosClonagem: buscarVeiculosSuspeitosClonagem
     }
 
     function obterRegistros() {
@@ -18,5 +19,9 @@
 
     function buscarNumeroVeiculoClonados(){
         return $http.get(url + '/obter/numeroveiculossuspeitos');
+    }
+
+    function buscarVeiculosSuspeitosClonagem(){
+        return $http.get(url + '/obter/veiculossuspeitos');
     }
 });
