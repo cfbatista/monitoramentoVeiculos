@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="column column-100">
+            <div ng-show="selecionar_orientacao">
+                <form ng-submit="buscarCamerasPorSentido(direcao)">
+                    <fieldset>
+                        <label>Selecione sua direção</label>
+                        <select ng-model="direcao">
+                            <option value="C">Capital - Interior</option>
+                            <option value="I">Interior - Capital</option>
+                        </select>
+                        <input type="submit" value="Buscar Camera">
+                    </fieldset>
+                </form>
+            </div>
+
+            <form ng-submit="pegarCameras(RegistroCountModel)">
+                <div ng-show="dados_Rota">
+                    <fieldset>
+                        <label>Local de origem</label>
+                        <select ng-model="RegistroCountModel.idCameraInicial">
+                            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">1 - {{camera.nome}}</option>
+                        </select>
+
+                        <label>Local de Destino</label>
+                        <select ng-model="RegistroCountModel.idCameraFinal">
+                            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">2 - {{camera.nome}}</option>
+                        </select>
+
+                        <label>Dia de Pesquisa</label>
+                        <input type="date" ng-model="RegistroCountModel.data">
+
+                        <input type="submit" value="Buscar Rota">
+                    </fieldset>
+                </div>
+            </form>
+            <div ng-show="botoes_Mapa">
+                <input type="submit" ng-click="tracarRota()" value="Calcular rota">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="map"></div>

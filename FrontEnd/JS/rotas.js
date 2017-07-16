@@ -85,5 +85,14 @@ app.config(function($routeProvider){
                 }
             }
         })
+        .when('/consultacamera', {
+            templateUrl: 'VIEW/consultaCamera.html',
+            controller: 'cameraController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .otherwise({redirectTo: '/home'});
 });
