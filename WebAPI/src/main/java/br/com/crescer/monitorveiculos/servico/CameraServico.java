@@ -14,11 +14,13 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -127,33 +129,31 @@ public class CameraServico {
 
     public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(RegistroCountModel model) {
         List<DiaSemanaRegistros> retorno = new ArrayList<>();
-
         LocalDateTime primeiroDia = dataInicioSemana(model.getData());
-
+        
         for (int i = 0; i < 7; i++) {
             LocalDateTime dias = primeiroDia.plusDays(i);
             List<Date> datas = calculaData(converterLocalDate(dias));
             Long count = cameraRepositorio.contagemRegistrosDeRota(
                     datas.get(0), datas.get(1), model.getIdCameraInicial(),
                     model.getIdCameraFinal(), model.getDirecao());
-
-            retorno.add(new DiaSemanaRegistros(dias.getDayOfWeek().name(), count));
-
+           
+            String diaSemana = dias.getDayOfWeek().getDisplayName(TextStyle.FULL, new Locale("pt", "BR"));
+            retorno.add(new DiaSemanaRegistros(diaSemana, count));
         }
-
         return retorno;
-
     }
 
     public Long somaVelocidades(RegistroCountModel model) {
         List<Date> datas = calculaData(model.getData());
+        Camera camera = cameraRepositorio.findOne(model.getIdCameraInicial());
         return cameraRepositorio.somaVelocidades(datas.get(0), datas.get(1),
-                model.getIdCameraInicial(), model.getDirecao());
+                camera.getIdcamera(), camera.getDirecao());
     }
 
     public Double mediaVelocidade(RegistroCountModel model) {
         List<Date> datas = calculaData(model.getData());
-        Camera camera = cameraRepositorio.findOne(model.getIdCameraFinal());
+        Camera camera = cameraRepositorio.findOne(model.getIdCameraInicial());
         Long contagem = registroRepositorio.countByCameraAndDataHoraBetween(camera, datas.get(0), datas.get(1));
         Long soma = somaVelocidades(model);
 

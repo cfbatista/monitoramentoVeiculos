@@ -55,17 +55,17 @@
     <div class="container">
         <div class="row">
             <div class="column column-25" align="center">
-                <img src="https://png.icons8.com/map-marker/ios7/50" title="Map Marker" width="50" height="50">
+                <img src="\IMG\logo-distancia.png" title="Map Marker" width="50" height="50">
                 <label>Distância em KM</label>
                 <strong>{{energia.distancia | number:2}} KM</strong>
             </div>
             <div class="column column-25" align="center">
-                <img src="https://png.icons8.com/lightning-bolt/ios7/50" title="Lightning Bolt" width="50" height="50">
+                <img src="\IMG\logo-energia.png" title="Traffic Jam" width="50" height="50">
                 <label>Energia diária gerada</label>
-                <strong>{{energia.energia | number:2}} KWH</strong>
+                <strong>{{energia.energia | number:2}} MWH</strong>
             </div>
             <div class="column column-25" align="center">
-                <img src="\IMG\logo-energia.png" title="Traffic Jam" width="50" height="50">
+                <img src="\IMG\logo-veiculo.png" title="Traffic Jam" width="50" height="50">
                 <label>Numero de veiculos</label>
                 <h6>*Considerando o dia atual</h6>
                 <strong>{{energia.numeroVeiculos}}</strong>
@@ -74,7 +74,7 @@
                 <img src="\IMG\logo-residencia.png" title="Traffic Jam" width="50" height="50">
                 <label>Residências por mês</label>
                 <h6>*Considerando 30 dias no mês</h6>
-                <strong>{{energia.numeroCasas | number:2}}</strong>
+                <strong>{{energia.numeroCasas | number:0}}</strong>
             </div>
         </div>
     </div>
