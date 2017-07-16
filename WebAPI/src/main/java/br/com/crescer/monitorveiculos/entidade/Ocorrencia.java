@@ -126,5 +126,4 @@ public class Ocorrencia implements Serializable {
     @Basic(optional = false)
     @NotNull
     private BigDecimal longitude;
-
 }

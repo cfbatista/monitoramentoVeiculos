@@ -73,12 +73,10 @@ public class CameraServico {
             final HeatMapModel heatMapModel = new HeatMapModel(e.getCamera(), fator);
             retorno.add(heatMapModel);
         });
-
+      
         retorno.stream().
                 sorted(Comparator.comparing(e -> e.getCamera().getIdcamera()))
                 .collect(Collectors.toList());
-
-        return retorno;
     }
 
     public List<Camera> buscarCamerasPorDirecao(Character direcao) {

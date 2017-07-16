@@ -1,4 +1,4 @@
-app.controller('veiculoController', function ($scope, $routeParams, $location, authService, authConfig, toastr, veiculoService) {
+app.controller('veiculoController', function ($scope, $routeParams, $location, authService, authConfig, toastr, veiculoService, registroService) {
 
     $scope.pesquisa = true;
     $scope.mostrarVeiculo = false;

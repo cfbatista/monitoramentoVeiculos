@@ -46,11 +46,9 @@ public class VeiculoServico {
 
     public Veiculo obterVeiculoPorPlaca(String placa) throws MonitoramentoVeiculosException {
         Veiculo veiculo = veiculoRepositorio.findByPlacaIgnoreCase(placa);
-
         if (veiculo == null) {
             throw new MonitoramentoVeiculosException("Veículo não encontrado!");
         }
-
         return veiculo;
     }
 
