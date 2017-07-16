@@ -3,6 +3,7 @@ package br.com.crescer.monitorveiculos.controle;
 import br.com.crescer.monitorveiculos.entidade.Auditoria;
 import br.com.crescer.monitorveiculos.entidade.Veiculo;
 import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
 import br.com.crescer.monitorveiculos.servico.AuditoriaServico;
 import br.com.crescer.monitorveiculos.servico.ComponenteServico;
 import br.com.crescer.monitorveiculos.servico.VeiculoServico;
@@ -39,8 +40,8 @@ public class VeiculoControle {
         return veiculoServico.obterTodosVeiculos();
     }
 
-    @GetMapping(value = "/obter/{id}")
-    public Veiculo obterPorId(@PathVariable Long id) {
+    @GetMapping(value = "/obterporid/{id}")
+    public Veiculo obterPorId(@PathVariable Long id) throws MonitoramentoVeiculosException {
         return veiculoServico.obterVeiculoPorId(id);
     }
 
@@ -60,7 +61,7 @@ public class VeiculoControle {
     }
 
     @GetMapping(value = "/consulta/{placa}")
-    public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa) {
+    public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa) throws MonitoramentoVeiculosException {
         Auditoria aud = Auditoria.builder()
                 .usuario(componenteServico.getUserSession())
                 .tipoconsulta("Consulta Veículo")

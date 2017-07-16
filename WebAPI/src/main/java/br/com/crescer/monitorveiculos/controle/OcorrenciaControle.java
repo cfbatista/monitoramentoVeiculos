@@ -20,7 +20,7 @@ public class OcorrenciaControle {
 
     @Autowired
     private OcorrenciaServico ocorrenciaServico;
-
+//metodos livres, preciso ter user arrumado
     @GetMapping(value = "/obter/todas")
     public Iterable<Ocorrencia> pegarTodasOcorrencias() {
         return ocorrenciaServico.todasOcorrencias();
@@ -30,7 +30,7 @@ public class OcorrenciaControle {
     public Ocorrencia pegarOcorrenciaPorId(@PathVariable Long id){
         return ocorrenciaServico.pegarOcorrenciaId(id);
     }
-    
+//////////////////////////////////////////////////////////
     @PostMapping
     public Ocorrencia salvarOcorrencia(@Valid @RequestBody Ocorrencia ocorrencia) {
         return ocorrenciaServico.criarOcorrencia(ocorrencia);
@@ -55,7 +55,7 @@ public class OcorrenciaControle {
     public List<RetornoTop> topCidadesOcorrencia() {
         return ocorrenciaServico.topCidadesOcorrencia();
     }
-  
+
     @GetMapping(value = "/obter/ocorrenciasusuario/{idusuario}")
     public List<Ocorrencia> listarPorUsuario(@PathVariable("idusuario") Long idusuario) {
         return ocorrenciaServico.listarPorUsuario(idusuario);
@@ -65,5 +65,10 @@ public class OcorrenciaControle {
     @GetMapping(value = "/obter/obtertodasocorrencias")
     public List<Ocorrencia> listarTodas() {
         return ocorrenciaServico.listarTodas();
+    }
+
+    @GetMapping(value = "/obter/{id}")
+    public Ocorrencia obterPorId(@PathVariable("id") Long id) {
+        return ocorrenciaServico.obterPorId(id);
     }
 }

@@ -8,6 +8,7 @@ import br.com.crescer.monitorveiculos.modelo.RegistroCountModel;
 import br.com.crescer.monitorveiculos.modelo.RetornoHeatMapModel;
 import br.com.crescer.monitorveiculos.repositorio.CameraRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -36,8 +37,14 @@ public class CameraServico {
 
     private static final Double KWH = 0.66;
 
-    public Camera findById(long id) {
-        return cameraRepositorio.findOne(id);
+    public Camera obterPotId(long id) throws MonitoramentoVeiculosException {
+        Camera camera = cameraRepositorio.findOne(id);
+
+        if (camera == null) {
+            throw new MonitoramentoVeiculosException("Camera não encontrada");
+        }
+
+        return camera;
     }
 
     public long contagemTotal() {
@@ -66,8 +73,10 @@ public class CameraServico {
             final HeatMapModel heatMapModel = new HeatMapModel(e.getCamera(), fator);
             retorno.add(heatMapModel);
         });
-
-        return retorno.stream().sorted(Comparator.comparing(e -> e.getCamera().getIdcamera())).collect(Collectors.toList());
+      
+        retorno.stream().
+                sorted(Comparator.comparing(e -> e.getCamera().getIdcamera()))
+                .collect(Collectors.toList());
     }
 
     public List<Camera> buscarCamerasPorDirecao(Character direcao) {
@@ -86,7 +95,7 @@ public class CameraServico {
     public CalculoEnergiaModel calculoEnergia(RegistroCountModel model) {
         Double km = calculoKilometragem(model.getMetros());
         Long registros = contagemRegistrosDeRota(model.getData(), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
-        Double energia = (km * KWH * registros)/1000;
+        Double energia = (km * KWH * registros) / 1000;
         CalculoEnergiaModel retorno = CalculoEnergiaModel.builder().distancia(km).energia(energia).numeroVeiculos(registros).build();
         return retorno;
     }
@@ -108,7 +117,7 @@ public class CameraServico {
         return Date.from(zonaData.toInstant());
     }
 
-    public LocalDateTime dataInicioEFimSemana(Date data) {
+    public LocalDateTime dataInicioSemana(Date data) {
 
         LocalDateTime dataAux = converterData(data);
 
@@ -116,15 +125,17 @@ public class CameraServico {
 
     }
 
-    public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(Date data) {
+    public List<DiaSemanaRegistros> obterContagemPorDiaDaSemana(RegistroCountModel model) {
         List<DiaSemanaRegistros> retorno = new ArrayList<>();
 
-        LocalDateTime primeiroDia = dataInicioEFimSemana(data);
+        LocalDateTime primeiroDia = dataInicioSemana(model.getData());
 
         for (int i = 0; i < 7; i++) {
             LocalDateTime dias = primeiroDia.plusDays(i);
             List<Date> datas = calculaData(converterLocalDate(dias));
-            Long count = registroRepositorio.countByDataHoraBetween(datas.get(0), datas.get(1));
+            Long count = cameraRepositorio.contagemRegistrosDeRota(
+                    datas.get(0), datas.get(1), model.getIdCameraInicial(),
+                    model.getIdCameraFinal(), model.getDirecao());
 
             retorno.add(new DiaSemanaRegistros(dias.getDayOfWeek().name(), count));
 
@@ -141,7 +152,9 @@ public class CameraServico {
     }
 
     public Double mediaVelocidade(RegistroCountModel model) {
-        Long contagem = contagemRegistrosDeRota(model.getData(), model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
+        List<Date> datas = calculaData(model.getData());
+        Camera camera = cameraRepositorio.findOne(model.getIdCameraFinal());
+        Long contagem = registroRepositorio.countByCameraAndDataHoraBetween(camera, datas.get(0), datas.get(1));
         Long soma = somaVelocidades(model);
 
         return soma / contagem.doubleValue();

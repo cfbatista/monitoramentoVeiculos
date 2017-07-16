@@ -1,7 +1,6 @@
 package br.com.crescer.monitorveiculos.entidade;
 
 import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosRoles;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -90,5 +89,7 @@ public class Usuario implements Serializable {
     @ManyToOne(optional = false)
     private Cidade cidade;
 
+    @Basic(optional = false)
+    @NotNull
     private MonitoramentoVeiculosRoles permissao;
 }

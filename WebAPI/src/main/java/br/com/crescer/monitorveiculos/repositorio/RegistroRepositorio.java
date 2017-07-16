@@ -27,13 +27,13 @@ public interface RegistroRepositorio extends CrudRepository<Registro, Long> {
     @Query("SELECT COUNT(re.idregistro) FROM Registro re WHERE re.velocidade > re.camera.velocidadeMaxima AND re.placa = :placa")
     public Long obterNumeroDeVezesQuePassouVelocidade(@Param("placa") String placa);
 
-    @Query(value = "select count( distinct trunc(r.data_hora) ) "
-            + "from registro r inner join "
-            + "veiculo v on "
-            + "r.placa = :placa "
-            + "inner join camera c "
-            + "on c.idcidade != v.idcidade where "
-            + "r.data_hora BETWEEN :dataInicial and :dataFinal", nativeQuery = true)
+    @Query(value = "SELECT COUNT( DISTINCT TRUNC(re.data_hora) ) "
+            + "FROM Registro re INNER JOIN "
+            + "Veiculo v ON "
+            + "re.placa = :placa "
+            + "INNER JOIN Camera c "
+            + "ON c.idcidade != v.idcidade WHERE "
+            + "re.data_hora BETWEEN :dataInicial AND :dataFinal", nativeQuery = true)
     public Long obterNumeroVezesVeiculoForaSuaCidade(
             @Param("placa") String placa,
             @Param("dataInicial") Date dataInicial,

@@ -56,14 +56,16 @@ public class Camera implements Serializable {
     @NotNull
     private Character direcao;
 
-    @Column(name = "LONGITUDE")
+    @Basic(optional = false)
+    @NotNull
     private BigDecimal longitude;
 
-    @Column(name = "LATITUDE")
+    @Basic(optional = false)
+    @NotNull
     private BigDecimal latitude;
 
     @JoinColumn(name = "IDCIDADE", referencedColumnName = "IDCIDADE")
     @ManyToOne(optional = false)
-    private Cidade idcidade;
+    private Cidade cidade;
 
 }

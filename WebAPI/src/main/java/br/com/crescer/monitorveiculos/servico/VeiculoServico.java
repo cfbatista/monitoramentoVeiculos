@@ -5,6 +5,7 @@ import br.com.crescer.monitorveiculos.modelo.ConsultaVeiculosModel;
 import br.com.crescer.monitorveiculos.repositorio.OcorrenciaRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.RegistroRepositorio;
 import br.com.crescer.monitorveiculos.repositorio.VeiculoRepositorio;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -33,13 +34,22 @@ public class VeiculoServico {
         return veiculoRepositorio.count();
     }
 
-    public Veiculo obterVeiculoPorId(Long id) {
-        return veiculoRepositorio.findOne(id);
+    public Veiculo obterVeiculoPorId(Long id) throws MonitoramentoVeiculosException {
+        Veiculo veiculo = veiculoRepositorio.findOne(id);
+
+        if (veiculo == null) {
+            throw new MonitoramentoVeiculosException("Veículo não encontrado!");
+        }
+
+        return veiculo;
     }
 
-    public Veiculo obterVeiculoPorPlaca(String placa) {
-        Veiculo retorno = veiculoRepositorio.findByPlacaIgnoreCase(placa);
-        return retorno;
+    public Veiculo obterVeiculoPorPlaca(String placa) throws MonitoramentoVeiculosException {
+        Veiculo veiculo = veiculoRepositorio.findByPlacaIgnoreCase(placa);
+        if (veiculo == null) {
+            throw new MonitoramentoVeiculosException("Veículo não encontrado!");
+        }
+        return veiculo;
     }
 
     public Long obterNumeroOcorrencias(Veiculo veiculo) {
@@ -58,7 +68,7 @@ public class VeiculoServico {
         return registroRepositorio.obterNumeroDeVezesQuePassouVelocidade(placa);
     }
 
-    public ConsultaVeiculosModel realizarBusca(String placa) {
+    public ConsultaVeiculosModel realizarBusca(String placa) throws MonitoramentoVeiculosException {
 
         ConsultaVeiculosModel retorno = new ConsultaVeiculosModel();
         Veiculo veiculo = obterVeiculoPorPlaca(placa);

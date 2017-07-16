@@ -1,6 +1,5 @@
 package br.com.crescer.monitorveiculos.entidade;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -43,7 +42,6 @@ public class Ocorrencia implements Serializable {
     @NotNull
     private Long idocorrencia;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
     @Basic(optional = false)
     @NotNull
     @Column(name = "DATA_HORA")
@@ -121,10 +119,11 @@ public class Ocorrencia implements Serializable {
     @ManyToOne(optional = false)
     private Cidade cidade;
 
-    @Column(name = "LATITUDE")
+    @Basic(optional = false)
+    @NotNull
     private BigDecimal latitude;
 
-    @Column(name = "LONGITUDE")
+    @Basic(optional = false)
+    @NotNull
     private BigDecimal longitude;
-
 }

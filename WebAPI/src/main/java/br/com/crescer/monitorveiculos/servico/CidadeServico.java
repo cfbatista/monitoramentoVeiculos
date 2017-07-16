@@ -33,10 +33,10 @@ public class CidadeServico {
     }
 
     public Long numeroCidadesComRegistros() {
-        return cidadeRepositorio.getNumeroCidadesComRegistros();
+        return cidadeRepositorio.obterNumeroCidadesComRegistros();
     }
 
-    public String encontrarCidade(String placa) {
+    public String encontrarCidadeVeiculo(String placa) {
         Veiculo veiculo = veiculoRepositorio.findByPlacaIgnoreCase(placa);
         return veiculo.getCidade().getNome();
     }

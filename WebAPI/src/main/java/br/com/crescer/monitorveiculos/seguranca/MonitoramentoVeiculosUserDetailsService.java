@@ -18,7 +18,7 @@ public class MonitoramentoVeiculosUserDetailsService implements UserDetailsServi
     private UsuarioServico usuarioServico;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) {
         Usuario usuario = usuarioServico.findByEmail(email);
 
         if (email.isEmpty()) {

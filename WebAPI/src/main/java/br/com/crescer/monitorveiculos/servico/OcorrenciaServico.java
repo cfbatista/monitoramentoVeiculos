@@ -18,9 +18,13 @@ public class OcorrenciaServico {
     public Iterable<Ocorrencia> todasOcorrencias() {
         return ocorrenciaRepositorio.findAll();
     }
-
+  
     public Ocorrencia criarOcorrencia(Ocorrencia ocorrencia) {
         return ocorrenciaRepositorio.save(ocorrencia);
+    }
+
+    public Ocorrencia obterPorId(Long id) {
+        return ocorrenciaRepositorio.findOne(id);
     }
 
     public Long listarOcorrenciasUltimosTresMeses() {
