@@ -1,4 +1,4 @@
-app.controller('ocorrenciaController', function ($scope, $routeParams, $location, authService, authConfig, toastr, ocorrenciaService, veiculoService) {
+app.controller('ocorrenciaController', function ($scope, $routeParams, $filter, $location, authService, authConfig, toastr, ocorrenciaService, veiculoService) {
 
     $scope.mostrarOcorrencia = true;
     $scope.view = true;
@@ -15,6 +15,7 @@ app.controller('ocorrenciaController', function ($scope, $routeParams, $location
         $scope.view = false;
         ocorrenciaService.obterOcorrenciaId(id).then(response => {
             $scope.ocorrenciaDetalhe = response.data;
+            $scope.ocorrenciaDetalhe.dataHora = new Date($filter('date')($scope.ocorrenciaDetalhe.dataHora, 'yyyy/MM/dd'));
             gerarMapaOcorrencia($scope.ocorrenciaDetalhe.latitude, $scope.ocorrenciaDetalhe.longitude)
             $scope.detalhesOcorrencia = true;
             $scope.mostrarOcorrencia = false;

@@ -7,10 +7,10 @@
                     <fieldset>
                         <label>Selecione sua direção</label>
                         <select ng-model="direcao">
-                            <option value="C">Capital - Interior</option>
-                            <option value="I">Interior - Capital</option>
+                            <option value="C">Interior - Capital</option>
+                            <option value="I">Capital - Interior</option>
                         </select>
-                        <input type="submit" value="Buscar Camera">
+                        <input type="submit" value="Buscar Câmera">
                     </fieldset>
                 </form>
             </div>
@@ -36,7 +36,7 @@
                 </div>
             </form>
             <div ng-show="botoes_Mapa">
-                <input type="submit" ng-click="click()" value="Plotar Mapa">
+                <input type="submit" ng-click="click()" value="Plotar mapa">
                 <input type="submit" ng-click="tracarRota()" value="Calcular rota">
             </div>
         </div>
@@ -55,25 +55,23 @@
     <div class="container">
         <div class="row">
             <div class="column column-25" align="center">
+                <img src="\IMG\logo-veiculo.png" title="Traffic Jam" width="50" height="50">
+                <label>Veículos</label>
+                <strong>{{energia.numeroVeiculos}}</strong>
+            </div>
+            <div class="column column-25" align="center">
                 <img src="\IMG\logo-distancia.png" title="Map Marker" width="50" height="50">
-                <label>Distância em KM</label>
+                <label>Distância</label>
                 <strong>{{energia.distancia | number:2}} KM</strong>
             </div>
             <div class="column column-25" align="center">
                 <img src="\IMG\logo-energia.png" title="Traffic Jam" width="50" height="50">
-                <label>Energia diária gerada</label>
-                <strong>{{energia.energia | number:2}} MWH</strong>
-            </div>
-            <div class="column column-25" align="center">
-                <img src="\IMG\logo-veiculo.png" title="Traffic Jam" width="50" height="50">
-                <label>Numero de veiculos</label>
-                <h6>*Considerando o dia atual</h6>
-                <strong>{{energia.numeroVeiculos}}</strong>
+                <label>Potencial de energia</label>
+                <strong>{{energia.energia | number:0}} MWh</strong>
             </div>
              <div class="column column-25" align="center">
                 <img src="\IMG\logo-residencia.png" title="Traffic Jam" width="50" height="50">
                 <label>Residências por mês</label>
-                <h6>*Considerando 30 dias no mês</h6>
                 <strong>{{energia.numeroCasas | number:0}}</strong>
             </div>
         </div>

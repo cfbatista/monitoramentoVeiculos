@@ -46,9 +46,10 @@ app.controller('estatisticaController', function ($scope, $http, estatisticaServ
 
     $scope.fabricanteOcorrencia = {
         chart: {
-            caption: "FABRICANTES X OCORRENCIAS",
-            subCaption: "Fabricantes com maiores números de ocorrencias",
+            caption: "FÁBRICANTES X OCORRÊNCIAS",
+            subCaption: "Fábricantes com os maiores números de ocorrências",
             theme: "zune",
+            baseFontSize: 14,
             captionAlignment: "center"
         },
     };
@@ -58,15 +59,17 @@ app.controller('estatisticaController', function ($scope, $http, estatisticaServ
             caption: "MODELOS X ROUBOS",
             subCaption: "Modelos com maiores números de roubos",
             theme: "zune",
+            baseFontSize: 14,
             captionAlignment: "center"
         },
     };
 
     $scope.horarioRoubos = {
         chart: {
-            caption: "HORARIOS X ROUBOS",
-            subCaption: "Horarios com maiores números de roubos",
+            caption: "HORÁRIOS X ROUBOS",
+            subCaption: "Horários com maiores números de roubos",
             theme: "zune",
+            baseFontSize: 14,
             captionAlignment: "center"
         },
     };
@@ -74,19 +77,10 @@ app.controller('estatisticaController', function ($scope, $http, estatisticaServ
     $scope.cidadeRoubos = {
         chart: {
             caption: "CIDADES X ROUBOS",
-            subCaption: "Horarios com maiores números de roubos",
+            subCaption: "Horários com maiores números de roubos",
             theme: "zune",
+            baseFontSize: 14,
             captionAlignment: "center"
         },
-    };
-
-    //function camerasComMaisVeiculosRoubados() {
-    //   estatisticaService.camerasComMaisVeiculosRoubados().then(response => {
-    //       let dataResponse = [];
-    //        response.data.forEach(element => {
-    //           dataResponse.push({ label: element.nome, value: element.contagem });
-    //        });
-    //       $scope.camerasVeiculosRoubados.data = dataResponse;
-    //   });
-    //}
+    };  
 });

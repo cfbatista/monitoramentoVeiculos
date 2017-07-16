@@ -138,8 +138,8 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.veiculoPorHorario = {
         chart: {
-            caption: "HORÁRIO X VEICULOS",
-            subCaption: "Fluxo de veiculos por horário",
+            caption: "HORÁRIO X VEÍCULOS",
+            subCaption: "Fluxo de veÍculos por horário",
             xAxisname: "Horários",
             yAxisName: "Numero de carros",
             baseFontSize: 14,
@@ -149,7 +149,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.veiculoPorDia = {
         chart: {
-            caption: "DIAS SEMANA X VEICULOS",
+            caption: "DIAS SEMANA X VEÍCULOS",
             subCaption: "Fluxo de veiculos por dias da semana",
             xAxisname: "Dias da semana",
             yAxisName: "Numero de carros",
