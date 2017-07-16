@@ -44,7 +44,7 @@ public class VeiculoControle {
         return veiculoServico.obterVeiculoPorId(id);
     }
 
-    @GetMapping(value = "/obter/{placa}")
+    @GetMapping(value = "/obter/clonado/{placa}")
     public Veiculo obterPorPlaca(@PathVariable String placa) {
         return veiculoServico.obterVeiculoPorPlaca(placa);
     }
@@ -59,7 +59,6 @@ public class VeiculoControle {
         return veiculoServico.obterNumeroeRegistrosPorCamera(placa);
     }
 
-    @Secured("ROLE_ADMINISTRADOR")
     @GetMapping(value = "/consulta/{placa}")
     public ConsultaVeiculosModel consultarVeiculos(@PathVariable String placa) {
         Auditoria aud = Auditoria.builder()

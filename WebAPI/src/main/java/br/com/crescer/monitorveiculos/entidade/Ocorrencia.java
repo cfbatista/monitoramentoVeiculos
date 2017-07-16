@@ -2,7 +2,7 @@ package br.com.crescer.monitorveiculos.entidade;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -122,9 +122,9 @@ public class Ocorrencia implements Serializable {
     private Cidade cidade;
 
     @Column(name = "LATITUDE")
-    private BigInteger latitude;
+    private BigDecimal latitude;
 
     @Column(name = "LONGITUDE")
-    private BigInteger longitude;
+    private BigDecimal longitude;
 
 }

@@ -20,12 +20,12 @@
                     <fieldset>
                         <label>Local de origem</label>
                         <select ng-model="RegistroCountModel.idCameraInicial">
-                            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
+                            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">1 - {{camera.nome}}</option>
                         </select>
 
                         <label>Local de Destino</label>
                         <select ng-model="RegistroCountModel.idCameraFinal">
-                            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">{{camera.nome}}</option>
+                            <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">2 - {{camera.nome}}</option>
                         </select>
 
                         <label>Dia de Pesquisa</label>
@@ -54,23 +54,28 @@
 <div ng-show="mapaPlotado">
     <div class="container">
         <div class="row">
-            <div class="column column-20"></div>
-            <div class="column column-20" align="center">
+            <div class="column column-25" align="center">
                 <img src="https://png.icons8.com/map-marker/ios7/50" title="Map Marker" width="50" height="50">
-                <label>Distancia em KM</label>
+                <label>Distância em KM</label>
                 <strong>{{energia.distancia | number:2}} KM</strong>
             </div>
-            <div class="column column-20" align="center">
+            <div class="column column-25" align="center">
                 <img src="https://png.icons8.com/lightning-bolt/ios7/50" title="Lightning Bolt" width="50" height="50">
-                <label>Energia</label>
+                <label>Energia diária gerada</label>
                 <strong>{{energia.energia | number:2}} KWH</strong>
             </div>
-            <div class="column column-20" align="center">
-                <img src="https://png.icons8.com/traffic-jam/ios7/50" title="Traffic Jam" width="50" height="50">
+            <div class="column column-25" align="center">
+                <img src="\IMG\logo-energia.png" title="Traffic Jam" width="50" height="50">
                 <label>Numero de veiculos</label>
+                <h6>*Considerando o dia atual</h6>
                 <strong>{{energia.numeroVeiculos}}</strong>
             </div>
-            <div class="column column-20"></div>
+             <div class="column column-25" align="center">
+                <img src="\IMG\logo-residencia.png" title="Traffic Jam" width="50" height="50">
+                <label>Residências por mês</label>
+                <h6>*Considerando 30 dias no mês</h6>
+                <strong>{{energia.numeroCasas | number:2}}</strong>
+            </div>
         </div>
     </div>
     <br><br>

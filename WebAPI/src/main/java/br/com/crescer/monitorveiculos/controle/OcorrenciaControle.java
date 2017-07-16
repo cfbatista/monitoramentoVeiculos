@@ -22,10 +22,15 @@ public class OcorrenciaControle {
     private OcorrenciaServico ocorrenciaServico;
 
     @GetMapping(value = "/obter/todas")
-    public List<Ocorrencia> pegarTodasOcorrencias() {
+    public Iterable<Ocorrencia> pegarTodasOcorrencias() {
         return ocorrenciaServico.todasOcorrencias();
     }
-
+    
+    @GetMapping(value = "/obter/{id}")
+    public Ocorrencia pegarOcorrenciaPorId(@PathVariable Long id){
+        return ocorrenciaServico.pegarOcorrenciaId(id);
+    }
+    
     @PostMapping
     public Ocorrencia salvarOcorrencia(@Valid @RequestBody Ocorrencia ocorrencia) {
         return ocorrenciaServico.criarOcorrencia(ocorrencia);

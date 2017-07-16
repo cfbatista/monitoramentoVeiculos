@@ -30,7 +30,6 @@ public class UsuarioServico {
 
         if (usuario.getIdusuario() == null) {
             usuario.setSenha(new BCryptPasswordEncoder().encode(usuario.getSenha()));
-
         }
 
         usuario.setPermissao(MonitoramentoVeiculosRoles.ROLE_USUARIO);

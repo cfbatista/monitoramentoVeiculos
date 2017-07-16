@@ -26,7 +26,7 @@ public class RegistroControle {
     @Autowired
     RegistroServico registroService;
 
-    @GetMapping(value = "obter/veiculossuspeitos")
+        @GetMapping(value = "obter/veiculossuspeitos")
     public List<VeiculoSuspeito> obterVeiculosSuspeitos() {
         return registroService.obterVeiculosSuspeitos();
     }

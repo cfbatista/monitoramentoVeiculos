@@ -67,5 +67,23 @@ app.config(function($routeProvider){
                 }
             }
         })
+        .when('/clonagem', {
+            templateUrl: 'VIEW/consultaClonagem.html',
+            controller: 'clonadosController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
+        .when('/ocorrencia', {
+            templateUrl: 'VIEW/ocorrencia.html',
+            controller: 'ocorrenciaController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .otherwise({redirectTo: '/home'});
 });
