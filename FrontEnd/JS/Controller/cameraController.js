@@ -3,15 +3,17 @@ app.controller('cameraController', function ($scope, $routeParams, $location, au
     $scope.selecionar_orientacao = true;
     $scope.dados_Rota = true;
     $scope.botoes_Mapa = true;
-    
+    $scope.direcao;
 
     $scope.buscarCamerasPorSentido = function (direcao) {
+        $scope.direcao = direcao;
         AnaliseRotaService.buscarCameraSentido(direcao).then(response => {
             $scope.camerasSentido = response.data;
         }).catch(error => console.log(error));
     }
 
     $scope.pegarCameras = function (RegistroCountModel) {
+        RegistroCountModel.direcao = $scope.direcao;
         AnaliseRotaService.listarPontosEspecificos(RegistroCountModel).then(response => {
             $scope.cameras = response.data;
         }).catch(error => console.log(error));
@@ -20,7 +22,6 @@ app.controller('cameraController', function ($scope, $routeParams, $location, au
     var directionsDisplay = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
     var NovoHamburgo = new google.maps.LatLng(-29.6918991, -51.1255697);
-
 
     function gerarMapa(cameras) {
         var map = new google.maps.Map(document.getElementById('map'), {

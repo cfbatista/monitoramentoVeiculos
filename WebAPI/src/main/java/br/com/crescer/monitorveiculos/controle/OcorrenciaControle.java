@@ -66,9 +66,4 @@ public class OcorrenciaControle {
     public List<Ocorrencia> listarTodas() {
         return ocorrenciaServico.listarTodas();
     }
-
-    @GetMapping(value = "/obter/{id}")
-    public Ocorrencia obterPorId(@PathVariable("id") Long id) {
-        return ocorrenciaServico.obterPorId(id);
-    }
 }
