@@ -86,7 +86,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         $scope.modelEnergia.metros = $scope.distanciaEntrePontos;
 
         var model = new Object;
-        model.data = $scope.modelEnergia.data;
+        model = $scope.modelEnergia;
 
         calculoEnergia($scope.modelEnergia);
         buscarRegistroVeiculosPorData(model);
@@ -116,23 +116,25 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         $scope.energia.numeroCasas = (energia / 170) * 30;
     }
 
-    function buscarRegistroVeiculosPorHorario(data) {
-        registroService.buscarRegistrosVeiculosPorHorario(data).then(response => {
-            let dataResponse = [];
-            response.data.forEach(element => {
-                dataResponse.push({ label: element.horario, value: element.contagem });
-            });
-            $scope.veiculoPorHorario.data = dataResponse;
-        }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
-    }
-
-    function buscarRegistroVeiculosPorData(data) {
-        cameraService.buscarRegistroVeiculosPorData(data).then(response => {
+    function buscarRegistroVeiculosPorData(model) {
+        cameraService.buscarRegistroVeiculosPorData(model).then(response => {
             let dataResponse = [];
             response.data.forEach(element => {
                 dataResponse.push({ label: element.dia, value: element.contagem });
             });
             $scope.veiculoPorDia.data = dataResponse;
+            console.log($scope.veiculoPorDia.data);
+        }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
+    }
+
+    function buscarRegistroVeiculosPorHorario(model) {
+        registroService.buscarRegistrosVeiculosPorHorario(model).then(response => {
+            let dataResponse = [];
+            response.data.forEach(element => {
+                dataResponse.push({ label: element.horario, value: element.contagem });
+            });
+            $scope.veiculoPorHorario.data = dataResponse;
+            console.log($scope.veiculoPorHorario.data);
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
     }
 

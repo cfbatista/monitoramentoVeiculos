@@ -46,7 +46,7 @@ public class VeiculoControle {
     }
 
     @GetMapping(value = "/obter/clonado/{placa}")
-    public Veiculo obterPorPlaca(@PathVariable String placa) {
+    public Veiculo obterPorPlaca(@PathVariable String placa) throws MonitoramentoVeiculosException {
         return veiculoServico.obterVeiculoPorPlaca(placa);
     }
 

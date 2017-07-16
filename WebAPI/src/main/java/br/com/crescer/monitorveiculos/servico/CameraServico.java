@@ -74,7 +74,7 @@ public class CameraServico {
             retorno.add(heatMapModel);
         });
       
-        retorno.stream().
+        return retorno.stream().
                 sorted(Comparator.comparing(e -> e.getCamera().getIdcamera()))
                 .collect(Collectors.toList());
     }
