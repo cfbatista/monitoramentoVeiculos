@@ -21,5 +21,7 @@ public class RetornoHorariosModel {
 
     private Horario horario;
     
+    private String descricao;
+    
     private Long contagem;
 }

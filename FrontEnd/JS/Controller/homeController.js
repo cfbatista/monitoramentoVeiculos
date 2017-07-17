@@ -22,18 +22,23 @@ app.controller('homeController', function ($scope, $routeParams, $location, auth
     }
 
     totalVeiculosClonados();
-    function totalVeiculosClonados(){
+    function totalVeiculosClonados() {
         registroService.buscarNumeroVeiculoClonados().then(response => {
             $scope.totalClonado = response.data;
         }).catch(error => console.log(error));
     }
 
+     plotarMapa();
+    function plotarMapa() {
+        var NovoHamburgo = new google.maps.LatLng(-29.6918991, -51.1255697);
+        var map = new google.maps.Map(
+            document.getElementById("map"), {
+                center: NovoHamburgo,
+                zoom: 10
+            });
+    }
+
     $scope.logar = function () {
         $location.path("/login")
     }
-
-    $scope.logout = function () {
-        authService.logout();
-    }
-
 });

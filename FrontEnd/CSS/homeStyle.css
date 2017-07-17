@@ -35,6 +35,7 @@
 .menu-fixo h1{
   color: white;
   font-family: 'Titillium Web';
+  margin-top: 20px;
 }
 
 .menu-fixo ul li > .fa{
@@ -196,11 +197,12 @@ padding:0;
 
 .infos{
   width: 350px;
-  height: 250px;
-  background: #00877A;
+  height: 265px;
   padding: 25px;
-  color: white;
   border-radius: 9px;
+  font-size: 30px;
+  color: black;
+  border: solid 0.2px black;
 }
 
 .main-menu ul li:hover{
@@ -221,4 +223,19 @@ button{
 }
 input[type=submit] {
   background-color: #00877A;
+}
+.column-25 label{
+  font-size: 25px;
+}
+.column-25 strong{
+  font-size: 25px;
+}
+.column-30 label{
+  font-size: 25px;
+}
+.column-30 strong{
+  font-size: 25px;
+}
+.column-30 p{
+  font-size: 20px;
 }

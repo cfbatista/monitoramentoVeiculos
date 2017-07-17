@@ -59,7 +59,7 @@ public class RegistroServico {
         Long contagem = cameraRepositorio.contagemRegistrosDeRota(dataInicialD, dataFinalD,
                 model.getIdCameraInicial(), model.getIdCameraFinal(), model.getDirecao());
 
-        return new RetornoHorariosModel(horario, contagem);
+        return new RetornoHorariosModel(horario, horario.getDescricao(), contagem);
 
     }
 }

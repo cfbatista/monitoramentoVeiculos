@@ -1,22 +1,33 @@
 <div class="info">
   <div class="infos" align="center">
-    <p>Total de cidades</p>
-    <h2>{{totalCidades}}</h2>
+    <p>Cidades</p>
+    <h2>{{totalCidades | number:0}}</h2>
     <img src="https://png.icons8.com/map-marker/android/48" title="Map Marker" width="50" height="50">
   </div>
   <div class="infos" align="center">
-    <p>Total de veículos</p>
-    <h2>{{totalVeiculos}}</h2>
+    <p>Veículos</p>
+    <h2>{{totalVeiculos | number:0}}</h2>
     <img src="https://png.icons8.com/car/ios7/50" title="Car" width="50" height="50">
   </div>
   <div class="infos" align="center">
-    <p>Total de ocorrências dos últimos 3 meses</p>
+    <p>Ocorrências</p>
     <h2>{{ocorrenciasUltimos3meses}}</h2>
     <img src="https://png.icons8.com/police-badge/Dusk_Wired/64" title="Police Badge" width="50" height="50">
   </div>
   <div class="infos" align="center">
-    <p>Total de veiculos suspeitos</p>
+    <p>Suspeitos de Clonagem</p>
     <h2>{{totalClonado}}</h2>
     <img src="https://png.icons8.com/handcuffs/ios7/50" title="Handcuffs" width="50" height="50">
+  </div>
+</div>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="column column-100">
+      <div align="center">
+        <h3>Localização da base de dados</h3>
+      </div>
+      <div id="map"></div>
+    </div>
   </div>
 </div>

@@ -60,15 +60,6 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         });
         heatmap.setMap(map);
         directionsDisplay.setMap(map);
-        for (let i = 0; i < $scope.cameras.length; i++) {
-            var lat = $scope.cameras[i].camera.latitude;
-            var long = $scope.cameras[i].camera.longitude;;
-            LatLng = new google.maps.LatLng(lat, long);
-            marker = new google.maps.Marker({
-                position: LatLng,
-                map: map
-            });
-        }
     }
 
     $scope.tracarRota = function () {
@@ -130,7 +121,7 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
         registroService.buscarRegistrosVeiculosPorHorario(model).then(response => {
             let dataResponse = [];
             response.data.forEach(element => {
-                dataResponse.push({ label: element.horario, value: element.contagem });
+                dataResponse.push({ label: element.descricao, value: element.contagem });
             });
             $scope.veiculoPorHorario.data = dataResponse;
         }).catch(error => toastr.error('Algum erro ocorrido! Contate o administrador!'))
@@ -138,23 +129,27 @@ app.controller('analiseRotaController', function ($scope, $routeParams, $locatio
 
     $scope.veiculoPorHorario = {
         chart: {
-            caption: "HORÁRIO X VEÍCULOS",
+            caption: "Fluxo Durante o Dia",
+            captionFontSize:22,
             subCaption: "Fluxo de veÍculos por horário",
             xAxisname: "Horários",
-            yAxisName: "Numero de carros",
-            baseFontSize: 14,
+            yAxisName: "Numero de veículos",
+            baseFontSize: 18,
             theme: "zune"
         },
     };
 
     $scope.veiculoPorDia = {
         chart: {
-            caption: "DIAS SEMANA X VEÍCULOS",
+            caption: "Fluxo Durante a Semana",
+            captionFontSize:22,
             subCaption: "Fluxo de veiculos por dias da semana",
             xAxisname: "Dias da semana",
-            yAxisName: "Numero de carros",
-            baseFontSize: 14,
-            theme: "zune"
+            yAxisName: "Numero de veículos",
+            baseFontSize: 18,
+            theme: "zune",
+            yAxisMaxValue: 70000,
+            yAxisMinValue: 50000
         },
     };
 

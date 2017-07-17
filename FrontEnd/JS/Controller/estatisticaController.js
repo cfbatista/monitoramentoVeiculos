@@ -46,41 +46,53 @@ app.controller('estatisticaController', function ($scope, $http, estatisticaServ
 
     $scope.fabricanteOcorrencia = {
         chart: {
-            caption: "FÁBRICANTES X OCORRÊNCIAS",
+            caption: "Fabricantes X Ocorrências",
+            captionFontSize: 22,
             subCaption: "Fábricantes com os maiores números de ocorrências",
+            xAxisname: "Fabricantes",
+            yAxisName: "Numero de ocorrências",
             theme: "zune",
-            baseFontSize: 14,
+            baseFontSize: 18,
             captionAlignment: "center"
         },
     };
 
     $scope.modelosRoubados = {
         chart: {
-            caption: "MODELOS X ROUBOS",
-            subCaption: "Modelos com maiores números de roubos",
+            caption: "Modelos X Ocorrências",
+            captionFontSize: 22,
+            subCaption: "Modelos com maiores números de ocorrências",
+            xAxisname: "Modelos",
+            yAxisName: "Numero de ocorrências",
             theme: "zune",
-            baseFontSize: 14,
+            baseFontSize: 18,
             captionAlignment: "center"
         },
     };
 
     $scope.horarioRoubos = {
         chart: {
-            caption: "HORÁRIOS X ROUBOS",
-            subCaption: "Horários com maiores números de roubos",
+            caption: "Horários X Ocorrências",
+            captionFontSize: 22,
+            subCaption: "Horários com maiores números de ocorrências",
+            xAxisname: "Horários",
+            yAxisName: "Numero de ocorrências",
             theme: "zune",
-            baseFontSize: 14,
+            baseFontSize: 18,
             captionAlignment: "center"
         },
     };
 
     $scope.cidadeRoubos = {
         chart: {
-            caption: "CIDADES X ROUBOS",
-            subCaption: "Horários com maiores números de roubos",
+            caption: "Cidades X Roubos",
+            captionFontSize: 22,
+            subCaption: "Cidades com maiores números de ocorrências",
+            xAxisname: "Cidades",
+            yAxisName: "Numero de ocorrências",
             theme: "zune",
-            baseFontSize: 14,
+            baseFontSize: 18,
             captionAlignment: "center"
         },
-    };  
+    };
 });

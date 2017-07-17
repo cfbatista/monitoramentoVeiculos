@@ -85,5 +85,14 @@ app.config(function($routeProvider){
                 }
             }
         })
+        .when('/logout', {
+            templateUrl: 'VIEW/logout.html',
+            controller: 'logoutController',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .otherwise({redirectTo: '/home'});
 });
