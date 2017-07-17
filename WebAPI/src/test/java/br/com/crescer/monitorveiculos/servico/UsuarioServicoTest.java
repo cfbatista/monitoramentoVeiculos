@@ -2,10 +2,9 @@ package br.com.crescer.monitorveiculos.servico;
 
 import br.com.crescer.monitorveiculos.entidade.Usuario;
 import br.com.crescer.monitorveiculos.repositorio.UsuarioRepositorio;
-import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosException;
+import br.com.crescer.monitorveiculos.seguranca.MonitoramentoVeiculosRoles;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -32,22 +31,19 @@ public class UsuarioServicoTest {
 
     @Before
     public void setUp() {
+        usuario = Usuario.builder()
+                .senha("123")
+                .permissao(MonitoramentoVeiculosRoles.ROLE_USUARIO)
+                .email("mock@mock.com")
+                .build();
         when(usuarioRepositorio.findByEmail("mock@mock.com")).thenReturn(usuario);
         when(usuarioRepositorio.save(usuario)).thenReturn(usuario);
     }
 
-    @Ignore
     @Test
     public void testFindByEmail() {
         assertEquals(usuario, usuarioServico.findByEmail("mock@mock.com"));
         verify(usuarioRepositorio).findByEmail("mock@mock.com");
-    }
-
-    @Ignore
-    @Test
-    public void testSave() throws MonitoramentoVeiculosException {
-        assertEquals(usuario, usuarioServico.save(usuario));
-        verify(usuarioRepositorio).save(usuario);
     }
 
 }
