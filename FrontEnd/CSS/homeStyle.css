@@ -35,6 +35,7 @@
 .menu-fixo h1{
   color: white;
   font-family: 'Titillium Web';
+  margin-top: 20px;
 }
 
 .menu-fixo ul li > .fa{
@@ -75,7 +76,7 @@ div #login-content {
 }
 
 .main-menu {
-background:lightgray;
+background:#00877A;
 top:0;
 position:fixed;
 height:100%;
@@ -195,19 +196,46 @@ padding:0;
 }
 
 .infos{
-  max-width: 100%;
-  height: 200px;
-  background: gray;
+  width: 350px;
+  height: 265px;
   padding: 25px;
-  color: white;
   border-radius: 9px;
+  font-size: 30px;
+  color: black;
+  border: solid 0.2px black;
 }
 
 .main-menu ul li:hover{
   transition: 1s;
-  background: rgba(163, 67, 84, 1);
+  background: #43968A;
 }
 
 .login{
     margin-top: 30px;
+}
+
+.main-menu .fa {
+  color : white;
+}
+
+button{
+  background-color: #00877A;
+}
+input[type=submit] {
+  background-color: #00877A;
+}
+.column-25 label{
+  font-size: 25px;
+}
+.column-25 strong{
+  font-size: 25px;
+}
+.column-30 label{
+  font-size: 25px;
+}
+.column-30 strong{
+  font-size: 25px;
+}
+.column-30 p{
+  font-size: 20px;
 }

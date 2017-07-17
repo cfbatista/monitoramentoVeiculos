@@ -8,10 +8,10 @@
         <table>
           <thead>
             <tr>
-              <th>Tipo de Ocorrencia</th>
-              <th>Marca do Veiculo</th>
-              <th>Nome da Vitima</th>
-              <th>Cidade da ocorrencia</th>
+              <th>Tipo de ocorrência</th>
+              <th>Marca do veículo</th>
+              <th>Nome da vítima</th>
+              <th>Cidade da ocorrência</th>
             </tr>
           </thead>
           <tbody>
@@ -35,95 +35,95 @@
 <div ng-show="detalhesOcorrencia">
     <div class="container">
         <div class="row">
-            <div class="column column-20"></div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-car fa-2x"></i>
-                <label>Modelo do veiculo</label>
-                <p>{{ocorrenciaDetalhe.veiculo.modelo}}</p>
+            <div class="column column-5"></div>
+            <div class="column column-30" align="center">
+                <label>Modelo do veículo</label>
+                <i class="fa fa-car fa-3x"></i>
+                <br><br><p>{{ocorrenciaDetalhe.veiculo.modelo}}</p>
             </div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-calendar fa-2x"></i>
-                <label>Horário da ocorrencia</label>
-                <p>{{ocorrenciaDetalhe.dataHora}}</p>
+            <div class="column column-30" align="center">
+                <label>Horário da ocorrência</label>
+                <i class="fa fa-calendar fa-3x"></i>
+                <br><br><p>{{ocorrenciaDetalhe.dataHora | date : "dd/MM/y"}}</p>
             </div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-exclamation-triangle fa-2x"></i>
-                <label>Tipo da ocorrencia</label>
-                <p>{{ocorrenciaDetalhe.tipoOcorrencia | tiposOcorrencia}}</p>
+            <div class="column column-30" align="center">
+                <label>Tipo de ocorrência</label>
+                <i class="fa fa-exclamation-triangle fa-3x"></i>
+                <br><br><p>{{ocorrenciaDetalhe.tipoOcorrencia | tiposOcorrencia}}</p>
             </div>
-            <div class="column column-20"></div>
+            <div class="column column-5"></div>
         </div>
     </div>
      <div class="container">
         <div class="row">
-            <div class="column column-20"></div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-users fa-2x" ></i>
-                <label>Numero de vitimas</label>
-                <p>{{ocorrenciaDetalhe.numeroVitimas}}</p>
+            <div class="column column-5"></div>
+            <div class="column column-30" align="center">
+                <label>Numero de vítimas</label>
+                <i class="fa fa-users fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.numeroVitimas}}</p>
             </div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-transgender fa-2x" ></i>
+            <div class="column column-30" align="center">
                 <label>Sexo do proprietário</label>
-                <p>{{ocorrenciaDetalhe.sexoProprietario | formataSexo}}</p>
+                <i class="fa fa-transgender fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.sexoProprietario | formataSexo}}</p>
             </div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-user fa-2x" ></i>
-                <label>Idade da vitima</label>
-                <p>{{ocorrenciaDetalhe.idadeVitima}}</p>
+            <div class="column column-30" align="center">
+                <label>Idade da vítima</label>
+                <i class="fa fa-user fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.idadeVitima}}</p>
             </div>
-            <div class="column column-20"></div>
+            <div class="column column-5"></div>
         </div>
     </div>
      <div class="container">
         <div class="row">
-            <div class="column column-20"></div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-laptop fa-2x" ></i>
+            <div class="column column-5"></div>
+            <div class="column column-30" align="center">
                 <label>Outros pertences foram levados?</label>
-                <p>{{ocorrenciaDetalhe.outrosPertencesLevados | simOuNao}}</p>
+                <i class="fa fa-laptop fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.outrosPertencesLevados | simOuNao}}</p>
             </div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-lock fa-2x" ></i>
-                <label>Veiculo segurado?</label>
-                <p>{{ocorrenciaDetalhe.veiculoSegurado | simOuNao}}</p>
+            <div class="column column-30" align="center">
+                <label>Veículo segurado?</label>
+                <i class="fa fa-lock fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.veiculoSegurado | simOuNao}}</p>
             </div>
-            <div class="column column-20" align="center">
-               <i class="fa fa-map-marker fa-2x" ></i>
-                <label>Veiculo com rastreador</label>
-                <p>{{ocorrenciaDetalhe.veiculoComRastreador | simOuNao}}</p>
+            <div class="column column-30" align="center">
+               <label>Veículo com rastreador</label>
+               <i class="fa fa-map-marker fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.veiculoComRastreador | simOuNao}}</p>
             </div>
-            <div class="column column-20"></div>
+            <div class="column column-5"></div>
         </div>
     </div>
     <div class="container">
         <div class="row">
-            <div class="column column-20"></div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-exclamation-triangle fa-2x" ></i>
-                <label>Situacao da ocorrencia</label>
-                <p>{{ocorrenciaDetalhe.situacaoOcorrencia | situacao}}</p>
+            <div class="column column-5"></div>
+            <div class="column column-30" align="center">
+                <label>Situacao da ocorrência</label>
+                <i class="fa fa-exclamation-triangle fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.situacaoOcorrencia | situacao}}</p>
             </div>
-            <div class="column column-20" align="center">
-                <i class="fa fa-envelope fa-2x" ></i>
-                <label>Email do proprietário</label>
-                <p>{{ocorrenciaDetalhe.usuario.email}}</p>
+            <div class="column column-30" align="center">
+                <label>E-mail do proprietário</label>
+                <i class="fa fa-envelope fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.usuario.email}}</p>
             </div>
-            <div class="column column-20" align="center">
-               <i class="fa fa-flag-o fa-2x" ></i>
-                <label>Cidade da ocorrencia</label>
-                <p>{{ocorrenciaDetalhe.cidade.nome}}</p>
+            <div class="column column-30" align="center">
+                <label>Cidade da ocorrência</label>
+                <i class="fa fa-flag-o fa-3x" ></i>
+                <br><br><p>{{ocorrenciaDetalhe.cidade.nome}}</p>
             </div>
-            <div class="column column-20"></div>
+            <div class="column column-5"></div>
         </div>
     </div>
     <span></span>
     <div class="container">
         <div class="row">
             <div class="column column-100">
-              <h3 align="center">Localização da ocorrencia</h3>
+              <h3 align="center">Localização da ocorrência</h3>
               <div id="map"></div>
-              <button type="submit" ng-click="voltar()"></button>
+              <button type="submit" ng-click="voltar()">Voltar</button>
             </div>
         </div>
     </div>

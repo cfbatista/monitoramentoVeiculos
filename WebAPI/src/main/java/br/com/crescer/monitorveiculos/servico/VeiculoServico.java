@@ -84,6 +84,7 @@ public class VeiculoServico {
 
     public Date pegarPrimeiroDiaMes() {
         Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.MONTH, -4);
         cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
         return cal.getTime();
     }

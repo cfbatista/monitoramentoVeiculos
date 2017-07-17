@@ -1,4 +1,6 @@
-<div align="center"><h1>Analise de Rotas</h1></div>
+<div align="center">
+    <h1>Analise de Rotas</h1>
+</div>
 <div class="container">
     <div class="row">
         <div class="column column-100">
@@ -7,10 +9,10 @@
                     <fieldset>
                         <label>Selecione sua direção</label>
                         <select ng-model="direcao">
-                            <option value="C">Capital - Interior</option>
-                            <option value="I">Interior - Capital</option>
+                            <option value="C">Interior - Capital</option>
+                            <option value="I">Capital - Interior</option>
                         </select>
-                        <input type="submit" value="Buscar Camera">
+                        <input type="submit" value="Buscar Câmera">
                     </fieldset>
                 </form>
             </div>
@@ -18,17 +20,17 @@
             <form ng-submit="pegarCameras(RegistroCountModel)">
                 <div ng-show="dados_Rota">
                     <fieldset>
-                        <label>Local de origem</label>
+                        <label>Ponto inicial da rota</label>
                         <select ng-model="RegistroCountModel.idCameraInicial">
                             <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">1 - {{camera.nome}}</option>
                         </select>
 
-                        <label>Local de Destino</label>
+                        <label>Ponto final da rota</label>
                         <select ng-model="RegistroCountModel.idCameraFinal">
                             <option ng-repeat="camera in camerasSentido" ng-value="{{camera.idcamera}}">2 - {{camera.nome}}</option>
                         </select>
 
-                        <label>Dia de Pesquisa</label>
+                        <label>Data</label>
                         <input type="date" ng-model="RegistroCountModel.data">
 
                         <input type="submit" value="Buscar Rota">
@@ -36,7 +38,7 @@
                 </div>
             </form>
             <div ng-show="botoes_Mapa">
-                <input type="submit" ng-click="click()" value="Plotar Mapa">
+                <input type="submit" ng-click="click()" value="Plotar mapa">
                 <input type="submit" ng-click="tracarRota()" value="Calcular rota">
             </div>
         </div>
@@ -55,40 +57,42 @@
     <div class="container">
         <div class="row">
             <div class="column column-25" align="center">
-                <img src="\IMG\logo-distancia.png" title="Map Marker" width="50" height="50">
-                <label>Distância em KM</label>
+                <label>Veículos</label>
+                <strong>{{energia.numeroVeiculos | number:0}}</strong>
+                <br><img src="\IMG\logo-veiculo.png" title="Traffic Jam" width="70" height="70">
+            </div>
+            <div class="column column-25" align="center">
+                <label>Distância</label>
                 <strong>{{energia.distancia | number:2}} KM</strong>
+                <br><img src="\IMG\logo-distancia.png" title="Map Marker" width="70" height="70">
             </div>
             <div class="column column-25" align="center">
-                <img src="\IMG\logo-energia.png" title="Traffic Jam" width="50" height="50">
-                <label>Energia diária gerada</label>
-                <strong>{{energia.energia | number:2}} MWH</strong>
+                <label>Potencial de energia</label>
+                <strong>{{energia.energia | number:0}} MWh</strong>
+                <br><img src="\IMG\logo-energia.png" title="Traffic Jam" width="70" height="70">
             </div>
             <div class="column column-25" align="center">
-                <img src="\IMG\logo-veiculo.png" title="Traffic Jam" width="50" height="50">
-                <label>Numero de veiculos</label>
-                <h6>*Considerando o dia atual</h6>
-                <strong>{{energia.numeroVeiculos}}</strong>
-            </div>
-             <div class="column column-25" align="center">
-                <img src="\IMG\logo-residencia.png" title="Traffic Jam" width="50" height="50">
                 <label>Residências por mês</label>
-                <h6>*Considerando 30 dias no mês</h6>
                 <strong>{{energia.numeroCasas | number:0}}</strong>
+                <br><img src="\IMG\logo-residencia.png" title="Traffic Jam" width="70" height="70">
             </div>
         </div>
     </div>
     <br><br>
     <div class="container">
         <div class="row">
-            <div class="column column-50">
-                <fusioncharts width="500" height="400" type="column2d" datasource="{{veiculoPorHorario}}"> </fusioncharts>
-            </div>
-            <div class="column column-50">
-                <fusioncharts width="500" height="400" type="column2d" datasource="{{veiculoPorDia}}"> </fusioncharts>
+            <div class="column column-100">
+                <fusioncharts width="100%" height="400" type="column2d" datasource="{{veiculoPorHorario}}"> </fusioncharts>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="column column-100">
+                <fusioncharts width="100%" height="400" type="column2d" datasource="{{veiculoPorDia}}"> </fusioncharts>
+            </div>
+        </div>
+    </div>  
     <div class="container">
         <div class="row">
             <div class="column column-100">
