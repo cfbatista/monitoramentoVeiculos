@@ -75,7 +75,7 @@ public class CameraServico {
             final HeatMapModel heatMapModel = new HeatMapModel(e.getCamera(), fator);
             retorno.add(heatMapModel);
         });
-      
+
         return retorno.stream().
                 sorted(Comparator.comparing(e -> e.getCamera().getIdcamera()))
                 .collect(Collectors.toList());
